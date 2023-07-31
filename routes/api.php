@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function() {
     Route::prefix('autenticacao')->group(function() {
         Route::post('login', [AutenticacaoController::class, 'login']);
+    });
+    Route::middleware('auth:sanctum')->group(function() {
+        Route::prefix('empresa')->group(function() {
+            Route::post('cadastro', [EmpresaController::class, 'store']);
+        });
     });
 });

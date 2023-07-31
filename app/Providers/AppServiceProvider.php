@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Repositories\Eloquent\Autenticacao\UsuarioRepository;
+use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
+use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
+use App\Services\Empresa\EmpresaService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
             $usuarioRepository = $app->make(IUsuario::class);
             return new LoginService($usuarioRepository);
         });
+        $this->app->scoped(EmpresaService::class, function(Application $app) {
+            $empresaRepository = $app->make(IEmpresa::class);
+            return new EmpresaService($empresaRepository);
+        });
     }
 
     /**
@@ -32,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->bind(IUsuario::class, UsuarioRepository::class);
+        $this->app->bind(IEmpresa::class, EmpresaRepository::class);
     }
 }
