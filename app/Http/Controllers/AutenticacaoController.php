@@ -7,7 +7,6 @@ use App\Http\Requests\LoginRequest;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class AutenticacaoController extends Controller

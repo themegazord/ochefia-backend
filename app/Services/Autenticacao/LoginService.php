@@ -5,10 +5,7 @@ namespace App\Services\Autenticacao;
 use App\Exceptions\AutenticacaoException;
 use App\Models\User;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Sanctum\PersonalAccessToken;
 
 class LoginService {
     public function __construct(private IUsuario $usuarioRepository)
