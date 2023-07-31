@@ -45,6 +45,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "main-merge": [
+            "git checkout main && git merge dev && git push origin main && git checkout dev"
         ]
     },
     "extra": {
