@@ -26,6 +26,7 @@ class FuncionarioController extends Controller
      */
     public function store(CadastroFuncionarioRequest $request)
     {
+        //TODO Inserir vinculo com usuário para poder entrar no sistema no futuro
         try {
             $funcionarioNovo = $this->funcionarioService->cadastro($request->only([
                 'empresa_id',
