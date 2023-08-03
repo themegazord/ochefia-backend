@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\EnderecoException;
 use App\Http\Requests\CadastroEnderecoRequest;
 use App\Services\Endereco\EnderecoService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -27,7 +28,7 @@ class EnderecoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CadastroEnderecoRequest $request)
+    public function store(CadastroEnderecoRequest $request): JsonResponse
     {
         try {
             $novoEndereco = $this->enderecoService->cadastro(
