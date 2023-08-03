@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\EnderecoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,9 @@ Route::prefix('v1')->group(function() {
     Route::middleware('auth:sanctum')->group(function() {
         Route::prefix('empresa')->group(function() {
             Route::post('cadastro', [EmpresaController::class, 'store']);
+        });
+        Route::prefix('endereco')->group(function() {
+            Route::post('cadastro', [EnderecoController::class, 'store']);
         });
     });
 });
