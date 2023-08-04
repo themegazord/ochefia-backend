@@ -28,6 +28,10 @@ class EmpresaService {
         return $nomeImagem;
     }
 
+    public function quantidadeDeDonoPorEmpresa(int $empresa_id): ?Empresa {
+        return $this->empresaRepository->quantidadeDeDonosPorEmpresa($empresa_id);
+    }
+
     private function validaCNPJ(string $cnpj): bool|EmpresaException {
         $cnpj = preg_replace('/[^0-9]/', '', (string) $cnpj);
 
