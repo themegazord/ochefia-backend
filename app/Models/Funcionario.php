@@ -11,6 +11,7 @@ class Funcionario extends Model
     use HasFactory;
 
     protected $fillable = [
+        'usuario_id',
         'empresa_id',
         'endereco_id',
         'funcionario_nome',
@@ -25,5 +26,9 @@ class Funcionario extends Model
 
     public function empresa(): BelongsTo {
         return $this->belongsTo(Empresa::class, 'empresa_id', 'empresa_id');
+    }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class, 'usuario_id', 'usuario_id');
     }
 }
