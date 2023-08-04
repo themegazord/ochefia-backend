@@ -23,6 +23,7 @@ class FuncionarioController extends Controller
     }
 
     public function cadastro(CadastroFuncionarioRequest $request): JsonResponse {
+        $eDono = $request->getRequestUri() == '/api/v1/funcionario/cadastro/dono';
         try {
             $funcionarioNovo = $this->funcionarioService->cadastro($request->only([
                 'empresa_id',
@@ -32,7 +33,7 @@ class FuncionarioController extends Controller
                 'funcionario_senha',
                 'cargo',
                 'acessos'
-            ]));
+            ]), $eDono);
             return response()->json(
                 [
                     'mensagem' => 'Funcionário cadastrado com sucesso',
