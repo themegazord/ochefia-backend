@@ -2,7 +2,7 @@
 
 ## Explicação de Rotas
 
-Rota usada para cadastro de funcionários dentro da empresa.
+Rota usada para cadastro de funcionários (donos) dentro da empresa.
 
 ## URL
 
