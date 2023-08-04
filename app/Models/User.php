@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function funcionario(): HasOne {
-        return $this->hasOne(Funcionario::class, 'usuario_id', 'usuario_id');
+        return $this->hasOne(Funcionario::class, 'usuario_id', 'id');
     }
 }

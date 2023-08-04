@@ -16,6 +16,7 @@ class Funcionario extends Model
         'endereco_id',
         'funcionario_nome',
         'funcionario_email',
+        'funcionario_senha',
         'cargo',
         'acessos',
     ];
@@ -29,6 +30,6 @@ class Funcionario extends Model
     }
 
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'usuario_id', 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id', 'id');
     }
 }
