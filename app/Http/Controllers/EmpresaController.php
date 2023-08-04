@@ -30,13 +30,19 @@ class EmpresaController extends Controller
         try {
             if(!isset($request['empresa_logo'])) {
                 $empresa = $this->empresaService->cadastro($request->only(['empresa_nome', 'empresa_cnpj', 'empresa_descricao']));
-                return response()->json($empresa, Response::HTTP_CREATED);
+                return response()->json([
+                    'mensagem' => 'Empresa cadastrada com sucesso',
+                    'empresa' => $empresa
+                ], Response::HTTP_CREATED);
             }
             if($request->hasFile('empresa_logo') && $request->file('empresa_logo')->isValid()) {
                 $nomeImagem = $this->empresaService->guardarImagem($request->file('empresa_logo'));
                 $empresa = $request->only(['empresa_nome', 'empresa_cnpj', 'empresa_descricao', 'empresa_logo']);
                 $empresa['empresa_logo'] = $nomeImagem;
-                return response()->json($this->empresaService->cadastro($empresa), Response::HTTP_CREATED);
+                return response()->json([
+                    'mensagem' => 'Empresa cadastrada com sucesso',
+                    'empresa' => $this->empresaService->cadastro($empresa)
+                ], Response::HTTP_CREATED);
             }
         } catch (EmpresaException $e) {
             return response()->json(['erro' => $e->getMessage()], $e->getCode());
