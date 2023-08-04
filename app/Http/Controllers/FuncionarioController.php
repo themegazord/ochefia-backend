@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Exceptions\FuncionarioException;
 use App\Http\Requests\CadastroFuncionarioRequest;
 use App\Services\Funcionario\FuncionarioService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class FuncionarioController extends Controller
 {
-    public function __construct(private FuncionarioService $funcionarioService) {
+    public function __construct(private readonly FuncionarioService $funcionarioService) {
 
     }
     /**
@@ -24,7 +25,7 @@ class FuncionarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CadastroFuncionarioRequest $request)
+    public function store(CadastroFuncionarioRequest $request): JsonResponse
     {
         //TODO Inserir vinculo com usuário para poder entrar no sistema no futuro
         try {
@@ -33,6 +34,7 @@ class FuncionarioController extends Controller
                 'endereco_id',
                 'funcionario_nome',
                 'funcionario_email',
+                'funcionario_senha',
                 'cargo',
                 'acessos'
             ]));

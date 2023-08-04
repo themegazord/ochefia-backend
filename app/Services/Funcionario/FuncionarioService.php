@@ -4,12 +4,16 @@ namespace App\Services\Funcionario;
 
 use App\Exceptions\FuncionarioException;
 use App\Models\Funcionario;
+use App\Models\User;
+use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
+use App\Services\Autenticacao\CadastroService;
 use Illuminate\Database\Eloquent\Collection;
 
 class FuncionarioService {
     public function __construct(
-        private readonly IFuncionario $funcionarioRepository
+        private readonly IFuncionario $funcionarioRepository,
+        private readonly CadastroService $cadastroService
     )
     {
 
@@ -26,6 +30,8 @@ class FuncionarioService {
         }
         $funcionario['cargo'] = strtoupper($funcionario['cargo']);
         $funcionario['acessos'] = $this->converteArrayDeAcessosParaString($funcionario['acessos']);
+        $usuarioNovo = $this->gerandoNovoUsuario($funcionario['funcionario_nome'], $funcionario['funcionario_email'], $funcionario['funcionario_senha']);
+        $funcionario['usuario_id'] = $usuarioNovo->getAttribute('id');
         return $this->funcionarioRepository->cadastro($funcionario);
     }
 
@@ -47,5 +53,15 @@ class FuncionarioService {
 
     private function converteArrayDeAcessosParaString(array $acessos): string {
         return implode(';', $acessos);
+    }
+
+    private function gerandoNovoUsuario(string $nome, string $email, string $senha): User {
+        $usuario = [
+            'name' => $nome,
+            'email' => $email,
+            'password' => $senha
+        ];
+
+        return $this->cadastroService->cadastro($usuario);
     }
 }

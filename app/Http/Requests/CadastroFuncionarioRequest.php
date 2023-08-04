@@ -25,7 +25,8 @@ class CadastroFuncionarioRequest extends FormRequest
             'empresa_id' => 'required|integer|exists:empresas,empresa_id',
             'endereco_id' => 'integer|exists:enderecos,endereco_id',
             'funcionario_nome' => 'required|string|max:155',
-            'funcionario_email' => 'email|max:255',
+            'funcionario_email' => 'required|email|max:255',
+            'funcionario_senha' => 'required|string|max:255',
             'cargo' => 'required|string|max:50',
             'acessos' => 'required|array'
         ];

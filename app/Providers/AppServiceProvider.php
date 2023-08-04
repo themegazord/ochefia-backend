@@ -45,7 +45,8 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->scoped(FuncionarioService::class, function(Application $app) {
             $funcionarioRepository = $app->make(IFuncionario::class);
-            return new FuncionarioService($funcionarioRepository);
+            $cadastroService = $app->make(CadastroService::class);
+            return new FuncionarioService($funcionarioRepository, $cadastroService);
         });
     }
 
