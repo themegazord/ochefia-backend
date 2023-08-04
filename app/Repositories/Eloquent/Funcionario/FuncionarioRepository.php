@@ -27,4 +27,12 @@ class FuncionarioRepository implements IFuncionario {
             ->where('empresa_id', $empresa_id)
             ->get();
     }
+
+    public function listagemDeDonosPorEmpresa(int $empresa_id): Collection
+    {
+        return Funcionario::query()
+            ->where('empresa_id', $empresa_id)
+            ->where('cargo', 'DONO')
+            ->get();
+    }
 }
