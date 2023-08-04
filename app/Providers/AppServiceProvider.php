@@ -47,7 +47,8 @@ class AppServiceProvider extends ServiceProvider
             $funcionarioRepository = $app->make(IFuncionario::class);
             $cadastroService = $app->make(CadastroService::class);
             $loginService = $app->make(LoginService::class);
-            return new FuncionarioService($funcionarioRepository, $cadastroService, $loginService);
+            $empresaService = $app->make(EmpresaService::class);
+            return new FuncionarioService($funcionarioRepository, $cadastroService, $loginService, $empresaService);
         });
     }
 
