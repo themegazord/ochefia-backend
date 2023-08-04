@@ -8,12 +8,14 @@ use App\Models\User;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Services\Autenticacao\CadastroService;
+use App\Services\Autenticacao\LoginService;
 use Illuminate\Database\Eloquent\Collection;
 
 class FuncionarioService {
     public function __construct(
         private readonly IFuncionario $funcionarioRepository,
-        private readonly CadastroService $cadastroService
+        private readonly CadastroService $cadastroService,
+        private readonly LoginService $loginService
     )
     {
 
@@ -22,7 +24,7 @@ class FuncionarioService {
     /**
      * @throws FuncionarioException
      */
-    public function cadastro(array $funcionario): Funcionario|FuncionarioException {
+    public function cadastro(array $funcionario): array|FuncionarioException {
         if((bool)$this->funcionarioPorEmailEEmpresa($funcionario['funcionario_email'], $funcionario['empresa_id'])) return FuncionarioException::emailDeFuncionarioJaExistenteParaEssaEmpresa($funcionario['funcionario_email']);
         //Validação para garantir que o primeiro funcionário SEMPRE seja o dono
         if (!$this->verificaSeJaExisteFuncionarioNaEmpresa($funcionario['empresa_id']) && !$this->verificaSeOCargoPassadoFoiDono($funcionario['cargo'])){
@@ -32,7 +34,13 @@ class FuncionarioService {
         $funcionario['acessos'] = $this->converteArrayDeAcessosParaString($funcionario['acessos']);
         $usuarioNovo = $this->gerandoNovoUsuario($funcionario['funcionario_nome'], $funcionario['funcionario_email'], $funcionario['funcionario_senha']);
         $funcionario['usuario_id'] = $usuarioNovo->getAttribute('id');
-        return $this->funcionarioRepository->cadastro($funcionario);
+        return [
+            'funcionario' => $this->funcionarioRepository->cadastro($funcionario),
+            'login' => $this->loginService->login([
+                'email' => $funcionario['funcionario_email'],
+                'password' => $funcionario['funcionario_senha']
+            ])
+        ];
     }
 
     private function funcionarioPorEmailEEmpresa(string $email, int $empresa_id): ?Funcionario {

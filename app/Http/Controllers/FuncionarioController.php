@@ -22,11 +22,7 @@ class FuncionarioController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(CadastroFuncionarioRequest $request): JsonResponse
-    {
+    public function cadastro(CadastroFuncionarioRequest $request): JsonResponse {
         try {
             $funcionarioNovo = $this->funcionarioService->cadastro($request->only([
                 'empresa_id',
@@ -40,7 +36,7 @@ class FuncionarioController extends Controller
             return response()->json(
                 [
                     'mensagem' => 'Funcionário cadastrado com sucesso',
-                    'funcionario' => $funcionarioNovo
+                    'dados' => $funcionarioNovo
                 ],
                 Response::HTTP_CREATED
             );

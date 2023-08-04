@@ -21,6 +21,9 @@ Route::prefix('v1')->group(function() {
     Route::prefix('autenticacao')->group(function() {
         Route::post('login', [AutenticacaoController::class, 'login']);
     });
+    Route::prefix('funcionario')->group(function() {
+        Route::post('cadastro/dono', [FuncionarioController::class, 'cadastro']);
+    });
     Route::middleware('auth:sanctum')->group(function() {
         Route::prefix('empresa')->group(function() {
             Route::post('cadastro', [EmpresaController::class, 'store']);
@@ -29,7 +32,7 @@ Route::prefix('v1')->group(function() {
             Route::post('cadastro', [EnderecoController::class, 'store']);
         });
         Route::prefix('funcionario')->group(function() {
-            Route::post('cadastro', [FuncionarioController::class, 'store']);
+            Route::post('cadastro/funcionario', [FuncionarioController::class, 'cadastro']);
         });
     });
 });
