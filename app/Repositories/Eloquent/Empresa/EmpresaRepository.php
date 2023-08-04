@@ -18,4 +18,12 @@ class EmpresaRepository implements IEmpresa {
             ->where('empresa_cnpj', $cnpj)
             ->first();
     }
+
+    public function quantidadeDeDonosPorEmpresa(int $empresa_id): ?Empresa
+    {
+        return Empresa::query()
+            ->select(['empresa_id','quantidade_donos'])
+            ->where('empresa_id', $empresa_id)
+            ->first();
+    }
 }
