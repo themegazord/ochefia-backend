@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FuncionarioService {
     public function __construct(
-        private IFuncionario $funcionarioRepository
+        private readonly IFuncionario $funcionarioRepository
     )
     {
 
     }
 
+    /**
+     * @throws FuncionarioException
+     */
     public function cadastro(array $funcionario): Funcionario|FuncionarioException {
         if((bool)$this->funcionarioPorEmailEEmpresa($funcionario['funcionario_email'], $funcionario['empresa_id'])) return FuncionarioException::emailDeFuncionarioJaExistenteParaEssaEmpresa($funcionario['funcionario_email']);
         //Validação para garantir que o primeiro funcionário SEMPRE seja o dono
