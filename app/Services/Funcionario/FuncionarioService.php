@@ -9,13 +9,15 @@ use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
+use App\Services\Empresa\EmpresaService;
 use Illuminate\Database\Eloquent\Collection;
 
 class FuncionarioService {
     public function __construct(
         private readonly IFuncionario $funcionarioRepository,
         private readonly CadastroService $cadastroService,
-        private readonly LoginService $loginService
+        private readonly LoginService $loginService,
+        private readonly EmpresaService $empresaService
     )
     {
 
@@ -24,14 +26,28 @@ class FuncionarioService {
     /**
      * @throws FuncionarioException
      */
-    public function cadastro(array $funcionario): array|FuncionarioException {
+    public function cadastro(array $funcionario, bool $eDono): array|FuncionarioException {
+        /**
+         * Validação para verificar se o email já está cadastrada nesta empresa em especifico
+         */
         if((bool)$this->funcionarioPorEmailEEmpresa($funcionario['funcionario_email'], $funcionario['empresa_id'])) return FuncionarioException::emailDeFuncionarioJaExistenteParaEssaEmpresa($funcionario['funcionario_email']);
-        //Validação para garantir que o primeiro funcionário SEMPRE seja o dono
+        /**
+         * Validação para garantir que o primeiro funcionário SEMPRE seja o dono
+         */
         if (!$this->verificaSeJaExisteFuncionarioNaEmpresa($funcionario['empresa_id']) && !$this->verificaSeOCargoPassadoFoiDono($funcionario['cargo'])){
             $funcionario['cargo'] = 'DONO';
         }
         $funcionario['cargo'] = strtoupper($funcionario['cargo']);
         $funcionario['acessos'] = $this->converteArrayDeAcessosParaString($funcionario['acessos']);
+        /**
+         * Conjunto de validações para uso da rota de cadastro de dono.
+         * 1º Verifica se a quantidade de donos cadastrados no sistema excedeu o limite configurado na empresa
+         * 2º Verifica se o funcionário cadastro em questão não é um dono, se não for, retorna uma exceção informando que esta rota é apenas para cadastro de donos
+         */
+        if ($eDono) {
+            $this->verificaSeAQuantidadeDeDonosExcedeu($funcionario['empresa_id']);
+            if ($funcionario['cargo'] !== 'DONO') return FuncionarioException::rotaExclusivaParaCadastroDeDonos();
+        }
         $usuarioNovo = $this->gerandoNovoUsuario($funcionario['funcionario_nome'], $funcionario['funcionario_email'], $funcionario['funcionario_senha']);
         $funcionario['usuario_id'] = $usuarioNovo->getAttribute('id');
         return [
@@ -71,5 +87,17 @@ class FuncionarioService {
         ];
 
         return $this->cadastroService->cadastro($usuario);
+    }
+
+    /**
+     * @throws FuncionarioException
+     */
+    private function verificaSeAQuantidadeDeDonosExcedeu(int $empresa_id): void
+    {
+        $quantidadeDeDonosConfigurada = $this->empresaService->quantidadeDeDonoPorEmpresa($empresa_id)->getAttribute('quantidade_donos');
+        $quantidadeDeDonos = count($this->funcionarioRepository->listagemDeDonosPorEmpresa($empresa_id)->toArray());
+
+        if ($quantidadeDeDonosConfigurada <= $quantidadeDeDonos) FuncionarioException::quantidadeDeDonosAtingidaPorEmpresa();
+
     }
 }
