@@ -1,6 +1,6 @@
 # API Ô Chefia
 
-![version](https://img.shields.io/badge/DocVersion-0.0.1-informational)
+![version](https://img.shields.io/badge/DocVersion-0.0.2-informational)
 ![version](https://img.shields.io/badge/AppVersion-In_Build-informational)
 
 ## Requisitos
@@ -21,4 +21,4 @@
   - Endereco
     - [Cadastro](/documentation/endereco/CadastroEnderecoDoc.md)
   - Funcionario
-    - Cadastro ![](https://img.shields.io/badge/In_Build-informational)
+    - [Cadastro - Dono](/documentation/funcionario/CadastroFuncionarioDonoDoc.md)

@@ -1,4 +1,4 @@
-# Cadastro de Funcionários ![Static Badge](https://img.shields.io/badge/Rota_autenticada-49CC90)
+# Cadastro de Funcionários - Dono ![Static Badge](https://img.shields.io/badge/Rota_n%C3%A3o_autenticada-%23F93E3E)
 
 ## Explicação de Rotas
 
@@ -6,7 +6,7 @@ Rota usada para cadastro de funcionários dentro da empresa.
 
 ## URL
 
-![Static Badge](https://img.shields.io/badge/POST-%2Fapi%2Fv1%2Ffuncionario%2Fcadastro-%2349CC90)
+![Static Badge](https://img.shields.io/badge/POST-%2Fapi%2Fv1%2Ffuncionario%2Fcadastro%2Fdono-%2349CC90)
 
 ## Parametro de requisição
 
@@ -46,18 +46,28 @@ Rota usada para cadastro de funcionários dentro da empresa.
 ```json
 {
     "mensagem": "Funcionário cadastrado com sucesso",
-    "funcionario": {
-        "empresa_id": 1,
-        "endereco_id": 1,
-        "funcionario_nome": "Fulano de Tal",
-        "funcionario_email": "fulano@email.com",
-        "funcionario_senha": "1234",
-        "cargo": "ESTOQUISTA",
-        "acessos": "produtos/cadastro;produto/listagem;produto/editar/[produto_id];produto/apagar/[produto_id];produto/detalhes/[produto_id]",
-        "usuario_id": 5,
-        "updated_at": "2023-08-04T02:41:16.000000Z",
-        "created_at": "2023-08-04T02:41:16.000000Z",
-        "id": 2
+    "dados": {
+        "funcionario": {
+            "empresa_id": 1,
+            "endereco_id": 1,
+            "funcionario_nome": "Fulano de Tal",
+            "funcionario_email": "fulano@email.com",
+            "funcionario_senha": "1234",
+            "cargo": "ESTOQUISTA",
+            "acessos": "produto/cadastro;produto/listagem",
+            "usuario_id": 6,
+            "updated_at": "2023-08-04T17:17:22.000000Z",
+            "created_at": "2023-08-04T17:17:22.000000Z",
+            "id": 5
+        },
+        "login": {
+            "token": "5|fVL6KzAUigiYYLG793VT5oSe7vg0unvGPASrP3fP",
+            "user": {
+                "id": 6,
+                "name": "Fulano de Tal",
+                "email": "fulano@email.com"
+            }
+        }
     }
 }
 ```
