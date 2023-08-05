@@ -4,6 +4,7 @@ use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Route::prefix('v1')->group(function() {
     });
     Route::prefix('funcionario')->group(function() {
         Route::post('cadastro/dono', [FuncionarioController::class, 'cadastro']);
+    });
+    Route::prefix('cliente')->group(function() {
+        Route::post('cadastro', [ClienteController::class, 'store']);
     });
     Route::middleware('auth:sanctum')->group(function() {
         Route::prefix('empresa')->group(function() {
