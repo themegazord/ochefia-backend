@@ -6,6 +6,7 @@ use App\Exceptions\AutenticacaoException;
 use App\Models\User;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginService {
     public function __construct(private IUsuario $usuarioRepository)
@@ -24,8 +25,7 @@ class LoginService {
 
     private function verificacoesParaLogin(array $credenciais): AutenticacaoException|User {
         if (!(bool)$this->usuarioPorEmail($credenciais['email'])) return AutenticacaoException::emailInexistente();
-        if (!Auth::attempt($credenciais)) return AutenticacaoException::senhaInvalida();
-        return $this->usuarioPorEmail($credenciais['email']);
+        return $this->checaSeSenhaConfere($credenciais);
     }
 
     private function respostaCompleta(User $user): array {
@@ -33,5 +33,11 @@ class LoginService {
             'token' => $user->createToken($user->email)->plainTextToken,
             'user' => $user->only(['id', 'name', 'email']),
         ];
+    }
+
+    private function checaSeSenhaConfere(array $credenciais): ?User {
+        $user = $this->usuarioRepository->usuarioPorEmail($credenciais['email']);
+        if (!Hash::check($credenciais['password'], $user->getAttribute('password'))) return AutenticacaoException::senhaInvalida();
+        return $user;
     }
 }
