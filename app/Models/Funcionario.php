@@ -21,6 +21,10 @@ class Funcionario extends Model
         'acessos',
     ];
 
+    protected $hidden = [
+        'funcionario_senha'
+    ];
+
     public function endereco(): BelongsTo {
         return $this->belongsTo(Endereco::class, 'endereco_id', 'endereco_id');
     }

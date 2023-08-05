@@ -40,22 +40,25 @@ class FuncionarioService {
         $funcionario['cargo'] = strtoupper($funcionario['cargo']);
         $funcionario['acessos'] = $this->converteArrayDeAcessosParaString($funcionario['acessos']);
         /**
-         * Conjunto de validações para uso da rota de cadastro de dono.
-         * 1º Verifica se o funcionário cadastro em questão não é um dono, se não for, retorna uma exceção informando que esta rota é apenas para cadastro de donos
-         * 2º Verifica se a quantidade de donos cadastrados no sistema excedeu o limite configurado na empresa
+         * Verifica se o funcionário cadastro em questão não é um dono, se não for, retorna uma exceção informando que esta rota é apenas para cadastro de donos
          */
         if ($eDono) {
             if ($funcionario['cargo'] !== 'DONO') return FuncionarioException::rotaExclusivaParaCadastroDeDonos();
-            $this->verificaSeAQuantidadeDeDonosExcedeu($funcionario['empresa_id']);
         }
+        /**
+         * Verifica se a quantidade de donos cadastrados no sistema excedeu o limite configurado na empresa
+         */
+        if ($funcionario['cargo'] === 'DONO') $this->verificaSeAQuantidadeDeDonosExcedeu($funcionario['empresa_id']);
         $usuarioNovo = $this->gerandoNovoUsuario($funcionario['funcionario_nome'], $funcionario['funcionario_email'], $funcionario['funcionario_senha']);
         $funcionario['usuario_id'] = $usuarioNovo->getAttribute('id');
+        $login = $this->loginService->login([
+            'email' => $funcionario['funcionario_email'],
+            'password' => $funcionario['funcionario_senha']
+        ]);
+        $funcionario['funcionario_senha'] = $usuarioNovo->getAttribute('password');
         return [
             'funcionario' => $this->funcionarioRepository->cadastro($funcionario),
-            'login' => $this->loginService->login([
-                'email' => $funcionario['funcionario_email'],
-                'password' => $funcionario['funcionario_senha']
-            ])
+            'login' => $login
         ];
     }
 
