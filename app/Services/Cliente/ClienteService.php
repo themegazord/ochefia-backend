@@ -2,6 +2,7 @@
 
 namespace App\Services\Cliente;
 
+use App\Exceptions\AutenticacaoException;
 use App\Exceptions\ClienteException;
 use App\Models\User;
 use App\Repositories\Interfaces\Cliente\ICliente;
@@ -20,9 +21,13 @@ class ClienteService
 
     }
 
+    /**
+     * @throws ClienteException
+     * @throws AutenticacaoException
+     */
     public function cadastro(array $cliente): array|ClienteException {
         $this->validaCPF($cliente['cliente_cpf']);
-        if((bool)$this->clientePorCPF($cliente['cliente_cpf'])) return ClienteException::CPFJaExistente($cliente['cliente_cpf']);
+        if($this->clientePorCPF($cliente['cliente_cpf'])) return ClienteException::CPFJaExistente($cliente['cliente_cpf']);
         $usuarioNovo = $this->cadastraUsuario(
             $cliente['cliente_nome'],
             $cliente['cliente_email'],
@@ -33,15 +38,19 @@ class ClienteService
             $cliente['cliente_email'],
             $cliente['cliente_senha']
         );
+        $cliente['cliente_senha'] = $usuarioNovo->getAttribute('password');
         return [
             'cliente' => $this->clienteRepository->cadastro($cliente),
             'dados' => $dadosLogin
         ];
     }
 
+    /**
+     * @throws ClienteException
+     */
     private function validaCPF(string $cpf): bool|ClienteException {
         // Extrai somente os números
-        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+        $cpf = preg_replace( '/[^0-9]/i', '', $cpf );
 
         // Verifica se foi informado todos os digitos corretamente
         if (strlen($cpf) != 11) {
@@ -78,6 +87,9 @@ class ClienteService
         ]);
     }
 
+    /**
+     * @throws AutenticacaoException
+     */
     private function logaUsuario(string $email, string $senha): array {
         return $this->loginService->login([
             'email' => $email,
