@@ -1,6 +1,6 @@
 # API Ô Chefia
 
-![version](https://img.shields.io/badge/DocVersion-0.0.3-informational)
+![version](https://img.shields.io/badge/DocVersion-0.2.0-informational)
 ![version](https://img.shields.io/badge/AppVersion-In_Build-informational)
 
 ## Requisitos
@@ -15,15 +15,15 @@
   - [Helpers](/documentation/helpers/HelperDoc.md)
 - Endpoints
   - Autenticacao
-    - [Login](/documentation/autenticacao/LoginDoc.md)
+    - [Login do cliente / funcionário](/documentation/autenticacao/LoginDoc.md)
   - Empresa
-    - [Cadastro](/documentation/empresa/CadastroEmpresaDoc.md)
+    - [Cadastro de empresas](/documentation/empresa/CadastroEmpresaDoc.md)
   - Endereco
-    - [Cadastro](/documentation/endereco/CadastroEnderecoDoc.md)
+    - [Cadastro de endereços](/documentation/endereco/CadastroEnderecoDoc.md)
   - Funcionario
     - [Cadastro - Dono](/documentation/funcionario/CadastroFuncionarioDonoDoc.md)
     - [Cadastro - Funcionario](/documentation/funcionario/CadastroFuncionarioDoc.md)
   - Grupo de produtos
-    - [Cadastro](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
+    - [Cadastro de Grupo de produtos](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
   - Sub Grupo de Produtos
-    - [Cadastro de Sub Grupos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
+    - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
