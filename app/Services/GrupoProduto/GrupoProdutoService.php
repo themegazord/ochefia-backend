@@ -33,7 +33,7 @@ class GrupoProdutoService
             'EMBALAGEM' => TiposGruposEnum::EMBALAGEM,
             'SERVICOS' => TiposGruposEnum::SERVICOS,
             'OUTROS' => TiposGruposEnum::OUTROS,
-            default => GrupoProdutoException::TipoGrupoProdutoNaoExistente($tipo)
+            default => GrupoProdutoException::tipoGrupoProdutoNaoExistente($tipo)
         };
     }
 }
