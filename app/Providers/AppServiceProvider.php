@@ -9,12 +9,14 @@ use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
 use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
+use App\Repositories\Eloquent\SubGrupoProduto\SubGrupoProdutoRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
+use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
 use App\Services\Cliente\ClienteService;
@@ -22,6 +24,7 @@ use App\Services\Empresa\EmpresaService;
 use App\Services\Endereco\EnderecoService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\GrupoProduto\GrupoProdutoService;
+use App\Services\SubGrupoProduto\SubGrupoProdutoService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -66,6 +69,10 @@ class AppServiceProvider extends ServiceProvider
             $grupoProdutoRepository = $app->make(IGrupoProduto::class);
             return new GrupoProdutoService($grupoProdutoRepository);
         });
+        $this->app->scoped(SubGrupoProdutoService::class, function (Application $app) {
+            $subGrupoProdutoRepository = $app->make(ISubGrupoProduto::class);
+            return new SubGrupoProdutoService($subGrupoProdutoRepository);
+        });
     }
 
     /**
@@ -79,5 +86,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IFuncionario::class, FuncionarioRepository::class);
         $this->app->bind(ICliente::class, ClienteRepository::class);
         $this->app->bind(IGrupoProduto::class, GrupoProdutoRepository::class);
+        $this->app->bind(ISubGrupoProduto::class, SubGrupoProdutoRepository::class);
     }
 }
