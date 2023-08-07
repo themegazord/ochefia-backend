@@ -25,3 +25,5 @@
     - [Cadastro - Funcionario](/documentation/funcionario/CadastroFuncionarioDoc.md)
   - Grupo de produtos
     - [Cadastro](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
+  - Sub Grupo de Produtos
+    - [Cadastro de Sub Grupos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
