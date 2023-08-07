@@ -1,4 +1,4 @@
-# Cadastro de grupo de produtos ![Static Badge](https://img.shields.io/badge/Rota_n%C3%A3o_autenticada-%23F93E3E)
+# Cadastro de grupo de produtos ![Static Badge](https://img.shields.io/badge/Rota_autenticada-49CC90)
 
 ## Explicação de Rotas
 
