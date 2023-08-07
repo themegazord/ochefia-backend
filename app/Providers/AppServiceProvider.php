@@ -8,17 +8,20 @@ use App\Repositories\Eloquent\Cliente\ClienteRepository;
 use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
+use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
+use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
 use App\Services\Cliente\ClienteService;
 use App\Services\Empresa\EmpresaService;
 use App\Services\Endereco\EnderecoService;
 use App\Services\Funcionario\FuncionarioService;
+use App\Services\GrupoProduto\GrupoProdutoService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -59,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
             $loginService = $app->make(LoginService::class);
             return new ClienteService($clienteRepository, $cadastroService, $loginService);
         });
+        $this->app->scoped(GrupoProdutoService::class, function (Application $app) {
+            $grupoProdutoRepository = $app->make(IGrupoProduto::class);
+            return new GrupoProdutoService($grupoProdutoRepository);
+        });
     }
 
     /**
@@ -71,5 +78,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IEndereco::class, EnderecoRepository::class);
         $this->app->bind(IFuncionario::class, FuncionarioRepository::class);
         $this->app->bind(ICliente::class, ClienteRepository::class);
+        $this->app->bind(IGrupoProduto::class, GrupoProdutoRepository::class);
     }
 }
