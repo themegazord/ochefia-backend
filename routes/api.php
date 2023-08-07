@@ -7,6 +7,7 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GrupoProdutoController;
 use App\Http\Controllers\SubGrupoProdutoController;
+use App\Http\Controllers\FornecedorProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('sub_grupo_produto')->group(function() {
             Route::post('cadastro', [SubGrupoProdutoController::class, 'store']);
+        });
+        Route::prefix('fornecedor_produto')->group(function() {
+            Route::post('cadastro', [FornecedorProdutoController::class, 'store']);
         });
     });
 });
