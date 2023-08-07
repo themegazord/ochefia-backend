@@ -7,6 +7,7 @@ use App\Repositories\Eloquent\Autenticacao\UsuarioRepository;
 use App\Repositories\Eloquent\Cliente\ClienteRepository;
 use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
+use App\Repositories\Eloquent\FornecedorProduto\FornecedorProdutoRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
 use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
 use App\Repositories\Eloquent\SubGrupoProduto\SubGrupoProdutoRepository;
@@ -14,6 +15,7 @@ use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
+use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
 use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
@@ -22,6 +24,7 @@ use App\Services\Autenticacao\LoginService;
 use App\Services\Cliente\ClienteService;
 use App\Services\Empresa\EmpresaService;
 use App\Services\Endereco\EnderecoService;
+use App\Services\FornecedorProduto\FornecedorProdutoService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\GrupoProduto\GrupoProdutoService;
 use App\Services\SubGrupoProduto\SubGrupoProdutoService;
@@ -73,6 +76,10 @@ class AppServiceProvider extends ServiceProvider
             $subGrupoProdutoRepository = $app->make(ISubGrupoProduto::class);
             return new SubGrupoProdutoService($subGrupoProdutoRepository);
         });
+        $this->app->scoped(FornecedorProdutoService::class, function (Application $app) {
+            $fornecedorProduto = $app->make(IFornecedorProduto::class);
+            return new FornecedorProdutoService($fornecedorProduto);
+        });
     }
 
     /**
@@ -87,5 +94,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ICliente::class, ClienteRepository::class);
         $this->app->bind(IGrupoProduto::class, GrupoProdutoRepository::class);
         $this->app->bind(ISubGrupoProduto::class, SubGrupoProdutoRepository::class);
+        $this->app->bind(IFornecedorProduto::class, FornecedorProdutoRepository::class);
     }
 }
