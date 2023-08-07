@@ -6,6 +6,7 @@ use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GrupoProdutoController;
+use App\Http\Controllers\SubGrupoProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('grupo_produto')->group(function() {
             Route::post('cadastro', [GrupoProdutoController::class, 'store']);
+        });
+        Route::prefix('sub_grupo_produto')->group(function() {
+            Route::post('cadastro', [SubGrupoProdutoController::class, 'store']);
         });
     });
 });
