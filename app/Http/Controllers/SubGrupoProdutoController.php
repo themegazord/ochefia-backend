@@ -32,7 +32,7 @@ class SubGrupoProdutoController extends Controller
         try {
             $subGrupoNovo = $this->grupoProdutoService->cadastro($request->only('sub_grupo_produto_nome'));
             return response()->json([
-                'mensagem' => 'Sub grupo de produto cadastro com sucesso',
+                'mensagem' => 'Sub grupo de produto cadastrado com sucesso',
                 'sub_grupo' => $subGrupoNovo
             ]);
         } catch (SubGrupoProdutoException $sgpe) {
