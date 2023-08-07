@@ -2,7 +2,7 @@
 
 ## Explicação de Rotas
 
-Rota usada para cadastrar tipo de grupo de produtos dentro do sistema, afim de, organizar e auxiliar em relatórios futuros
+Rota usada para cadastrar grupo de produtos dentro do sistema, afim de, organizar e auxiliar em relatórios futuros
 
 ## URL
 
