@@ -11,6 +11,7 @@ use App\Repositories\Eloquent\FornecedorProduto\FornecedorProdutoRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
 use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
 use App\Repositories\Eloquent\SubGrupoProduto\SubGrupoProdutoRepository;
+use App\Repositories\Eloquent\Unidade\UnidadeRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
@@ -19,6 +20,7 @@ use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
 use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
+use App\Repositories\Interfaces\Unidade\IUnidade;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
 use App\Services\Cliente\ClienteService;
@@ -28,6 +30,7 @@ use App\Services\FornecedorProduto\FornecedorProdutoService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\GrupoProduto\GrupoProdutoService;
 use App\Services\SubGrupoProduto\SubGrupoProdutoService;
+use App\Services\Unidade\UnidadeService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -77,8 +80,12 @@ class AppServiceProvider extends ServiceProvider
             return new SubGrupoProdutoService($subGrupoProdutoRepository);
         });
         $this->app->scoped(FornecedorProdutoService::class, function (Application $app) {
-            $fornecedorProduto = $app->make(IFornecedorProduto::class);
-            return new FornecedorProdutoService($fornecedorProduto);
+            $fornecedorProdutoRepository = $app->make(IFornecedorProduto::class);
+            return new FornecedorProdutoService($fornecedorProdutoRepository);
+        });
+        $this->app->scoped(UnidadeService::class, function (Application $app) {
+            $unidadeRepository = $app->make(IUnidade::class);
+            return new UnidadeService($unidadeRepository);
         });
     }
 
@@ -95,5 +102,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IGrupoProduto::class, GrupoProdutoRepository::class);
         $this->app->bind(ISubGrupoProduto::class, SubGrupoProdutoRepository::class);
         $this->app->bind(IFornecedorProduto::class, FornecedorProdutoRepository::class);
+        $this->app->bind(IUnidade::class, UnidadeRepository::class);
     }
 }
