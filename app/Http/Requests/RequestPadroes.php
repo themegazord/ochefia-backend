@@ -8,7 +8,7 @@ class RequestPadroes {
     public static string $email = 'O email informado é inválido.';
     public static string $integer = 'O campo deve receber apenas inteiros.';
     public static string $array = 'O campo deve receber apenas arrays.';
-    public static string $decimal = 'O campo deve receber apenas valores decimais.';
+    public static string $numeric = 'O campo deve receber apenas valores númericos (inteiros ou decimais).';
 
     public static function mensagemMax(int $valorMaximo): string {
         return 'Esse campo tem que conter no máximo ' . $valorMaximo . ' caracteres.';
