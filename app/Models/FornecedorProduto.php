@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class FornecedorProduto extends Model
 {
@@ -14,4 +15,8 @@ class FornecedorProduto extends Model
     protected $fillable = [
         'fornecedor_produto_nome'
     ];
+
+    public function produto(): HasMany {
+        return $this->hasMany(Produto::class, 'fornecedor_produto_id', 'fornecedor_produto_id');
+    }
 }
