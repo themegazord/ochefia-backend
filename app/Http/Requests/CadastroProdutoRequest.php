@@ -38,7 +38,7 @@ class CadastroProdutoRequest extends FormRequest
     {
         return [
             'required' => RequestPadroes::$required,
-            'string' => RequestPadroes::$integer,
+            'string' => RequestPadroes::$string,
             'integer' => RequestPadroes::$integer,
             'decimal' => RequestPadroes::$decimal,
             'empresa_id.exists' => RequestPadroes::mensagemExists('empresas'),
