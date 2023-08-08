@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\ClasseProdutoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\FuncionarioController;
@@ -53,6 +54,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('unidade')->group(function() {
            Route::post('cadastro', [UnidadeController::class, 'store']);
+        });
+        Route::prefix('classe_produto')->group(function() {
+           Route::post('cadastro', [ClasseProdutoController::class, 'store']);
         });
     });
 });
