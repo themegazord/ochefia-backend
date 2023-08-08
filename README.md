@@ -29,3 +29,5 @@
     - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
   - Unidade de Medida
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
+  - Classe de Produtos
+    - [Cadastro de classe de produtos](/documentation/classe_produto/CadastroClasseProdutoDoc.md)
