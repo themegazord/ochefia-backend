@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Actions\Endereco\ValidaDadosCEP;
 use App\Repositories\Eloquent\Autenticacao\UsuarioRepository;
+use App\Repositories\Eloquent\ClasseProduto\ClasseProdutoRepository;
 use App\Repositories\Eloquent\Cliente\ClienteRepository;
 use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
@@ -13,6 +14,7 @@ use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
 use App\Repositories\Eloquent\SubGrupoProduto\SubGrupoProdutoRepository;
 use App\Repositories\Eloquent\Unidade\UnidadeRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
+use App\Repositories\Interfaces\ClasseProduto\IClasseProduto;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
@@ -23,6 +25,7 @@ use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
 use App\Repositories\Interfaces\Unidade\IUnidade;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
+use App\Services\ClasseProduto\ClasseProdutoService;
 use App\Services\Cliente\ClienteService;
 use App\Services\Empresa\EmpresaService;
 use App\Services\Endereco\EnderecoService;
@@ -87,6 +90,10 @@ class AppServiceProvider extends ServiceProvider
             $unidadeRepository = $app->make(IUnidade::class);
             return new UnidadeService($unidadeRepository);
         });
+        $this->app->scoped(ClasseProdutoService::class, function (Application $app) {
+            $classeProdutoRepository = $app->make(IClasseProduto::class);
+            return new ClasseProdutoService($classeProdutoRepository);
+        });
     }
 
     /**
@@ -103,5 +110,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ISubGrupoProduto::class, SubGrupoProdutoRepository::class);
         $this->app->bind(IFornecedorProduto::class, FornecedorProdutoRepository::class);
         $this->app->bind(IUnidade::class, UnidadeRepository::class);
+        $this->app->bind(IClasseProduto::class, ClasseProdutoRepository::class);
     }
 }
