@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('classe_produto_id');
             $table->unsignedBigInteger('unidade_id');
             $table->string('produto_nome', 155);
-            $table->decimal('produto_estoque', 15, 2);
-            $table->decimal('produto_preco', 15, 2);
+            $table->decimal('produto_estoque', 15, 2)->default(0);
+            $table->decimal('produto_preco', 15, 2)->default(0);
             $table->timestamps();
         });
 
@@ -40,7 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produtos');
         Schema::table('produtos', function (Blueprint $table) {
             $table->dropForeign('produtos_empresa_id_foreign');
             $table->dropForeign('produtos_grupo_produto_id_foreign');
@@ -49,5 +48,6 @@ return new class extends Migration
             $table->dropForeign('produtos_classe_produto_id_foreign');
             $table->dropForeign('produtos_unidade_id_foreign');
         });
+        Schema::dropIfExists('produtos');
     }
 };
