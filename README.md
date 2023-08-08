@@ -31,3 +31,5 @@
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
   - Classe de Produtos
     - [Cadastro de classe de produtos](/documentation/classe_produto/CadastroClasseProdutoDoc.md)
+  - Produtos
+    - [Cadastro de produtos](/documentation/produto/CadastroProdutoDoc.md)
