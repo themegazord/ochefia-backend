@@ -29,8 +29,8 @@ class CadastroProdutoRequest extends FormRequest
             'classe_produto_id' => 'required|integer|exists:classe_produto,classe_produto_id',
             'unidade_id' => 'required|integer|exists:unidades,unidade_id',
             'produto_nome' => 'required|string|max:155',
-            'produto_estoque' => 'required|decimal:15,2',
-            'produto_preco' => 'required|decimal:15,2'
+            'produto_estoque' => 'required|numeric',
+            'produto_preco' => 'required|numeric'
         ];
     }
 
@@ -40,7 +40,7 @@ class CadastroProdutoRequest extends FormRequest
             'required' => RequestPadroes::$required,
             'string' => RequestPadroes::$string,
             'integer' => RequestPadroes::$integer,
-            'decimal' => RequestPadroes::$decimal,
+            'numeric' => RequestPadroes::$numeric,
             'empresa_id.exists' => RequestPadroes::mensagemExists('empresas'),
             'grupo_produto_id.exists' => RequestPadroes::mensagemExists('grupo_produtos'),
             'sub_grupo_produto_id.exists' => RequestPadroes::mensagemExists('sub_grupo_produtos'),
