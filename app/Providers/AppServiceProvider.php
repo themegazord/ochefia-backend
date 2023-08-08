@@ -11,6 +11,7 @@ use App\Repositories\Eloquent\Endereco\EnderecoRepository;
 use App\Repositories\Eloquent\FornecedorProduto\FornecedorProdutoRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
 use App\Repositories\Eloquent\GrupoProduto\GrupoProdutoRepository;
+use App\Repositories\Eloquent\Produto\ProdutoRepository;
 use App\Repositories\Eloquent\SubGrupoProduto\SubGrupoProdutoRepository;
 use App\Repositories\Eloquent\Unidade\UnidadeRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
@@ -21,6 +22,7 @@ use App\Repositories\Interfaces\Endereco\IEndereco;
 use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
+use App\Repositories\Interfaces\Produto\IProduto;
 use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
 use App\Repositories\Interfaces\Unidade\IUnidade;
 use App\Services\Autenticacao\CadastroService;
@@ -32,6 +34,7 @@ use App\Services\Endereco\EnderecoService;
 use App\Services\FornecedorProduto\FornecedorProdutoService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\GrupoProduto\GrupoProdutoService;
+use App\Services\Produto\ProdutoService;
 use App\Services\SubGrupoProduto\SubGrupoProdutoService;
 use App\Services\Unidade\UnidadeService;
 use Illuminate\Contracts\Foundation\Application;
@@ -94,6 +97,10 @@ class AppServiceProvider extends ServiceProvider
             $classeProdutoRepository = $app->make(IClasseProduto::class);
             return new ClasseProdutoService($classeProdutoRepository);
         });
+        $this->app->scoped(ProdutoService::class, function (Application $app) {
+            $produtoRepository = $app->make(IProduto::class);
+            return new ProdutoService($produtoRepository);
+        });
     }
 
     /**
@@ -111,5 +118,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IFornecedorProduto::class, FornecedorProdutoRepository::class);
         $this->app->bind(IUnidade::class, UnidadeRepository::class);
         $this->app->bind(IClasseProduto::class, ClasseProdutoRepository::class);
+        $this->app->bind(IProduto::class, ProdutoRepository::class);
     }
 }
