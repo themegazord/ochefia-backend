@@ -20,11 +20,6 @@ class PrazoPgto extends Model
         'prazopgto_tipoforma'
     ];
 
-    protected $casts = [
-        'prazopgto_tipo' => TiposPrazoPgtoEnum::class,
-        'prazopgto_tipoforma' => TiposFormasPrazoPgtoEnum::class
-    ];
-
     public function prazoPgtoDias(): HasMany
     {
         return $this->hasMany(PrazoPgtoDias::class, 'prazopgto_id', 'prazopgto_id');
