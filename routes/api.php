@@ -7,6 +7,7 @@ use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GrupoProdutoController;
+use App\Http\Controllers\PrazoPgtoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SubGrupoProdutoController;
 use App\Http\Controllers\FornecedorProdutoController;
@@ -61,6 +62,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('produto')->group(function() {
            Route::post('cadastro', [ProdutoController::class, 'store']);
+        });
+        Route::prefix('prazopgto')->group(function() {
+           Route::post('cadastro', [PrazoPgtoController::class, 'store']);
         });
     });
 });
