@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\PrazoPgtoException;
+use App\Http\Requests\CadastroPrazoPgtoRequest;
 use App\Services\PrazoPgto\PrazoPgtoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class PrazoPgtoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(CadastroPrazoPgtoRequest $request): JsonResponse
     {
         try {
             $novoPrazoPgto = $this->prazoPgtoService->cadastro($request->only([
