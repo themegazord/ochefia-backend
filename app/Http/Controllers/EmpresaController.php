@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\EmpresaException;
-use App\Http\Requests\CadastroEmpresaRequest;
+use App\Http\Requests\Empresa\CadastroEmpresaRequest;
 use App\Services\Empresa\EmpresaService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
