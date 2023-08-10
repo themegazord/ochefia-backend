@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\FornecedorProdutoException;
-use App\Http\Requests\CadastroFornecedorProdutoRequest;
+use App\Http\Requests\Produto\Fornecedor\CadastroFornecedorProdutoRequest;
 use App\Services\FornecedorProduto\FornecedorProdutoService;
 use Illuminate\Http\Request;
 
