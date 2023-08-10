@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\PrazoPgtoException;
-use App\Http\Requests\CadastroPrazoPgtoRequest;
+use App\Http\Requests\Financeiro\PrazoPgto\CadastroPrazoPgtoRequest;
 use App\Services\PrazoPgto\PrazoPgtoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
