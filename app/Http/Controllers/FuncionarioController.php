@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\FuncionarioException;
-use App\Http\Requests\CadastroFuncionarioRequest;
+use App\Http\Requests\Funcionario\CadastroFuncionarioRequest;
 use App\Services\Funcionario\FuncionarioService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
