@@ -14,6 +14,7 @@ use App\Repositories\Eloquent\Estoque\Produto\ProdutoRepository;
 use App\Repositories\Eloquent\Estoque\SubGrupo\SubGrupoProdutoRepository;
 use App\Repositories\Eloquent\Estoque\Unidade\UnidadeRepository;
 use App\Repositories\Eloquent\Financeiro\PrazoPgto\PrazoPgtoRepository;
+use App\Repositories\Eloquent\Financeiro\PrazoPgtoDias\PrazoPgtoDiasRepository;
 use App\Repositories\Eloquent\Funcionario\FuncionarioRepository;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
 use App\Repositories\Interfaces\Cliente\ICliente;
@@ -26,6 +27,7 @@ use App\Repositories\Interfaces\Estoque\Produto\IProduto;
 use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
 use App\Repositories\Interfaces\Estoque\Unidade\IUnidade;
 use App\Repositories\Interfaces\Financeiro\PrazoPgto\IPrazoPgto;
+use App\Repositories\Interfaces\Financeiro\PrazoPgtoDias\IPrazoPgtoDias;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
@@ -39,6 +41,7 @@ use App\Services\Estoque\Produto\ProdutoService;
 use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
 use App\Services\Estoque\Unidade\UnidadeService;
 use App\Services\Financeiro\PrazoPgto\PrazoPgtoService;
+use App\Services\Financeiro\PrazoPgtoDias\PrazoPgtoDiasService;
 use App\Services\Funcionario\FuncionarioService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -108,6 +111,10 @@ class AppServiceProvider extends ServiceProvider
             $prazoPgtoRepository = $app->make(IPrazoPgto::class);
             return new PrazoPgtoService($prazoPgtoRepository);
         });
+        $this->app->scoped(PrazoPgtoDiasService::class, function (Application $app) {
+            $prazoPgtoDiasRepository = $app->make(IPrazoPgtoDias::class);
+            return new PrazoPgtoDiasService($prazoPgtoDiasRepository);
+        });
     }
 
     /**
@@ -127,5 +134,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IClasseProduto::class, ClasseProdutoRepository::class);
         $this->app->bind(IProduto::class, ProdutoRepository::class);
         $this->app->bind(IPrazoPgto::class, PrazoPgtoRepository::class);
+        $this->app->bind(IPrazoPgtoDias::class, PrazoPgtoDiasRepository::class);
     }
 }
