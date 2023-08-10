@@ -36,10 +36,10 @@ use App\Services\Estoque\Classe\ClasseProdutoService;
 use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
 use App\Services\Estoque\Produto\ProdutoService;
+use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
 use App\Services\Estoque\Unidade\UnidadeService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\PrazoPgto\PrazoPgtoService;
-use App\Services\SubGrupoProduto\SubGrupoProdutoService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 

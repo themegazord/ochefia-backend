@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\SubGrupoProduto;
+namespace App\Services\Estoque\SubGrupo;
 
 use App\Exceptions\SubGrupoProdutoException;
 use App\Models\SubGrupoProduto;
