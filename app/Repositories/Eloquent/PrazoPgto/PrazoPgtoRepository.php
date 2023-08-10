@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent\PrazoPgto;
 
 use App\Models\PrazoPgto;
-use App\Repositories\Interfaces\PrazoPgto\IPrazoPgto;
+use App\Repositories\Interfaces\Financeiro\PrazoPgto\IPrazoPgto;
 
 class PrazoPgtoRepository implements IPrazoPgto
 {

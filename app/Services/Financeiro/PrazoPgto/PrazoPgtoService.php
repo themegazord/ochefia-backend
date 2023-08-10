@@ -5,7 +5,7 @@ namespace App\Services\Financeiro\PrazoPgto;
 use App\Enums\Financeiro\PrazoPgto\TiposFormasPrazoPgtoEnum;
 use App\Enums\Financeiro\PrazoPgto\TiposPrazoPgtoEnum;
 use App\Exceptions\PrazoPgtoException;
-use App\Repositories\Interfaces\PrazoPgto\IPrazoPgto;
+use App\Repositories\Interfaces\Financeiro\PrazoPgto\IPrazoPgto;
 
 class PrazoPgtoService
 {
