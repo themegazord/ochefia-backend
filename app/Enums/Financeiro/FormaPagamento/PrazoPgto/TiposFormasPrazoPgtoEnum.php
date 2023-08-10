@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums\FormaPagamento\PrazoPgto;
+namespace App\Enums\Financeiro\FormaPagamento\PrazoPgto;
 
 enum TiposFormasPrazoPgtoEnum:string
 {
