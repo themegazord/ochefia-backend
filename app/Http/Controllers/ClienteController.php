@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ClienteException;
-use App\Http\Requests\CadastroClienteRequest;
+use App\Http\Requests\Cliente\CadastroClienteRequest;
 use App\Services\Cliente\ClienteService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

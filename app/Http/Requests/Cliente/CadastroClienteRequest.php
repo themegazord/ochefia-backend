@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Cliente;
 
+use App\Http\Requests\RequestPadroes;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CadastroClienteRequest extends FormRequest
