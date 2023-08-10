@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\UnidadeException;
-use App\Http\Requests\Produto\Unidade\CadastroUnidadeRequest;
+use App\Http\Requests\Estoque\Unidade\CadastroUnidadeRequest;
 use App\Services\Unidade\UnidadeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
