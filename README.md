@@ -34,4 +34,6 @@
   - Produtos
     - [Cadastro de produtos](/documentation/produto/CadastroProdutoDoc.md)
   - Prazo de pagamento
-      - [Cadastro de prazo de pagamento](/documentation/prazo_pgto/CadastroPrazoPgtoDoc.md)
+    - [Cadastro de prazo de pagamento](/documentation/prazo_pgto/CadastroPrazoPgtoDoc.md)
+  - Dias de Prazo de Pagamento
+    - [Cadastro de dias para prazo de pagamento](/documentation/prazo_pgto_dias/CadastroPrazoPgtoDiasDoc.md)
