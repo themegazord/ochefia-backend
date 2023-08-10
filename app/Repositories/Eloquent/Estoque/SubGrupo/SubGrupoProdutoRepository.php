@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent\SubGrupoProduto;
+namespace App\Repositories\Eloquent\Estoque\SubGrupo;
 
 use App\Models\SubGrupoProduto;
 use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
