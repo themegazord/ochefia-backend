@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\EnderecoException;
-use App\Http\Requests\CadastroEnderecoRequest;
+use App\Http\Requests\Endereco\CadastroEnderecoRequest;
 use App\Services\Endereco\EnderecoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
