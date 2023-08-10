@@ -3,8 +3,7 @@
 namespace App\Repositories\Eloquent\SubGrupoProduto;
 
 use App\Models\SubGrupoProduto;
-use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
-use Illuminate\Database\Eloquent\Model;
+use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
 
 class SubGrupoProdutoRepository implements ISubGrupoProduto
 {

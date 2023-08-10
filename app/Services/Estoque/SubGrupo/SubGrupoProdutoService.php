@@ -4,7 +4,7 @@ namespace App\Services\Estoque\SubGrupo;
 
 use App\Exceptions\SubGrupoProdutoException;
 use App\Models\SubGrupoProduto;
-use App\Repositories\Interfaces\SubGrupoProduto\ISubGrupoProduto;
+use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
 
 class SubGrupoProdutoService
 {
