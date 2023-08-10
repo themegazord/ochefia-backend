@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\GrupoProduto;
+namespace App\Services\Estoque\Grupo;
 
 use App\Enums\Produtos\Grupo\TiposGruposEnum;
 use App\Exceptions\GrupoProdutoException;

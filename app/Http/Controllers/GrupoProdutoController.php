@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\GrupoProdutoException;
 use App\Http\Requests\Estoque\Grupo\CadastroGrupoProdutoRequest;
-use App\Services\GrupoProduto\GrupoProdutoService;
+use App\Services\Estoque\Grupo\GrupoProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
