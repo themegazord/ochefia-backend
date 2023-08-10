@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Unidade;
+namespace App\Services\Estoque\Unidade;
 
 use App\Exceptions\UnidadeException;
 use App\Models\Unidade;

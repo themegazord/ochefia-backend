@@ -36,10 +36,10 @@ use App\Services\Endereco\EnderecoService;
 use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
 use App\Services\Estoque\Produto\ProdutoService;
+use App\Services\Estoque\Unidade\UnidadeService;
 use App\Services\Funcionario\FuncionarioService;
 use App\Services\PrazoPgto\PrazoPgtoService;
 use App\Services\SubGrupoProduto\SubGrupoProdutoService;
-use App\Services\Unidade\UnidadeService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
