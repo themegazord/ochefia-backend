@@ -6,7 +6,7 @@ Rota usada para cadastrar dias para prazo de pagamento dentro do sistema, afim d
 
 ## URL
 
-![Static Badge](https://img.shields.io/badge/POST-%2Fapi%2Fv1%2Funidade%2Fcadastro-%2349CC90)
+![Static Badge](https://img.shields.io/badge/POST-%2Fapi%2Fv1%2Fprazopgtodias%2Fcadastro-%2349CC90)
 
 ## Parametro de requisição
 
