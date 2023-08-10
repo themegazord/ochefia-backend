@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Estoque\Produto\CadastroProdutoRequest;
-use App\Services\Produto\ProdutoService;
+use App\Services\Estoque\Produto\ProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
