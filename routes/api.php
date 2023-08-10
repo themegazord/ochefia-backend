@@ -8,6 +8,7 @@ use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GrupoProdutoController;
 use App\Http\Controllers\PrazoPgtoController;
+use App\Http\Controllers\PrazoPgtoDiasController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SubGrupoProdutoController;
 use App\Http\Controllers\FornecedorProdutoController;
@@ -65,6 +66,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('prazopgto')->group(function() {
            Route::post('cadastro', [PrazoPgtoController::class, 'store']);
+        });
+        Route::prefix('prazopgtodias')->group(function() {
+           Route::post('cadastro', [PrazoPgtoDiasController::class, 'store']);
         });
     });
 });
