@@ -23,9 +23,10 @@ class CadastroPrazoPgtoDiasRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'prazopgto_id' => 'integer|required|exists:prazo_pgto,prazopgto_id',
-            'parcela' => 'integer|required',
-            'dias' => 'integer|required'
+            'parcelas' => 'required|array',
+            'parcelas.*.prazopgto_id' => 'integer|required|exists:prazo_pgto,prazopgto_id',
+            'parcelas.*.parcela' => 'integer|required',
+            'parcelas.*.dias' => 'integer|required'
         ];
     }
 
@@ -33,8 +34,9 @@ class CadastroPrazoPgtoDiasRequest extends FormRequest
     {
         return [
             'required' => RequestPadroes::$required,
+            'array' => RequestPadroes::$array,
             'integer' => RequestPadroes::$integer,
-            'prazopgto_id.exists' => RequestPadroes::mensagemExists('prazo de pagamentos')
+            'parcelas.*.prazopgto_id.exists' => RequestPadroes::mensagemExists('prazo de pagamentos')
         ];
     }
 }
