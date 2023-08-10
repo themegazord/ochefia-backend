@@ -3,7 +3,7 @@
 namespace App\Services\Estoque\Produto;
 
 use App\Models\Produto;
-use App\Repositories\Interfaces\Produto\IProduto;
+use App\Repositories\Interfaces\Estoque\Produto\IProduto;
 
 class ProdutoService
 {

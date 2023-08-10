@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Interfaces\Produto;
+namespace App\Repositories\Interfaces\Estoque\Produto;
 
 use App\Models\Produto;
 
