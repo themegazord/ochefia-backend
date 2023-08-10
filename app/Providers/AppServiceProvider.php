@@ -38,8 +38,8 @@ use App\Services\Estoque\Grupo\GrupoProdutoService;
 use App\Services\Estoque\Produto\ProdutoService;
 use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
 use App\Services\Estoque\Unidade\UnidadeService;
+use App\Services\Financeiro\PrazoPgto\PrazoPgtoService;
 use App\Services\Funcionario\FuncionarioService;
-use App\Services\PrazoPgto\PrazoPgtoService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
