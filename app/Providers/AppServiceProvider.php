@@ -20,7 +20,7 @@ use App\Repositories\Interfaces\ClasseProduto\IClasseProduto;
 use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
-use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
+use App\Repositories\Interfaces\Estoque\Fornecedor\IFornecedorProduto;
 use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
 use App\Repositories\Interfaces\PrazoPgto\IPrazoPgto;

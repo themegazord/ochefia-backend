@@ -4,7 +4,7 @@ namespace App\Services\Estoque\Fornecedor;
 
 use App\Exceptions\FornecedorProdutoException;
 use App\Models\FornecedorProduto;
-use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
+use App\Repositories\Interfaces\Estoque\Fornecedor\IFornecedorProduto;
 
 class FornecedorProdutoService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Interfaces\FornecedorProduto;
+namespace App\Repositories\Interfaces\Estoque\Fornecedor;
 
 use App\Models\FornecedorProduto;
 

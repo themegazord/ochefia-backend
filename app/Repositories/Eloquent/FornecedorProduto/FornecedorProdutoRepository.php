@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent\FornecedorProduto;
 
 use App\Models\FornecedorProduto;
-use App\Repositories\Interfaces\FornecedorProduto\IFornecedorProduto;
+use App\Repositories\Interfaces\Estoque\Fornecedor\IFornecedorProduto;
 
 class FornecedorProdutoRepository implements IFornecedorProduto
 {
