@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\ClasseProduto;
+namespace App\Services\Estoque\Classe;
 
 use App\Exceptions\ClasseProdutoException;
 use App\Models\ClasseProduto;

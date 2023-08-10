@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ClasseProdutoException;
 use App\Http\Requests\Estoque\Classe\CadastroClasseProdutoRequest;
-use App\Services\ClasseProduto\ClasseProdutoService;
+use App\Services\Estoque\Classe\ClasseProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
