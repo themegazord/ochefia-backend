@@ -25,7 +25,6 @@ class CadastroPrazoPgtoDiasRequest extends FormRequest
         return [
             'parcelas' => 'required|array',
             'parcelas.*.prazopgto_id' => 'integer|required|exists:prazo_pgto,prazopgto_id',
-            'parcelas.*.parcela' => 'integer|required',
             'parcelas.*.dias' => 'integer|required'
         ];
     }
