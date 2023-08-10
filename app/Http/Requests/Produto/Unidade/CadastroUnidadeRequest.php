@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Produto\Unidade;
 
+use App\Http\Requests\RequestPadroes;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CadastroUnidadeRequest extends FormRequest
