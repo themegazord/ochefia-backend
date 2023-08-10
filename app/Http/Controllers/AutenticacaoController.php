@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\AutenticacaoException;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Autenticacao\LoginRequest;
 use App\Services\Autenticacao\CadastroService;
 use App\Services\Autenticacao\LoginService;
 use Illuminate\Http\JsonResponse;
