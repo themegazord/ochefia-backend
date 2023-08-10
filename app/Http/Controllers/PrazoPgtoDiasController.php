@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\PrazoPgtoDiasException;
 use App\Http\Requests\Financeiro\PrazoPgtoDias\CadastroPrazoPgtoDiasRequest;
+use App\Services\Financeiro\PrazoPgtoDias\PrazoPgtoDiasService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PrazoPgtoDiasController extends Controller
 {
+    public function __construct(
+        private readonly PrazoPgtoDiasService $prazoPgtoDiasService
+    )
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -20,7 +29,15 @@ class PrazoPgtoDiasController extends Controller
      */
     public function store(CadastroPrazoPgtoDiasRequest $request)
     {
-        //
+        try {
+            $novoPrazoPgtoDias = $this->prazoPgtoDiasService->cadastro($request->only('parcelas'));
+            return response()->json([
+                'mensagem' => 'Dias para prazo de pagamento cadastrados com sucesso',
+                'parcelas' => $novoPrazoPgtoDias
+            ], Response::HTTP_CREATED);
+        } catch (PrazoPgtoDiasException $ppde) {
+            return response()->json(['erro' => $ppde->getMessage()], $ppde->getCode());
+        }
     }
 
     /**
