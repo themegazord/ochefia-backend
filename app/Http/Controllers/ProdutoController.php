@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CadastroProdutoRequest;
+use App\Http\Requests\Estoque\Produto\CadastroProdutoRequest;
 use App\Services\Produto\ProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
