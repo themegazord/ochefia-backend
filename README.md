@@ -33,3 +33,5 @@
     - [Cadastro de classe de produtos](/documentation/classe_produto/CadastroClasseProdutoDoc.md)
   - Produtos
     - [Cadastro de produtos](/documentation/produto/CadastroProdutoDoc.md)
+  - Prazo de pagamento
+      - [Cadastro de prazo de pagamento](/documentation/prazo_pgto/CadastroPrazoPgtoDoc.md)
