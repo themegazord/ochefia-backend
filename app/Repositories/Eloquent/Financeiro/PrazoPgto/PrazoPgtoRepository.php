@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent\PrazoPgto;
+namespace App\Repositories\Eloquent\Financeiro\PrazoPgto;
 
 use App\Models\PrazoPgto;
 use App\Repositories\Interfaces\Financeiro\PrazoPgto\IPrazoPgto;
