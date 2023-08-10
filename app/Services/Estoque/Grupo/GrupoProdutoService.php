@@ -5,7 +5,7 @@ namespace App\Services\Estoque\Grupo;
 use App\Enums\Produtos\Grupo\TiposGruposEnum;
 use App\Exceptions\GrupoProdutoException;
 use App\Models\GrupoProduto;
-use App\Repositories\Interfaces\GrupoProduto\IGrupoProduto;
+use App\Repositories\Interfaces\Estoque\Grupo\IGrupoProduto;
 
 class GrupoProdutoService
 {
