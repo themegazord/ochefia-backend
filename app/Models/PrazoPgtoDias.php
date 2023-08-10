@@ -14,7 +14,6 @@ class PrazoPgtoDias extends Model
 
     protected $fillable = [
         'prazopgto_id',
-        'parcela',
         'dias'
     ];
 
