@@ -4,10 +4,10 @@ namespace App\Providers;
 
 use App\Actions\Endereco\ValidaDadosCEP;
 use App\Repositories\Eloquent\Autenticacao\UsuarioRepository;
-use App\Repositories\Eloquent\ClasseProduto\ClasseProdutoRepository;
 use App\Repositories\Eloquent\Cliente\ClienteRepository;
 use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
+use App\Repositories\Eloquent\Estoque\Classe\ClasseProdutoRepository;
 use App\Repositories\Eloquent\Estoque\Grupo\GrupoProdutoRepository;
 use App\Repositories\Eloquent\Estoque\SubGrupo\SubGrupoProdutoRepository;
 use App\Repositories\Eloquent\FornecedorProduto\FornecedorProdutoRepository;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent\ClasseProduto;
+namespace App\Repositories\Eloquent\Estoque\Classe;
 
 use App\Models\ClasseProduto;
 use App\Repositories\Interfaces\Estoque\Classe\IClasseProduto;
