@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ClasseProdutoException;
-use App\Http\Requests\CadastroClasseProdutoRequest;
+use App\Http\Requests\Produto\Classe\CadastroClasseProdutoRequest;
 use App\Services\ClasseProduto\ClasseProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
