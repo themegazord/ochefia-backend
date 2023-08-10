@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent\Unidade;
 
 use App\Models\Unidade;
-use App\Repositories\Interfaces\Unidade\IUnidade;
+use App\Repositories\Interfaces\Estoque\Unidade\IUnidade;
 
 class UnidadeRepository implements IUnidade
 {

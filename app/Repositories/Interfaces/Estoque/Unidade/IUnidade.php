@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Interfaces\Unidade;
+namespace App\Repositories\Interfaces\Estoque\Unidade;
 
 use App\Models\Unidade;
 

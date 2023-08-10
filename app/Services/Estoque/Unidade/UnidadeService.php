@@ -4,7 +4,7 @@ namespace App\Services\Estoque\Unidade;
 
 use App\Exceptions\UnidadeException;
 use App\Models\Unidade;
-use App\Repositories\Interfaces\Unidade\IUnidade;
+use App\Repositories\Interfaces\Estoque\Unidade\IUnidade;
 
 class UnidadeService
 {
