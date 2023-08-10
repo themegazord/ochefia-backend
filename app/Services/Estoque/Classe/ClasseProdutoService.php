@@ -4,7 +4,7 @@ namespace App\Services\Estoque\Classe;
 
 use App\Exceptions\ClasseProdutoException;
 use App\Models\ClasseProduto;
-use App\Repositories\Interfaces\ClasseProduto\IClasseProduto;
+use App\Repositories\Interfaces\Estoque\Classe\IClasseProduto;
 
 class ClasseProdutoService
 {

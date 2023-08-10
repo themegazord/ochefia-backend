@@ -3,7 +3,7 @@
 namespace App\Repositories\Eloquent\ClasseProduto;
 
 use App\Models\ClasseProduto;
-use App\Repositories\Interfaces\ClasseProduto\IClasseProduto;
+use App\Repositories\Interfaces\Estoque\Classe\IClasseProduto;
 
 class ClasseProdutoRepository implements IClasseProduto
 {
