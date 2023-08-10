@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\GrupoProduto;
+namespace App\Http\Requests\Produto\Grupo;
 
 use App\Http\Requests\RequestPadroes;
 use Illuminate\Foundation\Http\FormRequest;

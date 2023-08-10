@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\GrupoProdutoException;
-use App\Http\Requests\GrupoProduto\CadastroGrupoProdutoRequest;
+use App\Http\Requests\Produto\Grupo\CadastroGrupoProdutoRequest;
 use App\Services\GrupoProduto\GrupoProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
