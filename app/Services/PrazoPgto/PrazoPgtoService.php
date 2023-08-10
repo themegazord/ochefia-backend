@@ -2,8 +2,8 @@
 
 namespace App\Services\PrazoPgto;
 
-use App\Enums\Financeiro\PrazoPgto\TiposFormasPrazoPgtoEnum;
-use App\Enums\Financeiro\PrazoPgto\TiposPrazoPgtoEnum;
+use App\Enums\FormaPagamento\PrazoPgto\TiposFormasPrazoPgtoEnum;
+use App\Enums\FormaPagamento\PrazoPgto\TiposPrazoPgtoEnum;
 use App\Exceptions\PrazoPgtoException;
 use App\Repositories\Interfaces\PrazoPgto\IPrazoPgto;
 
