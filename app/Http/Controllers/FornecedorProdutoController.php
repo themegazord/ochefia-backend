@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\FornecedorProdutoException;
 use App\Http\Requests\Estoque\Fornecedor\CadastroFornecedorProdutoRequest;
-use App\Services\FornecedorProduto\FornecedorProdutoService;
+use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
 use Illuminate\Http\Request;
 
 class FornecedorProdutoController extends Controller

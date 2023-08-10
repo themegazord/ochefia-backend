@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\FornecedorProduto;
+namespace App\Services\Estoque\Fornecedor;
 
 use App\Exceptions\FornecedorProdutoException;
 use App\Models\FornecedorProduto;
