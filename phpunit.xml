@@ -14,9 +14,20 @@
     </testsuites>
     <source>
         <include>
-            <directory>app</directory>
+            <directory>./app/http/controllers</directory>
+            <directory>./app/actions</directory>
+            <directory>./app/enums</directory>
+            <directory>./app/repositories/eloquent</directory>
+            <directory>./app/services</directory>
+            <directory>./app/models</directory>
         </include>
     </source>
+
+    <coverage>
+        <report>
+            <html outputDirectory="./coverage-report"/>
+        </report>
+    </coverage>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
@@ -27,5 +38,8 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="XDEBUG_MODE" value="coverage"/>
+        <env name="XDEBUG_CONFIG" value="idekey=PHPSTORM"/>
     </php>
+
 </phpunit>
