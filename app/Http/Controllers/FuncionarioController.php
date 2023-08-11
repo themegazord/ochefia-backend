@@ -22,7 +22,7 @@ class FuncionarioController extends Controller
         //
     }
 
-    public function cadastro(CadastroFuncionarioRequest $request): JsonResponse {
+    public function store(CadastroFuncionarioRequest $request): JsonResponse {
         $eDono = $request->getRequestUri() == '/api/v1/funcionario/cadastro/dono';
         try {
             $funcionarioNovo = $this->funcionarioService->cadastro($request->only([
