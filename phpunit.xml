@@ -16,6 +16,7 @@
         <include>
             <directory>./app/http/controllers</directory>
             <directory>./app/actions</directory>
+            <directory>./app/exceptions</directory>
             <directory>./app/repositories/eloquent</directory>
             <directory>./app/services</directory>
             <directory>./app/models</directory>
