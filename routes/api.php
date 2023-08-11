@@ -31,7 +31,7 @@ Route::prefix('v1')->group(function() {
         Route::post('login', [AutenticacaoController::class, 'login'])->name('autenticacao.login');
     });
     Route::prefix('funcionario')->group(function() {
-        Route::post('cadastro/dono', [FuncionarioController::class, 'cadastro']);
+        Route::post('cadastro/dono', [FuncionarioController::class, 'store'])->name('funcionarioDono.store');
     });
     Route::prefix('cliente')->group(function() {
         Route::post('cadastro', [ClienteController::class, 'store']);
@@ -44,7 +44,7 @@ Route::prefix('v1')->group(function() {
             Route::post('cadastro', [EnderecoController::class, 'store'])->name('endereco.store');
         });
         Route::prefix('funcionario')->group(function() {
-            Route::post('cadastro/funcionario', [FuncionarioController::class, 'cadastro']);
+            Route::post('cadastro/funcionario', [FuncionarioController::class, 'store'])->name('funcionario.store');
         });
         Route::prefix('grupo_produto')->group(function() {
             Route::post('cadastro', [GrupoProdutoController::class, 'store']);
