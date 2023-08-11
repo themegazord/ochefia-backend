@@ -22,7 +22,7 @@ class FuncionarioDonoFactory extends Factory
             'funcionario_nome' => $this->faker->name,
             'funcionario_email' => $this->faker->email,
             'funcionario_senha' => 'password',
-            'cargo' => 'Dono',
+            'cargo' => 'DONO',
             'acessos' => ['*']
         ];
     }
