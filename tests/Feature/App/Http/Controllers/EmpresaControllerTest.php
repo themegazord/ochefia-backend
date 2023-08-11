@@ -91,4 +91,17 @@ class EmpresaControllerTest extends TestCase
             'empresa_descricao' => $payload['empresa_descricao']
         ]);
     }
+
+    public function testCadastroDeEmpresaComCNPJInvalido(): void {
+        $user = \App\Models\User::factory()->create();
+        $payload = [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => '22593535000256',
+            'empresa_descricao' => 'Filmes'
+        ];
+
+        $this->actingAs($user)
+            ->post(route('empresa.store'), $payload)
+            ->assertStatus(Response::HTTP_BAD_REQUEST);
+    }
 }
