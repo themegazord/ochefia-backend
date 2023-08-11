@@ -32,4 +32,8 @@ class Cliente extends Model
     public function endereco(): BelongsTo {
         return $this->belongsTo(Endereco::class, 'endereco_id', 'endereco_id');
     }
+
+    public function formaPgto(): HasMany {
+        return $this->hasMany(FormaPgto::class, 'clientes_id', 'clientes_id');
+    }
 }
