@@ -20,7 +20,7 @@ class AutenticacaoController extends Controller
     }
     public function login(LoginRequest $request): JsonResponse {
         try {
-            return response()->json(['mensagem' => $this->loginService->login($request->only(['email', 'password']))], Response::HTTP_CREATED);
+            return response()->json(['mensagem' => $this->loginService->login($request->only(['email', 'password']))]);
         } catch (AutenticacaoException $e) {
             return response()->json(['erro' => $e->getMessage()], $e->getCode());
         }
