@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Funcionario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,11 +15,13 @@ class FuncionarioDonoFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = Funcionario::class;
     public function definition(): array
     {
         return [
             'empresa_id' => 1,
             'endereco_id' => 1,
+            'usuario_id' => 1,
             'funcionario_nome' => $this->faker->name,
             'funcionario_email' => $this->faker->email,
             'funcionario_senha' => 'password',
