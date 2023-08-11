@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function() {
     Route::prefix('autenticacao')->group(function() {
-        Route::post('login', [AutenticacaoController::class, 'login']);
+        Route::post('login', [AutenticacaoController::class, 'login'])->name('autenticacao.login');
     });
     Route::prefix('funcionario')->group(function() {
         Route::post('cadastro/dono', [FuncionarioController::class, 'cadastro']);
