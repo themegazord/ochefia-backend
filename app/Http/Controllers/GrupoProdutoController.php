@@ -7,6 +7,7 @@ use App\Http\Requests\Estoque\Grupo\CadastroGrupoProdutoRequest;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class GrupoProdutoController extends Controller
 {
@@ -37,7 +38,7 @@ class GrupoProdutoController extends Controller
             return response()->json([
                 'mensagem' => 'Grupo de produto cadastrado com sucesso',
                 'grupo' => $grupoProdutoNovo
-            ]);
+            ], Response::HTTP_CREATED);
         } catch (GrupoProdutoException $gpe) {
             return response()->json(['erro' => $gpe->getMessage()], $gpe->getCode());
         }
