@@ -13,14 +13,14 @@
         </testsuite>
     </testsuites>
     <source>
-        <include>
-            <directory suffix=".php">./app/http/controllers</directory>
-            <directory suffix=".php">./app/actions</directory>
-            <directory suffix=".php">./app/exceptions</directory>
-            <directory suffix=".php">./app/repositories/eloquent</directory>
-            <directory suffix=".php">./app/services</directory>
-            <directory suffix=".php">./app/models</directory>
-        </include>
+<!--        <include>-->
+<!--            <directory suffix=".php">./app/http/controllers</directory>-->
+<!--            <directory suffix=".php">./app/actions</directory>-->
+<!--            <directory suffix=".php">./app/exceptions</directory>-->
+<!--            <directory suffix=".php">./app/repositories/eloquent</directory>-->
+<!--            <directory suffix=".php">./app/services</directory>-->
+<!--            <directory suffix=".php">./app/models</directory>-->
+<!--        </include>-->
     </source>
 
     <coverage>
