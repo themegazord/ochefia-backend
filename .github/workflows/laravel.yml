@@ -15,7 +15,10 @@ jobs:
       
       - name: Get local xdebug downloaded
         run: sudo find -name *xdebug.so
-                
+
+      - name: Get local php.ini
+        run: sudo find -name *php.ini
+        
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
