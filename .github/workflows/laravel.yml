@@ -12,6 +12,8 @@ jobs:
       - name: Install and configure XDEBUG in Ubuntu
         run: |
           sudo apt-get install php-xdebug
+          sudo find -name *xdebug.so
+          sudo find -name *php.ini
           #!/bin/bash
           # Caminho para o arquivo php.ini do PHP CLI
           php_ini_path="/etc/php/7.4/cli/php.ini"
