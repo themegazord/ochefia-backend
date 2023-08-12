@@ -17,7 +17,7 @@ jobs:
         run: sudo find -name *xdebug.so
 
       - name: Get local php.ini
-        run: sudo find -name *php.ini
+        run: cat ./etc/php/8.2/cli/php.ini
         
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
