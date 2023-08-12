@@ -12,9 +12,9 @@ jobs:
       - name: Install and configure XDEBUG in Ubuntu
         run: |
           sudo apt-get install php-xdebug
-          sudo find -name *xdebug.so
-          sudo find -name *php.ini
-
+      
+      - name: Get local xdebug downloaded
+        run: sudo find -name *xdebug.so
                 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
