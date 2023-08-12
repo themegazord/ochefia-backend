@@ -48,16 +48,18 @@
             "@php artisan key:generate --ansi"
         ],
         "main-merge": [
+            "ren phpunit.xml phpunit.dev.xml",
             "ren phpunit.prod.xml phpunit.xml",
-            "ren phpunit.prod.xml phpunit.prod.xml",
             "git add phpunit.prod.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
+            "git add phpunit.dev.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
             "git checkout main",
             "git merge dev",
             "git push origin main",
             "git checkout dev",
-            "ren phpunit.prod.xml phpunit.prod.xml",
             "ren phpunit.xml phpunit.prod.xml",
-            "git add phpunit.xml && git commit -m \\\"chore: renomeado arquivo para não dar erro no ci.\\\" && git push origin dev"
+            "ren phpunit.dev.xml phpunit.xml",
+            "git add phpunit.prod.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
+            "git add phpunit.dev.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev"
         ]
     },
     "extra": {
