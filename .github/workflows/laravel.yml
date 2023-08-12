@@ -1,6 +1,10 @@
 name: Run tests
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   tests:
@@ -12,7 +16,7 @@ jobs:
       - name: Install and configure XDEBUG in Ubuntu
         run: |
           sudo apt-get install php-xdebug
-        
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
