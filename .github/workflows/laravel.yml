@@ -9,6 +9,26 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install and configure XDEBUG in Ubuntu
+        run: |
+          sudo apt-get install php-xdebug
+          #!/bin/bash
+          # Caminho para o arquivo php.ini do PHP CLI
+          php_ini_path="/etc/php/7.4/cli/php.ini"
+          # Verificar se o arquivo php.ini existe
+          if [ -f "$php_ini_path" ]; then
+              # Verificar se as linhas já existem no php.ini
+              if ! grep -q "zend_extension=xdebug.so" "$php_ini_path"; then
+                  echo "zend_extension=xdebug.so" >> "$php_ini_path"
+              fi
+              if ! grep -q "xdebug.mode=coverage" "$php_ini_path"; then
+                  echo "xdebug.mode=coverage" >> "$php_ini_path"
+              fi
+              echo "Valores adicionados ao php.ini."
+          else
+              echo "O arquivo php.ini não foi encontrado."
+          fi
+                
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
