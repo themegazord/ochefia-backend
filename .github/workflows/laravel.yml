@@ -32,4 +32,4 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit --display-warnings
+      run: vendor/bin/phpunit --configuration phpunit.xml tests/Unit;
