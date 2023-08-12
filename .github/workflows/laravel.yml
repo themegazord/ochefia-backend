@@ -12,18 +12,12 @@ jobs:
       - name: Install and configure XDEBUG in Ubuntu
         run: |
           sudo apt-get install php-xdebug
-      
-      - name: Get local xdebug downloaded
-        run: sudo find -name *xdebug.so
-
-      - name: Get local php.ini
-        run: cat ./etc/php/8.2/cli/php.ini
         
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, zend, xdebug
           coverage: none
 
       - name: Run composer install
