@@ -27,6 +27,8 @@
     - [Cadastro de Grupo de produtos](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
   - Sub Grupo de Produtos
     - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
+  - Fornecedor de Produtos
+    - [Cadastro de fornecedor de produtos](/documentation/fornecedor_produto/CadastroFornecedorProdutoDoc.md)
   - Unidade de Medida
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
   - Classe de Produtos
