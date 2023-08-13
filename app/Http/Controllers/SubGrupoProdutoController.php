@@ -7,6 +7,7 @@ use App\Http\Requests\Estoque\SubGrupo\CadastroSubGrupoProdutoRequest;
 use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class SubGrupoProdutoController extends Controller
 {
@@ -34,7 +35,7 @@ class SubGrupoProdutoController extends Controller
             return response()->json([
                 'mensagem' => 'Sub grupo de produto cadastrado com sucesso',
                 'sub_grupo' => $subGrupoNovo
-            ]);
+            ], Response::HTTP_CREATED);
         } catch (SubGrupoProdutoException $sgpe) {
             return response()->json(['erro' => $sgpe->getMessage()], $sgpe->getCode());
         }
