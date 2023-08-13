@@ -18,10 +18,6 @@ class GrupoProduto extends Model
         'grupo_produto_tipo'
     ];
 
-    protected $casts = [
-        'grupo_produto_tipo' => TiposGruposEnum::class
-    ];
-
     public function produto(): HasMany {
         return $this->hasMany(Produto::class, 'grupo_produto_id', 'grupo_produto_id');
     }
