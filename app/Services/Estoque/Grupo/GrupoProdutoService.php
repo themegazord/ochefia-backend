@@ -17,9 +17,10 @@ class GrupoProdutoService
     /**
      * @throws GrupoProdutoException
      */
-    public function cadastro(array $grupoProduto): GrupoProduto
+    public function cadastro(array $grupoProduto): GrupoProdutoException|GrupoProduto
     {
         $grupoProduto['grupo_produto_tipo'] = $this->defineTipoGrupoProduto($grupoProduto['grupo_produto_tipo']);
+        if ($this->consultaGrupoProdutoPorNome($grupoProduto['grupo_produto_nome'])) return GrupoProdutoException::grupoProdutoJaExistente($grupoProduto['grupo_produto_nome']);
         return $this->grupoRepository->cadastro($grupoProduto);
     }
 
@@ -35,5 +36,9 @@ class GrupoProdutoService
             'OUTROS' => TiposGruposEnum::OUTROS,
             default => GrupoProdutoException::tipoGrupoProdutoNaoExistente($tipo)
         };
+    }
+
+    private function consultaGrupoProdutoPorNome(string $grupoNome): ?GrupoProduto {
+        return $this->grupoRepository->grupoProdutoPorNome($grupoNome);
     }
 }
