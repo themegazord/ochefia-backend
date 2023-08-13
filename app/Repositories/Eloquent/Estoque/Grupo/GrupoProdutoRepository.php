@@ -12,4 +12,11 @@ class GrupoProdutoRepository implements IGrupoProduto
         return GrupoProduto::query()
             ->create($grupoProduto);
     }
+
+    public function grupoProdutoPorNome(string $grupoNome): ?GrupoProduto
+    {
+        return GrupoProduto::query()
+            ->where('grupo_produto_nome', $grupoNome)
+            ->first();
+    }
 }
