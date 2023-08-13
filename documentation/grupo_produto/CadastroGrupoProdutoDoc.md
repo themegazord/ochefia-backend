@@ -61,4 +61,5 @@ Rota usada para cadastrar grupo de produtos dentro do sistema, afim de, organiza
 | 422    | O campo deve receber apenas valores string.                                                          | Ao tentar inserir qualquer dado que não seja string                                                |
 | 422    | Esse campo tem que conter no máximo 30 caracteres.                                                   | Ao encaminhar mais de 30 caracteres                                                                |
 | 422    | Esse campo tem que conter no máximo 25 caracteres.                                                   | Ao encaminhar mais de 25 caracteres                                                                |
+| 409    | O grupo \[grupo_produto_nome\] já existe na base de dados, cadastre outro ou use-o.                  | Ao tentar cadastrar um grupo que já existe no banco de dados                                       |
 | 404    | O tipo de produto \[grupo_produto_tipo\] não existe no sistema, por favor, verificar na documentação | Ao passar qualquer valor no campo grupo_produto_tipo que não seja os já citados nesta documentação |
