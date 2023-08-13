@@ -7,6 +7,7 @@ use App\Http\Requests\Estoque\Unidade\CadastroUnidadeRequest;
 use App\Services\Estoque\Unidade\UnidadeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UnidadeController extends Controller
 {
@@ -36,7 +37,7 @@ class UnidadeController extends Controller
             return response()->json([
                 'mensagem' => 'Unidade de medida cadastrada com sucesso',
                 'unidade' => $novaUnidade
-            ]);
+            ], Response::HTTP_CREATED);
         } catch (UnidadeException $ue) {
             return response()->json(['erro' => $ue->getMessage()], $ue->getCode());
         }
