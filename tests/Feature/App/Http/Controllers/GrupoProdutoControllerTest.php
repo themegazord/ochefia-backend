@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\App\Http\Controllers;
 
+use App\Models\GrupoProduto;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -200,5 +201,25 @@ class GrupoProdutoControllerTest extends TestCase
             'grupo_produto_nome' => $payload['grupo_produto_nome'],
             'grupo_produto_tipo' => strtolower($payload['grupo_produto_tipo'])
         ]);
+    }
+
+    public function testLevantarErroDeGrupoProdutoJaExistente(): void {
+        $usuario = User::factory()->create();
+        $grupo = GrupoProduto::factory()->create();
+
+        $payload = [
+            'grupo_produto_nome' => $grupo->getAttribute('grupo_produto_nome'),
+            'grupo_produto_tipo' => 'PRODUTO_FINAL'
+        ];
+
+        $this->actingAs($usuario)
+            ->post(route('grupo_produto.store'), $payload)
+            ->assertStatus(Response::HTTP_CONFLICT)
+            ->assertJsonStructure([
+                'erro'
+            ])
+            ->assertJson([
+                'erro' => 'O grupo ' . strtoupper($payload['grupo_produto_nome']) . ' já existe na base de dados, cadastre outro ou use-o.'
+            ]);
     }
 }
