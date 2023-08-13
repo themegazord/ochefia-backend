@@ -6,6 +6,7 @@ use App\Exceptions\FornecedorProdutoException;
 use App\Http\Requests\Estoque\Fornecedor\CadastroFornecedorProdutoRequest;
 use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FornecedorProdutoController extends Controller
 {
@@ -35,9 +36,9 @@ class FornecedorProdutoController extends Controller
             return response()->json([
                 'mensagem' => 'Fornecedor de produtos cadastrado com sucesso',
                 'fornecedor_produto' => $novoFornecedorProduto
-            ]);
+            ], Response::HTTP_CREATED);
         } catch (FornecedorProdutoException $fpe) {
-            return response()->json(['error' => $fpe->getMessage()], $fpe->getCode());
+            return response()->json(['erro' => $fpe->getMessage()], $fpe->getCode());
         }
     }
 
