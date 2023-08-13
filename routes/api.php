@@ -50,7 +50,7 @@ Route::prefix('v1')->group(function() {
             Route::post('cadastro', [GrupoProdutoController::class, 'store'])->name('grupo_produto.store');
         });
         Route::prefix('sub_grupo_produto')->group(function() {
-            Route::post('cadastro', [SubGrupoProdutoController::class, 'store']);
+            Route::post('cadastro', [SubGrupoProdutoController::class, 'store'])->name('sub_grupo_produto.store');
         });
         Route::prefix('fornecedor_produto')->group(function() {
             Route::post('cadastro', [FornecedorProdutoController::class, 'store']);
