@@ -65,7 +65,7 @@ Route::prefix('v1')->group(function() {
            Route::post('cadastro', [ProdutoController::class, 'store'])->name('produto.store');
         });
         Route::prefix('prazopgto')->group(function() {
-           Route::post('cadastro', [PrazoPgtoController::class, 'store']);
+           Route::post('cadastro', [PrazoPgtoController::class, 'store'])->name('prazopgto.store');
         });
         Route::prefix('prazopgtodias')->group(function() {
            Route::post('cadastro', [PrazoPgtoDiasController::class, 'store']);
