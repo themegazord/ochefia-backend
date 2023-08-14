@@ -7,6 +7,7 @@ use App\Http\Requests\Estoque\Classe\CadastroClasseProdutoRequest;
 use App\Services\Estoque\Classe\ClasseProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClasseProdutoController extends Controller
 {
@@ -36,7 +37,7 @@ class ClasseProdutoController extends Controller
             return response()->json([
                 'mensagem' => 'Classe de produtos cadastrado com sucesso',
                 'classe_produto' => $novaClasseProduto
-            ]);
+            ], Response::HTTP_CREATED);
         } catch (ClasseProdutoException $cpe) {
             return response()->json(['erro' => $cpe->getMessage()], $cpe->getCode());
         }
