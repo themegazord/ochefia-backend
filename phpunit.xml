@@ -12,22 +12,22 @@
             <directory>tests/Feature</directory>
         </testsuite>
     </testsuites>
-    <source>
-        <include>
-            <directory suffix=".php">./app/http/controllers</directory>
-            <directory suffix=".php">./app/actions</directory>
-            <directory suffix=".php">./app/exceptions</directory>
-            <directory suffix=".php">./app/repositories/eloquent</directory>
-            <directory suffix=".php">./app/services</directory>
-            <directory suffix=".php">./app/models</directory>
-        </include>
-    </source>
+<!--    <source>-->
+<!--        <include>-->
+<!--            <directory suffix=".php">./app/http/controllers</directory>-->
+<!--            <directory suffix=".php">./app/actions</directory>-->
+<!--            <directory suffix=".php">./app/exceptions</directory>-->
+<!--            <directory suffix=".php">./app/repositories/eloquent</directory>-->
+<!--            <directory suffix=".php">./app/services</directory>-->
+<!--            <directory suffix=".php">./app/models</directory>-->
+<!--        </include>-->
+<!--    </source>-->
 
-    <coverage>
-        <report>
-            <html outputDirectory="./coverage-report"/>
-        </report>
-    </coverage>
+<!--    <coverage>-->
+<!--        <report>-->
+<!--            <html outputDirectory="./coverage-report"/>-->
+<!--        </report>-->
+<!--    </coverage>-->
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
