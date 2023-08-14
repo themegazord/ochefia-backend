@@ -23,6 +23,8 @@
   - Funcionario
     - [Cadastro - Dono](/documentation/funcionario/CadastroFuncionarioDonoDoc.md)
     - [Cadastro - Funcionario](/documentation/funcionario/CadastroFuncionarioDoc.md)
+  - Cliente
+    - [Cadastro de clientes](/documentation/cliente/CadastroClienteDoc.md)
   - Grupo de produtos
     - [Cadastro de Grupo de produtos](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
   - Sub Grupo de Produtos
