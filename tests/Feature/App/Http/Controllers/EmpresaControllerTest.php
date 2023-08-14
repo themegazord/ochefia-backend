@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\App\Http\Controllers;
 
+use App\Models\Empresa;
 use http\Client\Curl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -92,7 +93,7 @@ class EmpresaControllerTest extends TestCase
         ]);
     }
 
-    public function testCadastroDeEmpresaComCNPJInvalido(): void {
+    public function testLevantarErroAoCadastrarEmpresaComCNPJInvalido(): void {
         $user = \App\Models\User::factory()->create();
         $payload = [
             'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
@@ -103,5 +104,21 @@ class EmpresaControllerTest extends TestCase
         $this->actingAs($user)
             ->post(route('empresa.store'), $payload)
             ->assertStatus(Response::HTTP_BAD_REQUEST);
+    }
+    public function testLevantarErroAoCadastrarEmpresaComCNPJExistente(): void {
+        $user = \App\Models\User::factory()->create();
+        $empresa = Empresa::factory()->create();
+
+        $payload = [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => $empresa->getAttribute('empresa_cnpj'),
+            'empresa_descricao' => 'Filmes'
+        ];
+
+        $this->actingAs($user)
+            ->post(route('empresa.store'), $payload)
+            ->assertStatus(Response::HTTP_CONFLICT)
+            ->assertJsonStructure(['erro'])
+            ->assertJson(['erro' => 'O CNPJ ' . $payload['empresa_cnpj'] . ' já existe no sistema, por favor, conecte-se com seu usuário vinculado a ele']);
     }
 }
