@@ -32,7 +32,6 @@ class ClienteController extends Controller
     {
         try {
             $resposta = $this->clienteService->cadastro($request->only([
-                'endereco_id',
                 'cliente_nome',
                 'cliente_email',
                 'cliente_senha',
@@ -40,7 +39,10 @@ class ClienteController extends Controller
                 'cliente_telefone',
                 'cliente_telefone_contato'
             ]));
-            return response()->json([$resposta], Response::HTTP_CREATED);
+            return response()->json([
+                'mensagem' => 'Cliente cadastrado com sucesso',
+                'dados' => $resposta
+            ], Response::HTTP_CREATED);
         } catch (ClienteException $ce) {
             return response()->json(['erro' => $ce->getMessage()], $ce->getCode());
         }
