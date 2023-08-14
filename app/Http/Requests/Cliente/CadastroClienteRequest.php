@@ -23,7 +23,6 @@ class CadastroClienteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'endereco_id' => 'required|integer|exists:enderecos,endereco_id',
             'cliente_nome' => 'required|string|max:255',
             'cliente_email' => 'required|email|max:255',
             'cliente_senha' => 'required|string|max:255',
@@ -43,7 +42,6 @@ class CadastroClienteRequest extends FormRequest
             'max:255' => RequestPadroes::mensagemMax(255),
             'max:20' => RequestPadroes::mensagemMax(20),
             'max:11' => RequestPadroes::mensagemMax(11),
-            'endereco_id.exists' => RequestPadroes::mensagemExists('enderecos')
         ];
     }
 }
