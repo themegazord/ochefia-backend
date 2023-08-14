@@ -34,7 +34,7 @@ Route::prefix('v1')->group(function() {
         Route::post('cadastro/dono', [FuncionarioController::class, 'store'])->name('funcionarioDono.store');
     });
     Route::prefix('cliente')->group(function() {
-        Route::post('cadastro', [ClienteController::class, 'store']);
+        Route::post('cadastro', [ClienteController::class, 'store'])->name('cliente.store');
     });
     Route::middleware('auth:sanctum')->group(function() {
         Route::prefix('empresa')->group(function() {
