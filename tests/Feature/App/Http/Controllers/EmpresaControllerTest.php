@@ -121,4 +121,50 @@ class EmpresaControllerTest extends TestCase
             ->assertJsonStructure(['erro'])
             ->assertJson(['erro' => 'O CNPJ ' . $payload['empresa_cnpj'] . ' já existe no sistema, por favor, conecte-se com seu usuário vinculado a ele']);
     }
+
+    public function testLevantarErroAoPassarCNPJComQuantidadeDeCaracterDiferenteDe14(): void {
+        $user = \App\Models\User::factory()->create();
+        $payload = [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => '2259355000256',
+            'empresa_descricao' => 'Filmes'
+        ];
+
+        $this->actingAs($user)
+            ->post(route('empresa.store'), $payload)
+            ->assertStatus(Response::HTTP_BAD_REQUEST)
+            ->assertJsonStructure(['erro'])
+            ->assertJson([
+                'erro' => 'O CNPJ ' . $payload['empresa_cnpj'] . ' é inválido, por favor, verificar.'
+            ]);
+
+        $this->assertDatabaseMissing('empresas', [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => '2259355000256',
+            'empresa_descricao' => 'Filmes'
+        ]);
+    }
+
+    public function testLevantarErroAoPassarCNPJComDigitosIguais(): void {
+        $user = \App\Models\User::factory()->create();
+        $payload = [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => '00000000000000',
+            'empresa_descricao' => 'Filmes'
+        ];
+
+        $this->actingAs($user)
+            ->post(route('empresa.store'), $payload)
+            ->assertStatus(Response::HTTP_BAD_REQUEST)
+            ->assertJsonStructure(['erro'])
+            ->assertJson([
+                'erro' => 'O CNPJ ' . $payload['empresa_cnpj'] . ' é inválido, por favor, verificar.'
+            ]);
+
+        $this->assertDatabaseMissing('empresas', [
+            'empresa_nome' => 'Julio e Lorenzo Filmagens ME',
+            'empresa_cnpj' => '00000000000000',
+            'empresa_descricao' => 'Filmes'
+        ]);
+    }
 }
