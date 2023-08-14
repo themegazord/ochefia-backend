@@ -41,7 +41,7 @@ class PrazoPgtoController extends Controller
                 'prazopgto' => $novoPrazoPgto
             ], Response::HTTP_CREATED);
         } catch (PrazoPgtoException $ppe) {
-            return response()->json(['error' => $ppe->getMessage()], $ppe->getCode());
+            return response()->json(['erro' => $ppe->getMessage()], $ppe->getCode());
         }
     }
 
