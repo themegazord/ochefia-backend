@@ -41,7 +41,7 @@ class ClienteService
         $cliente['cliente_senha'] = $usuarioNovo->getAttribute('password');
         return [
             'cliente' => $this->clienteRepository->cadastro($cliente),
-            'dados' => $dadosLogin
+            'login' => $dadosLogin
         ];
     }
 
