@@ -29,15 +29,13 @@ class PrazoPgtoDiasController extends Controller
      */
     public function store(CadastroPrazoPgtoDiasRequest $request)
     {
-        try {
-            $novoPrazoPgtoDias = $this->prazoPgtoDiasService->cadastro($request->only('parcelas'));
-            return response()->json([
-                'mensagem' => 'Dias para prazo de pagamento cadastrados com sucesso',
-                'parcelas' => $novoPrazoPgtoDias
-            ], Response::HTTP_CREATED);
-        } catch (PrazoPgtoDiasException $ppde) {
-            return response()->json(['erro' => $ppde->getMessage()], $ppde->getCode());
-        }
+
+        $novoPrazoPgtoDias = $this->prazoPgtoDiasService->cadastro($request->only('parcelas'));
+        return response()->json([
+            'mensagem' => 'Dias para prazo de pagamento cadastrados com sucesso',
+            'parcelas' => $novoPrazoPgtoDias
+        ], Response::HTTP_CREATED);
+
     }
 
     /**
