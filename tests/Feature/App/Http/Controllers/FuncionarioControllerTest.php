@@ -187,59 +187,72 @@ class FuncionarioControllerTest extends TestCase
         $this->assertDatabaseMissing('funcionarios', $payload);
     }
 
-    public function testLevantarErroAoCadastrarMaisDonosDoQueOConfigurado(): void {
+    public function testConseguirCadastrarOPrimeiroFuncionarioSemSerDono(): void {
         $usuario = User::factory()->create();
         $empresa = Empresa::factory()->create();
         $endereco = Endereco::factory()->create();
-        FuncionarioDonoFactory::new()->create();
 
         $payload = [
             'empresa_id' => $empresa->getAttribute('id'),
             'endereco_id' => $endereco->getAttribute('id'),
-            'funcionario_nome' => $this->faker->name,
-            'funcionario_email' => $this->faker->email,
-            'funcionario_senha' => 'password',
-            'cargo' => 'Dono',
-            'acessos' => ['produto/cadastro']
-        ];
-
-        $this->actingAs($usuario)
-            ->post(route('funcionario.store'), $payload)
-            ->assertStatus(Response::HTTP_CONFLICT)
-            ->assertJsonStructure([
-                'erro'
-            ])
-            ->assertJson([
-                'erro' => 'A quantidade de donos configurada por empresa foi excedida, por favor, configurar uma quantidade maior e tentar novamente.'
-            ]);
-        $this->assertDatabaseMissing('funcionarios', $payload);
-    }
-
-    public function testLevantarErroAoTentarCadastrarFuncionarioNormalNaRotaDeCadastroDeDono(): void {
-        $usuario = User::factory()->create();
-        $empresa = Empresa::factory()->create();
-        $endereco = Endereco::factory()->create();
-        Funcionario::factory()->create();
-
-        $payload = [
-            'empresa_id' => $empresa->getAttribute('id'),
-            'endereco_id' => $endereco->getAttribute('id'),
-            'funcionario_nome' => $this->faker->name,
+            'funcionario_nome' => 'Benjamin Nelson Paulo Baptista',
             'funcionario_email' => $this->faker->email,
             'funcionario_senha' => 'password',
             'cargo' => 'Vendedor',
-            'acessos' => ['produto/cadastro']
+            'acessos' => ['*']
         ];
 
-        $this->actingAs($usuario)
-            ->post(route('funcionarioDono.store'), $payload)
-            ->assertStatus(Response::HTTP_CONFLICT)
+        $this->post(route('funcionarioDono.store'), $payload)
+            ->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
-                'erro'
+                'mensagem',
+                'dados' => [
+                    'funcionario' => [
+                        'empresa_id',
+                        'endereco_id',
+                        'funcionario_nome',
+                        'funcionario_email',
+                        'cargo',
+                        'acessos',
+                        'usuario_id',
+                        'id'
+                    ],
+                    'login' => [
+                        'token',
+                        'user' => [
+                            'id',
+                            'name',
+                            'email'
+                        ]
+                    ]
+                ]
             ])
             ->assertJson([
-                'erro' => 'Você está tentando cadastrar um funcionário com cargo diferente de DONO na rota de cadastro de donos, por favor, verifique e tente novamente'
+                'mensagem' => 'Funcionário cadastrado com sucesso',
+                'dados' => [
+                    'funcionario' => [
+                        'empresa_id' => $empresa->getAttribute('id'),
+                        'endereco_id' => $endereco->getAttribute('id'),
+                        'funcionario_nome' => $payload['funcionario_nome'],
+                        'funcionario_email' => $payload['funcionario_email'],
+                        'cargo' => 'DONO',
+                        'acessos' => '*'
+                    ],
+                    'login' => [
+                        'user' => [
+                            'name' => $payload['funcionario_nome'],
+                            'email' => $payload['funcionario_email']
+                        ]
+                    ]
+                ]
             ]);
-        $this->assertDatabaseMissing('funcionarios', $payload);
+        $this->assertDatabaseHas('funcionarios', [
+            'empresa_id' => $empresa->getAttribute('id'),
+            'endereco_id' => $endereco->getAttribute('id'),
+            'funcionario_nome' => $payload['funcionario_nome'],
+            'funcionario_email' => $payload['funcionario_email'],
+            'cargo' => 'DONO',
+            'acessos' => '*'
+        ]);
     }
 }
