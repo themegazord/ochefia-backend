@@ -68,7 +68,7 @@ Route::prefix('v1')->group(function() {
            Route::post('cadastro', [PrazoPgtoController::class, 'store'])->name('prazopgto.store');
         });
         Route::prefix('prazopgtodias')->group(function() {
-           Route::post('cadastro', [PrazoPgtoDiasController::class, 'store']);
+           Route::post('cadastro', [PrazoPgtoDiasController::class, 'store'])->name('prazopgtodias.store');
         });
     });
 });
