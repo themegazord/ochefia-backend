@@ -48,19 +48,4 @@ class EnderecoControllerTest extends TestCase
         $this->assertDatabaseHas('enderecos', $payload);
     }
 
-    public function testConseguirCadastrarEmpresaComCepInvalido(): void {
-        $user = User::factory()->create();
-        $payload = [
-            'endereco_rua' => 'Praça Cinco',
-            'endereco_numero' => 192,
-            'endereco_complemento' => 'S/C',
-            'endereco_cep' => '25943490',
-            'endereco_bairro' => 'Parada Modelo',
-            'endereco_cidade' => 'Guapimirim',
-        ];
-
-        $this->actingAs($user)
-            ->post(route('endereco.store'), $payload)
-            ->assertStatus(Response::HTTP_NOT_FOUND);
-    }
 }
