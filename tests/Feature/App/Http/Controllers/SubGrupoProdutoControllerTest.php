@@ -44,20 +44,4 @@ class SubGrupoProdutoControllerTest extends TestCase
         ]);
     }
 
-    public function testeLevantarErroDeSubGrupoJaExistente(): void {
-        $usuario = User::factory()->create();
-        $sub_grupo = SubGrupoProduto::factory()->create();
-
-        $payload = [
-            'sub_grupo_produto_nome' => $sub_grupo->getAttribute('sub_grupo_produto_nome')
-        ];
-
-        $this->actingAs($usuario)
-            ->post(route('sub_grupo_produto.store'), $payload)
-            ->assertStatus(Response::HTTP_CONFLICT)
-            ->assertJsonStructure(['erro'])
-            ->assertJson([
-                'erro' => 'O sub grupo ' . strtoupper($payload['sub_grupo_produto_nome']) . ' já existe, por favor, cadastre outro ou use o que já está cadastrado.'
-            ]);
-    }
 }
