@@ -38,6 +38,12 @@ class FuncionarioService {
             $funcionario['cargo'] = 'DONO';
         }
         $funcionario['cargo'] = strtoupper($funcionario['cargo']);
+        /**
+         * Faz com que todo dono tenho acesso ao todo sistema
+         */
+        if ($funcionario['cargo'] === 'DONO' && $funcionario['acessos'] !== ['*']) {
+            $funcionario['acessos'] = ['*'];
+        }
         $funcionario['acessos'] = $this->converteArrayDeAcessosParaString($funcionario['acessos']);
         /**
          * Verifica se o funcionário cadastro em questão não é um dono, se não for, retorna uma exceção informando que esta rota é apenas para cadastro de donos
