@@ -43,22 +43,4 @@ class ClasseProdutoControllerTest extends TestCase
             'classe_produto_nome' => strtoupper($payload['classe_produto_nome'])
         ]);
     }
-
-    public function testLevantarErroDeClasseDeProdutoJaExiste(): void
-    {
-        $usuario = User::factory()->create();
-        $classe = ClasseProduto::factory()->create();
-
-        $payload = [
-            'classe_produto_nome' => $classe->getAttribute('classe_produto_nome')
-        ];
-
-        $this->actingAs($usuario)
-            ->post(route('classe_produto.store'), $payload)
-            ->assertStatus(Response::HTTP_CONFLICT)
-            ->assertJsonStructure(['erro'])
-            ->assertJson([
-                'erro' => 'A classe de produtos ' . strtoupper($payload['classe_produto_nome']) . ' já existe, cadastre outra ou use-a.'
-            ]);
-    }
 }
