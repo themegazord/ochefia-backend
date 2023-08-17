@@ -4,6 +4,7 @@ use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\ClasseProdutoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\FormaPgtoController;
 use App\Http\Controllers\FuncionarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GrupoProdutoController;
@@ -69,6 +70,9 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('prazopgtodias')->group(function() {
            Route::post('cadastro', [PrazoPgtoDiasController::class, 'store'])->name('prazopgtodias.store');
+        });
+        Route::prefix('formapgto')->group(function() {
+           Route::post('cadastro', [FormaPgtoController::class, 'store'])->name('formapgto.store');
         });
     });
 });
