@@ -42,4 +42,4 @@
   - Dias de Prazo de Pagamento
     - [Cadastro de dias para prazo de pagamento](/documentation/prazo_pgto_dias/CadastroPrazoPgtoDiasDoc.md)
   - Formas de Pagamento
-    - [Cadastro de forma de pagamento] _Work in progess_
+    - [Cadastro de forma de pagamento] _Work in progess..._
