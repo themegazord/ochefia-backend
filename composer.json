@@ -52,7 +52,7 @@
             "ren phpunit.prod.xml phpunit.xml",
             "git add phpunit.prod.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
             "git add phpunit.dev.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
-            "git add phpunit.dev.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
+            "git add phpunit.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
             "git checkout main",
             "git merge dev",
             "git push origin main",
