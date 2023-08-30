@@ -62,6 +62,9 @@
             "git add phpunit.prod.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
             "git add phpunit.dev.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev",
             "git add phpunit.xml && git commit -m \"chore: renomeado arquivo para não dar erro no ci.\" && git push origin dev"
+        ],
+        "test":  [
+            "php artisan test"
         ]
     },
     "extra": {
