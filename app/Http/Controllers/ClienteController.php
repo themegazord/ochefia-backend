@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\AutenticacaoException;
 use App\Exceptions\ClienteException;
 use App\Http\Requests\Cliente\CadastroClienteRequest;
 use App\Services\Cliente\ClienteService;
@@ -45,6 +46,8 @@ class ClienteController extends Controller
             ], Response::HTTP_CREATED);
         } catch (ClienteException $ce) {
             return response()->json(['erro' => $ce->getMessage()], $ce->getCode());
+        } catch (AutenticacaoException $ae) {
+            return response()->json(['erro' => $ae->getMessage()], $ae->getCode());
         }
     }
 
