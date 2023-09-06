@@ -14,7 +14,7 @@ class CadastroService {
 
     }
 
-    public function cadastro(array $credenciais): User {
+    public function cadastro(array $credenciais): User|AutenticacaoException {
         if ((bool)$this->usuariosPorEmail($credenciais['email'])) return AutenticacaoException::emailJaVinculadoAUmUsuario();
         $credenciais['password'] = Hash::make($credenciais['password']);
         return $this->usuarioRepository->cadastro($credenciais);
