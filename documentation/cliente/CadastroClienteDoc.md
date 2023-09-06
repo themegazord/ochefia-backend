@@ -1,4 +1,4 @@
-# Cadastro de clientes ![Static Badge](https://img.shields.io/badge/Rota_autenticada-49CC90)
+# Cadastro de clientes ![Static Badge](https://img.shields.io/badge/Rota_n%C3%A3o_autenticada-%23F93E3E)
 
 ## Explicação de Rotas
 
