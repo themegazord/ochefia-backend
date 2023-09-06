@@ -37,10 +37,10 @@ Route::prefix('v1')->group(function() {
     Route::prefix('cliente')->group(function() {
         Route::post('cadastro', [ClienteController::class, 'store'])->name('cliente.store');
     });
+    Route::prefix('empresa')->group(function() {
+        Route::post('cadastro', [EmpresaController::class, 'store'])->name('empresa.store');
+    });
     Route::middleware('auth:sanctum')->group(function() {
-        Route::prefix('empresa')->group(function() {
-            Route::post('cadastro', [EmpresaController::class, 'store'])->name('empresa.store');
-        });
         Route::prefix('endereco')->group(function() {
             Route::post('cadastro', [EnderecoController::class, 'store'])->name('endereco.store');
         });
