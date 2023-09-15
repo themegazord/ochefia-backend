@@ -3,9 +3,11 @@
 namespace App\Services\Estoque\Grupo;
 
 use App\Enums\Produtos\Grupo\TiposGruposEnum;
+use App\Enums\Produtos\Grupo\TiposRetornoGruposEnum;
 use App\Exceptions\GrupoProdutoException;
 use App\Models\GrupoProduto;
 use App\Repositories\Interfaces\Estoque\Grupo\IGrupoProduto;
+use Illuminate\Database\Eloquent\Collection;
 
 class GrupoProdutoService
 {
@@ -24,6 +26,14 @@ class GrupoProdutoService
         return $this->grupoRepository->cadastro($grupoProduto);
     }
 
+    public function listagemGrupos(): Collection {
+        $grupos = $this->grupoRepository->listagemTotalGrupo();
+        for($i = 0; $i < count($grupos); $i += 1) {
+            $grupos[$i]['grupo_produto_tipo'] = $this->resolveTipoGrupoProduto(strtoupper($grupos[$i]['grupo_produto_tipo']));
+        }
+        return $grupos;
+    }
+
     /**
      * @throws GrupoProdutoException
      */
@@ -34,6 +44,17 @@ class GrupoProdutoService
             'EMBALAGEM' => TiposGruposEnum::EMBALAGEM,
             'SERVICOS' => TiposGruposEnum::SERVICOS,
             'OUTROS' => TiposGruposEnum::OUTROS,
+            default => GrupoProdutoException::tipoGrupoProdutoNaoExistente($tipo)
+        };
+    }
+
+    private function resolveTipoGrupoProduto(string $tipo): TiposRetornoGruposEnum|GrupoProdutoException {
+        return match ($tipo) {
+            'F' => TiposRetornoGruposEnum::F,
+            'M' => TiposRetornoGruposEnum::M,
+            'E' => TiposRetornoGruposEnum::E,
+            'S' => TiposRetornoGruposEnum::S,
+            'O' => TiposRetornoGruposEnum::O,
             default => GrupoProdutoException::tipoGrupoProdutoNaoExistente($tipo)
         };
     }
