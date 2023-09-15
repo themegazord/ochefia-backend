@@ -20,9 +20,13 @@ class GrupoProdutoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        try {
+            return response()->json(["grupos" => $this->grupoProdutoService->listagemGrupos()]);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()], $e->getCode());
+        }
     }
 
     /**
