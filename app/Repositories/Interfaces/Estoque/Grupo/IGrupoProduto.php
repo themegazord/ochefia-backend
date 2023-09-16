@@ -10,4 +10,6 @@ interface IGrupoProduto
     public function grupoProdutoPorNome(string $grupoNome): ?GrupoProduto;
 
     public function listagemTotalGrupo(): \Illuminate\Database\Eloquent\Collection;
+
+    public function grupoPorId(int $id): \Illuminate\Database\Eloquent\Collection;
 }
