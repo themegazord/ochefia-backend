@@ -13,4 +13,7 @@ class GrupoProdutoException extends Exception
     public static function grupoProdutoJaExistente(string $grupoNome): self {
         throw new self('O grupo ' . strtoupper($grupoNome) . ' já existe na base de dados, cadastre outro ou use-o.', Response::HTTP_CONFLICT);
     }
+    public static function grupoNaoExiste(): self {
+        throw new self('O grupo não existe', Response::HTTP_NOT_FOUND);
+    }
 }
