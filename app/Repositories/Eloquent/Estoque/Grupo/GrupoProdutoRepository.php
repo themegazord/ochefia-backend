@@ -29,4 +29,15 @@ class GrupoProdutoRepository implements IGrupoProduto
                 'grupo_produto_tipo'
             ]);
     }
+
+    public function grupoPorId(int $id): \Illuminate\Database\Eloquent\Collection
+    {
+        return GrupoProduto::query()
+            ->where('grupo_produto_id', $id)
+            ->get([
+                'grupo_produto_id',
+                'grupo_produto_nome',
+                'grupo_produto_tipo'
+            ]);
+    }
 }
