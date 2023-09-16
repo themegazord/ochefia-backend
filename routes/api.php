@@ -50,6 +50,7 @@ Route::prefix('v1')->group(function() {
         Route::prefix('grupo_produto')->group(function() {
             Route::post('cadastro', [GrupoProdutoController::class, 'store'])->name('grupo_produto.store');
             Route::get('listagem', [GrupoProdutoController::class, 'index'])->name('grupo_produto.index');
+            Route::get('grupo/{id}', [GrupoProdutoController::class, 'show'])->name('grupo_produto.show');
         });
         Route::prefix('sub_grupo_produto')->group(function() {
             Route::post('cadastro', [SubGrupoProdutoController::class, 'store'])->name('sub_grupo_produto.store');
