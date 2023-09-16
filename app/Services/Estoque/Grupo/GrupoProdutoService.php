@@ -37,6 +37,16 @@ class GrupoProdutoService
     /**
      * @throws GrupoProdutoException
      */
+    public function buscaGrupoPorId(int $id): array|GrupoProdutoException {
+        $grupo = $this->grupoRepository->grupoPorId($id)->toArray();
+        if (empty($grupo[0])) return GrupoProdutoException::grupoNaoExiste();
+        $grupo[0]['grupo_produto_tipo'] = $this->resolveTipoGrupoProduto(strtoupper($grupo[0]['grupo_produto_tipo']));
+        return $grupo[0];
+    }
+
+    /**
+     * @throws GrupoProdutoException
+     */
     private function defineTipoGrupoProduto(string $tipo): TiposGruposEnum|GrupoProdutoException {
         return match ($tipo) {
             'PRODUTO_FINAL' => TiposGruposEnum::PRODUTO_FINAL,
