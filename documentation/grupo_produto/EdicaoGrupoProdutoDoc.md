@@ -6,7 +6,7 @@ Rota usada para editar um grupo de produto dentro do sistema.
 
 ## URL
 
-![Static Badge](https://img.shields.io/badge/POST-%2Fapi%2Fv1%2Fgrupo__produto%2Fedicao%2F{id}-%2349CC90)
+![Static Badge](https://img.shields.io/badge/PUT-%2Fapi%2Fv1%2Fgrupo__produto%2Fedicao%2F{id}-%23FCA130)
 
 ## Parametro de requisição
 
