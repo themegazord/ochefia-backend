@@ -60,3 +60,4 @@ Rota usada para editar um grupo de produto dentro do sistema.
 | 422    | Esse campo tem que conter no máximo 25 caracteres.                                                   | Ao encaminhar mais de 25 caracteres                                                                |
 | 409    | O grupo \[grupo_produto_nome\] já existe na base de dados, cadastre outro ou use-o.                  | Ao tentar cadastrar um grupo que já existe no banco de dados                                       |
 | 404    | O tipo de produto \[grupo_produto_tipo\] não existe no sistema, por favor, verificar na documentação | Ao passar qualquer valor no campo grupo_produto_tipo que não seja os já citados nesta documentação |
+| 404    | O grupo não existe                                                                                   | Ao tentar atualizar um grupo que não existe                                                        |
