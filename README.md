@@ -29,6 +29,7 @@
     - [Cadastro de Grupo de produtos](/documentation/grupo_produto/CadastroGrupoProdutoDoc.md)
     - [Listagem de Grupos de produtos](/documentation/grupo_produto/ListagemGrupoProdutoDoc.md)
     - [Edição de Grupos de Produtos](/documentation/grupo_produto/EdicaoGrupoProdutoDoc.md)
+    - [Consulta de Grupo de Produto](/documentation/grupo_produto/ConsultaGrupoProdutoDoc.md)
   - Sub Grupo de Produtos
     - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
   - Fornecedor de Produtos
