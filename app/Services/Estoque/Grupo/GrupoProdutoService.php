@@ -44,6 +44,11 @@ class GrupoProdutoService
         return $grupo[0];
     }
 
+    public function edicaoGrupoPorId(array $grupo, int $id) {
+        $grupo['grupo_produto_tipo'] = $this->defineTipoGrupoProduto($grupo['grupo_produto_tipo']);
+        return $this->grupoRepository->edicaoGrupoPorId($grupo, $id);
+    }
+
     /**
      * @throws GrupoProdutoException
      */
