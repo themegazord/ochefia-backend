@@ -45,8 +45,19 @@ class GrupoProdutoService
     }
 
     public function edicaoGrupoPorId(array $grupo, int $id) {
+        if ($this->verificaSeGrupoExiste($id)) return GrupoProdutoException::grupoNaoExiste();
         $grupo['grupo_produto_tipo'] = $this->defineTipoGrupoProduto($grupo['grupo_produto_tipo']);
         return $this->grupoRepository->edicaoGrupoPorId($grupo, $id);
+    }
+
+    public function deletaGrupoPorId(int $id) {
+        if ($this->verificaSeGrupoExiste($id)) return GrupoProdutoException::grupoNaoExiste();
+        return $this->grupoRepository->deletaGrupoPorId($id);
+    }
+
+    private function verificaSeGrupoExiste(int $id): bool {
+        $grupo = $this->grupoRepository->grupoPorId($id)->toArray();
+        return empty($grupo[0]);
     }
 
     /**
