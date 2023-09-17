@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\GrupoProdutoException;
+use App\Http\Requests\EdicaoGrupoProdutoRequest;
 use App\Http\Requests\Estoque\Grupo\CadastroGrupoProdutoRequest;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -64,9 +65,18 @@ class GrupoProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoGrupoProdutoRequest $request, string $id): JsonResponse
     {
-        //
+        try {
+            $grupo = $request->only(['grupo_produto_nome', 'grupo_produto_tipo']);
+            $this->grupoProdutoService->edicaoGrupoPorId($grupo, $id);
+            return response()->json([
+                'mensagem' => 'Grupo atualizado com sucesso',
+                'grupo' => $grupo
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()], $e->getCode());
+        }
     }
 
     /**
