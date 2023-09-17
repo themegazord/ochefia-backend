@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent\Estoque\Grupo;
 
 use App\Models\GrupoProduto;
 use App\Repositories\Interfaces\Estoque\Grupo\IGrupoProduto;
+use Illuminate\Database\Eloquent\Collection;
 
 class GrupoProdutoRepository implements IGrupoProduto
 {
@@ -39,5 +40,12 @@ class GrupoProdutoRepository implements IGrupoProduto
                 'grupo_produto_nome',
                 'grupo_produto_tipo'
             ]);
+    }
+
+    public function edicaoGrupoPorId(array $grupo, int $id): int
+    {
+        return GrupoProduto::query()
+            ->where('grupo_produto_id', $id)
+            ->update($grupo);
     }
 }
