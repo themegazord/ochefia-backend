@@ -15,4 +15,6 @@ interface IGrupoProduto
     public function grupoPorId(int $id): Collection;
 
     public function edicaoGrupoPorId(array $grupo, int $id): int;
+
+    public function deletaGrupoPorId(int $id): mixed;
 }
