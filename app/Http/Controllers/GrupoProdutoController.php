@@ -84,6 +84,10 @@ class GrupoProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            return response()->json([$this->grupoProdutoService->deletaGrupoPorId($id)], Response::HTTP_NO_CONTENT);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()], $e->getCode());
+        }
     }
 }
