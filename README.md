@@ -34,6 +34,9 @@
   - Sub Grupo de Produtos
     - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
     - [Listagem de Sub Grupos de produtos](/documentation/sub_grupo_produto/ListagemSubGrupoProdutoDoc.md)
+    - [Edição de Sub Grupo de produtos](/documentation/sub_grupo_produto/EdicaoSubGrupoProdutoDoc.md)
+    - [Consulta de Sub Grupo de produtos](/documentation/sub_grupo_produto/ConsultaSubGrupoProdutoDoc.md)
+    - [Remocao de Sub Grupo de produtos](/documentation/sub_grupo_produto/RemocaoSubGrupoProdutoDoc.md)
   - Fornecedor de Produtos
     - [Cadastro de fornecedor de produtos](/documentation/fornecedor_produto/CadastroFornecedorProdutoDoc.md)
   - Unidade de Medida
