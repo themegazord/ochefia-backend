@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\GrupoProdutoException;
-use App\Http\Requests\EdicaoGrupoProdutoRequest;
 use App\Http\Requests\Estoque\Grupo\CadastroGrupoProdutoRequest;
+use App\Http\Requests\Estoque\Grupo\EdicaoGrupoProdutoRequest;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class GrupoProdutoController extends Controller
