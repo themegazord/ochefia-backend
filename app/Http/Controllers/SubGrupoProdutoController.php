@@ -78,6 +78,11 @@ class SubGrupoProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->grupoProdutoService->remocaoSubGrupoPorId($id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (SubGrupoProdutoException $sgpe) {
+            return response()->json(["erro" => $sgpe->getMessage()], $sgpe->getCode());
+        }
     }
 }
