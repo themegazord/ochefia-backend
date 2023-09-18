@@ -44,4 +44,11 @@ class SubGrupoProdutoRepository implements ISubGrupoProduto
             ->where('sub_grupo_produto_id', $id)
             ->update($subgrupo);
     }
+
+    public function remocaoSubGrupoPorId(int $id): mixed
+    {
+        return SubGrupoProduto::query()
+            ->where('sub_grupo_produto_id', $id)
+            ->delete();
+    }
 }
