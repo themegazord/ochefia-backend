@@ -37,6 +37,15 @@ class SubGrupoProdutoService
         return is_null($subgrupo) ? SubGrupoProdutoException::subGrupoInexistente() : $subgrupo;
     }
 
+    /**
+     * @throws SubGrupoProdutoException
+     */
+    public function atualizaSubGrupoPorId(array $subgrupo, int $id): int|SubGrupoProdutoException {
+        if (is_null($this->consultaSubGrupoPorId($id))) return SubGrupoProdutoException::subGrupoInexistente();
+        $subgrupo['sub_grupo_produto_nome'] = strtoupper($subgrupo['sub_grupo_produto_nome']);
+        return $this->subGrupoProdutoRepository->atualizaSubGrupoPorId($subgrupo, $id);
+    }
+
     private function consultaSubGrupoPorNome(string $nomeSubGrupo): ?SubGrupoProduto {
         return $this->subGrupoProdutoRepository->subGrupoPorNome($nomeSubGrupo);
     }
