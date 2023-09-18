@@ -28,7 +28,20 @@ class SubGrupoProdutoService
         return $this->subGrupoProdutoRepository->listagem();
     }
 
+    /**
+     * @throws SubGrupoProdutoException
+     */
+    public function subGrupoPorId(int $id): SubGrupoProduto|SubGrupoProdutoException|null
+    {
+        $subgrupo = $this->consultaSubGrupoPorId($id);
+        return is_null($subgrupo) ? SubGrupoProdutoException::subGrupoInexistente() : $subgrupo;
+    }
+
     private function consultaSubGrupoPorNome(string $nomeSubGrupo): ?SubGrupoProduto {
         return $this->subGrupoProdutoRepository->subGrupoPorNome($nomeSubGrupo);
+    }
+
+    private function consultaSubGrupoPorId(int $id): ?SubGrupoProduto {
+        return $this->subGrupoProdutoRepository->subGrupoPorId($id);
     }
 }
