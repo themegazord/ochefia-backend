@@ -30,4 +30,11 @@ class SubGrupoProdutoRepository implements ISubGrupoProduto
                 'sub_grupo_produto_nome'
             ]);
     }
+
+    public function subGrupoPorId(string $id): ?SubGrupoProduto
+    {
+        return SubGrupoProduto::query()
+            ->where('sub_grupo_produto_id', $id)
+            ->first();
+    }
 }
