@@ -13,4 +13,7 @@ class SubGrupoProdutoException extends Exception
     public static function subGrupoJaExistente(string $subGrupoNome): self {
         throw new self('O sub grupo ' . strtoupper($subGrupoNome) . ' já existe, por favor, cadastre outro ou use o que já está cadastrado.', Response::HTTP_CONFLICT);
     }
+    public static function subGrupoInexistente(): self {
+        throw new self ('O sub grupo não existe', Response::HTTP_NOT_FOUND);
+    }
 }
