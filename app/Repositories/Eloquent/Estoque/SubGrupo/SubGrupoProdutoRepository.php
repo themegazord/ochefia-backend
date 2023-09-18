@@ -37,4 +37,11 @@ class SubGrupoProdutoRepository implements ISubGrupoProduto
             ->where('sub_grupo_produto_id', $id)
             ->first();
     }
+
+    public function atualizaSubGrupoPorId(array $subgrupo, int $id): int
+    {
+        return SubGrupoProduto::query()
+            ->where('sub_grupo_produto_id', $id)
+            ->update($subgrupo);
+    }
 }
