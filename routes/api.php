@@ -58,6 +58,7 @@ Route::prefix('v1')->group(function() {
             Route::post('cadastro', [SubGrupoProdutoController::class, 'store'])->name('sub_grupo_produto.store');
             Route::get('listagem', [SubGrupoProdutoController::class, 'index'])->name('sub_grupo_produto.index');
             Route::get('sub_grupo/{id}', [SubGrupoProdutoController::class, 'show'])->name('sub_grupo_produto.show');
+            Route::put('sub_grupo/{id}', [SubGrupoProdutoController::class, 'update'])->name('sub_grupo_produto.update');
         });
         Route::prefix('fornecedor_produto')->group(function() {
             Route::post('cadastro', [FornecedorProdutoController::class, 'store'])->name('fornecedor_produto.store');
