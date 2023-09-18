@@ -63,9 +63,14 @@ class SubGrupoProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): JsonResponse
     {
-        //
+        try {
+            $this->grupoProdutoService->atualizaSubGrupoPorId($request->only('sub_grupo_produto_nome'), $id);
+            return response()->json(["mensagem" => "Sub grupo atualizado com sucesso"]);
+        } catch (SubGrupoProdutoException $sgpe) {
+            return response()->json(["erro" => $sgpe->getMessage()], $sgpe->getCode());
+        }
     }
 
     /**
