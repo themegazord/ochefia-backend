@@ -22,7 +22,11 @@ class SubGrupoProdutoController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            return response()->json(["subgrupos" => $this->grupoProdutoService->listagem()]);
+        } catch (\Exception $e) {
+            return response()->json(["erro" => $e->getMessage()], $e->getCode());
+        }
     }
 
     /**
