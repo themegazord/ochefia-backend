@@ -46,6 +46,14 @@ class SubGrupoProdutoService
         return $this->subGrupoProdutoRepository->atualizaSubGrupoPorId($subgrupo, $id);
     }
 
+    /**
+     * @throws SubGrupoProdutoException
+     */
+    public function remocaoSubGrupoPorId(int $id): mixed {
+        if (is_null($this->consultaSubGrupoPorId($id))) return SubGrupoProdutoException::subGrupoInexistente();
+        return $this->subGrupoProdutoRepository->remocaoSubGrupoPorId($id);
+    }
+
     private function consultaSubGrupoPorNome(string $nomeSubGrupo): ?SubGrupoProduto {
         return $this->subGrupoProdutoRepository->subGrupoPorNome($nomeSubGrupo);
     }
