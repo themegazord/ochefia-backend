@@ -11,4 +11,6 @@ interface ISubGrupoProduto
     public function subGrupoPorNome(string $nomeSubGrupo): ?SubGrupoProduto;
     public function listagem(): Collection;
     public function subGrupoPorId(string $id): ?SubGrupoProduto;
+
+    public function atualizaSubGrupoPorId(array $subgrupo, int $id): int;
 }
