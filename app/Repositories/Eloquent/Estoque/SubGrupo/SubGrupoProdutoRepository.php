@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent\Estoque\SubGrupo;
 
 use App\Models\SubGrupoProduto;
 use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
+use Illuminate\Database\Eloquent\Collection;
 
 class SubGrupoProdutoRepository implements ISubGrupoProduto
 {
@@ -19,5 +20,14 @@ class SubGrupoProdutoRepository implements ISubGrupoProduto
         return SubGrupoProduto::query()
             ->where('sub_grupo_produto_nome', $nomeSubGrupo)
             ->first();
+    }
+
+    public function listagem(): Collection
+    {
+        return SubGrupoProduto::query()
+            ->get([
+                'sub_grupo_produto_id',
+                'sub_grupo_produto_nome'
+            ]);
     }
 }
