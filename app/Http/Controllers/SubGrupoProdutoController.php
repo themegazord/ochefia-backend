@@ -48,9 +48,16 @@ class SubGrupoProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        try {
+            return response()->json(["sub_grupo" => $this->grupoProdutoService->subGrupoPorId($id)->only([
+                "sub_grupo_produto_id",
+                "sub_grupo_produto_nome",
+            ])]);
+        } catch (SubGrupoProdutoException $sgpe) {
+            return response()->json(["erro" => $sgpe->getMessage()], $sgpe->getCode());
+        }
     }
 
     /**
