@@ -10,4 +10,5 @@ interface ISubGrupoProduto
     public function cadastro(array $subGrupo): SubGrupoProduto;
     public function subGrupoPorNome(string $nomeSubGrupo): ?SubGrupoProduto;
     public function listagem(): Collection;
+    public function subGrupoPorId(string $id): ?SubGrupoProduto;
 }
