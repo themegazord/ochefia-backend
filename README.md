@@ -33,6 +33,7 @@
     - [Remoção de Grupo de Produto](/documentation/grupo_produto/RemocaoGrupoProdutoDoc.md)
   - Sub Grupo de Produtos
     - [Cadastro de Sub Grupos de produtos](/documentation/sub_grupo_produto/CadastroSubGrupoProdutoDoc.md)
+    - [Listagemde Sub Grupos de produtos]()
   - Fornecedor de Produtos
     - [Cadastro de fornecedor de produtos](/documentation/fornecedor_produto/CadastroFornecedorProdutoDoc.md)
   - Unidade de Medida
