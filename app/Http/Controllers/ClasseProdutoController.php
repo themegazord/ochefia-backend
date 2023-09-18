@@ -20,9 +20,9 @@ class ClasseProdutoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return response()->json(["classes" => $this->classeProdutoService->listagemClasseProduto()]);
     }
 
     /**
