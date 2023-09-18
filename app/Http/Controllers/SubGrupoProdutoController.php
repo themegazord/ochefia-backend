@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\SubGrupoProdutoException;
 use App\Http\Requests\Estoque\SubGrupo\CadastroSubGrupoProdutoRequest;
+use App\Http\Requests\Estoque\SubGrupo\EdicaoSubGrupoProdutoRequest;
 use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -63,7 +64,7 @@ class SubGrupoProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(EdicaoSubGrupoProdutoRequest $request, string $id): JsonResponse
     {
         try {
             $this->grupoProdutoService->atualizaSubGrupoPorId($request->only('sub_grupo_produto_nome'), $id);
