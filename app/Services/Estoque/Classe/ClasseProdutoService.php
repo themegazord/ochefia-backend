@@ -20,6 +20,10 @@ class ClasseProdutoService
         return $this->classeProdutoRepository->cadastro($classeProduto);
     }
 
+    public function listagemClasseProduto(): array {
+        return $this->classeProdutoRepository->listagemClasseProduto()->toArray();
+    }
+
     private function consultaClasseProdutoPorNome(string $nomeClasseProduto): ?ClasseProduto {
         return $this->classeProdutoRepository->classeProdutoPorNome($nomeClasseProduto);
     }
