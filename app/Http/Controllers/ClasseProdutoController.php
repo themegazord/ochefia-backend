@@ -78,6 +78,11 @@ class ClasseProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->classeProdutoService->removeClasseProdutoPorId($id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (ClasseProdutoException $cpe) {
+            return response()->json(["erro" => $cpe->getMessage()], $cpe->getCode());
+        }
     }
 }
