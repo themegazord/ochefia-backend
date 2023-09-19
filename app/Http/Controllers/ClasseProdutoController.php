@@ -46,9 +46,13 @@ class ClasseProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        try {
+            return response()->json(['classe_produto' => $this->classeProdutoService->consultaClasseProdutoPorId($id)]);
+        } catch (ClasseProdutoException $cpe) {
+            return response()->json(['erro' => $cpe->getMessage()], $cpe->getCode());
+        }
     }
 
     /**
