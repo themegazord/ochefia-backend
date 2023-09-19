@@ -44,6 +44,9 @@
   - Classe de Produtos
     - [Cadastro de classe de produtos](/documentation/classe_produto/CadastroClasseProdutoDoc.md)
     - [Listagem de classe de produtos](/documentation/classe_produto/ListagemClasseProdutoDoc.md)
+    - [Edição de classe de produtos](/documentation/classe_produto/EdicaoClasseProdutoDoc.md)
+    - [Consulta de classe de produtos](/documentation/classe_produto/ConsultaClasseProdutoDoc.md)
+    - [Remoção de classe de produtos](/documentation/classe_produto/RemocaoClasseProdutoDoc.md)
   - Produtos
     - [Cadastro de produtos](/documentation/produto/CadastroProdutoDoc.md)
   - Prazo de pagamento
