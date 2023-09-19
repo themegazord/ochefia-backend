@@ -71,6 +71,7 @@ Route::prefix('v1')->group(function() {
            Route::post('cadastro', [ClasseProdutoController::class, 'store'])->name('classe_produto.store');
            Route::get('listagem', [ClasseProdutoController::class, 'index'])->name('classe_produto.index');
            Route::get('classe/{id}', [ClasseProdutoController::class, 'show'])->name('classe_produto.show');
+           Route::put('classe/{id}', [ClasseProdutoController::class, 'update'])->name('classe_produto.update');
         });
         Route::prefix('produto')->group(function() {
            Route::post('cadastro', [ProdutoController::class, 'store'])->name('produto.store');
