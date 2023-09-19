@@ -24,7 +24,17 @@ class ClasseProdutoService
         return $this->classeProdutoRepository->listagemClasseProduto()->toArray();
     }
 
+    /**
+     * @throws ClasseProdutoException
+     */
+    public function consultaClasseProdutoPorId(int $id): array|ClasseProdutoException|null {
+        $classe = $this->classeProdutoRepository->classeProdutoPorId($id);
+        return is_null($classe) ? ClasseProdutoException::classeInexistente() : $classe->only(['classe_produto_id', 'classe_produto_nome']);
+    }
+
+
     private function consultaClasseProdutoPorNome(string $nomeClasseProduto): ?ClasseProduto {
         return $this->classeProdutoRepository->classeProdutoPorNome($nomeClasseProduto);
     }
+
 }
