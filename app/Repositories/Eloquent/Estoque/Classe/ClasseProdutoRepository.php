@@ -44,4 +44,11 @@ class ClasseProdutoRepository implements IClasseProduto
             ->where('classe_produto_id', $id)
             ->update($classe);
     }
+
+    public function removeClassePorId(int $id): mixed
+    {
+        return ClasseProduto::query()
+            ->where('classe_produto_id', $id)
+            ->delete();
+    }
 }
