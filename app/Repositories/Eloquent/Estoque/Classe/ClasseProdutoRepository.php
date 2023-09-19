@@ -31,10 +31,17 @@ class ClasseProdutoRepository implements IClasseProduto
             ]);
     }
 
-    public function classeProdutoPorId(string $id): ?ClasseProduto
+    public function classeProdutoPorId(int $id): ?ClasseProduto
     {
         return ClasseProduto::query()
             ->where('classe_produto_id', $id)
             ->first();
+    }
+
+    public function atualizaClassePorId(array $classe, int $id): int
+    {
+        return ClasseProduto::query()
+            ->where('classe_produto_id', $id)
+            ->update($classe);
     }
 }
