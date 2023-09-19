@@ -10,5 +10,6 @@ interface IClasseProduto
     public function cadastro(array $classeProduto): ClasseProduto;
     public function classeProdutoPorNome(string $nomeClasseProduto): ?ClasseProduto;
     public function listagemClasseProduto(): Collection;
-    public function classeProdutoPorId(string $id):?ClasseProduto;
+    public function classeProdutoPorId(int $id):?ClasseProduto;
+    public function atualizaClassePorId(array $classe, int $id): int;
 }
