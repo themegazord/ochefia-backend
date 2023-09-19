@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ClasseProdutoException;
 use App\Http\Requests\Estoque\Classe\CadastroClasseProdutoRequest;
+use App\Http\Requests\Estoque\Classe\EdicaoClasseProdutoRequest;
 use App\Services\Estoque\Classe\ClasseProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -58,9 +59,18 @@ class ClasseProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoClasseProdutoRequest $request, string $id)
     {
-        //
+        try {
+            $classe = $request->only(['classe_produto_nome']);
+            $this->classeProdutoService->atualizaClasseProdutoPorId($classe, $id);
+            return response()->json([
+                "mensagem" => "Classe atualizada com sucesso",
+                "classe_produto" => ["classe_produto_nome" => strtoupper($classe['classe_produto_nome'])]
+            ]);
+        } catch (ClasseProdutoException $cpe) {
+            return response()->json(["erro" => $cpe->getMessage()], $cpe->getCode());
+        }
     }
 
     /**
