@@ -12,4 +12,5 @@ interface IClasseProduto
     public function listagemClasseProduto(): Collection;
     public function classeProdutoPorId(int $id):?ClasseProduto;
     public function atualizaClassePorId(array $classe, int $id): int;
+    public function removeClassePorId(int $id): mixed;
 }
