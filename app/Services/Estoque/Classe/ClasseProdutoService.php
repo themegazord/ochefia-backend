@@ -41,6 +41,14 @@ class ClasseProdutoService
         return $this->classeProdutoRepository->atualizaClassePorId($classe, $id);
     }
 
+    /**
+     * @throws ClasseProdutoException
+     */
+    public function removeClasseProdutoPorId(int $id): mixed {
+        if ($this->verificaClasseExiste($id)) return ClasseProdutoException::classeInexistente();
+        return $this->classeProdutoRepository->removeClassePorId($id);
+    }
+
     private function consultaClasseProdutoPorNome(string $nomeClasseProduto): ?ClasseProduto {
         return $this->classeProdutoRepository->classeProdutoPorNome($nomeClasseProduto);
     }
