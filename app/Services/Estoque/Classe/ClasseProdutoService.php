@@ -32,9 +32,22 @@ class ClasseProdutoService
         return is_null($classe) ? ClasseProdutoException::classeInexistente() : $classe->only(['classe_produto_id', 'classe_produto_nome']);
     }
 
+    /**
+     * @throws ClasseProdutoException
+     */
+    public function atualizaClasseProdutoPorId(array $classe, int $id): int|ClasseProdutoException {
+        if ($this->verificaClasseExiste($id)) return ClasseProdutoException::classeInexistente();
+        $classe['classe_produto_nome'] = strtoupper($classe['classe_produto_nome']);
+        return $this->classeProdutoRepository->atualizaClassePorId($classe, $id);
+    }
 
     private function consultaClasseProdutoPorNome(string $nomeClasseProduto): ?ClasseProduto {
         return $this->classeProdutoRepository->classeProdutoPorNome($nomeClasseProduto);
+    }
+
+    private function verificaClasseExiste(int $id): bool {
+        $classe = $this->classeProdutoRepository->classeProdutoPorId($id);
+        return is_null($classe);
     }
 
 }
