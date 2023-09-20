@@ -4,7 +4,7 @@ namespace Tests\Feature\App\Http\Controllers;
 
 use App\Models\ClasseProduto;
 use App\Models\Empresa;
-use App\Models\FornecedorProduto;
+use App\Models\FabricanteProduto;
 use App\Models\GrupoProduto;
 use App\Models\SubGrupoProduto;
 use App\Models\Unidade;
@@ -25,7 +25,7 @@ class ProdutoControllerTest extends TestCase
         $usuario = User::factory()->create();
         $grupo = GrupoProduto::factory()->create();
         $subgrupo = SubGrupoProduto::factory()->create();
-        $fornecedor = FornecedorProduto::factory()->create();
+        $fornecedor = FabricanteProduto::factory()->create();
         $classe = ClasseProduto::factory()->create();
         $unidade = Unidade::factory()->create();
         $empresa = Empresa::factory()->create();

@@ -14,7 +14,7 @@ class Produto extends Model
         'empresa_id',
         'grupo_produto_id',
         'sub_grupo_produto_id',
-        'fornecedor_produto_id',
+        'fabricante_produto_id',
         'classe_produto_id',
         'unidade_id',
         'produto_nome',
@@ -33,8 +33,8 @@ class Produto extends Model
         return $this->belongsTo(SubGrupoProduto::class, 'sub_grupo_produto_id', 'sub_grupo_produto_id');
     }
 
-    public function fornecedorProduto(): BelongsTo {
-        return $this->belongsTo(FornecedorProduto::class, 'fornecedor_produto_id', 'fornecedor_produto_id');
+    public function fabricanteProduto(): BelongsTo {
+        return $this->belongsTo(FabricanteProduto::class, 'fabricante_produto_id', 'fabricante_produto_id');
     }
 
     public function classeProduto(): BelongsTo {

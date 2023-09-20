@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\FornecedorProduto;
+use App\Models\FabricanteProduto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FornecedorProduto>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\FabricanteProduto>
  */
 class FornecedorProdutoFactory extends Factory
 {
@@ -16,7 +16,7 @@ class FornecedorProdutoFactory extends Factory
      * @return array<string, mixed>
      */
 
-    protected $model = FornecedorProduto::class;
+    protected $model = FabricanteProduto::class;
     public function definition(): array
     {
         return [

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\FornecedorProdutoException;
-use App\Http\Requests\Estoque\Fornecedor\CadastroFornecedorProdutoRequest;
-use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
+use App\Exceptions\FabricanteProdutoException;
+use App\Http\Requests\Estoque\Fabricante\CadastroFabricanteProdutoRequest;
+use App\Services\Estoque\Fabricante\FabricanteProdutoService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class FornecedorProdutoController extends Controller
+class FabricanteProdutoController extends Controller
 {
     public function __construct(
-        private readonly FornecedorProdutoService $fornecedorProdutoService
+        private readonly FabricanteProdutoService $fabricanteProdutoService
     )
     {
     }
@@ -27,17 +27,17 @@ class FornecedorProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CadastroFornecedorProdutoRequest $request)
+    public function store(CadastroFabricanteProdutoRequest $request)
     {
         try {
-            $novoFornecedorProduto = $this->fornecedorProdutoService->cadastro($request->only([
-                'fornecedor_produto_nome'
+            $novoFabricante = $this->fabricanteProdutoService->cadastro($request->only([
+                'fabricante_produto_nome'
             ]));
             return response()->json([
-                'mensagem' => 'Fornecedor de produtos cadastrado com sucesso',
-                'fornecedor_produto' => $novoFornecedorProduto
+                'mensagem' => 'Fabricante de produtos cadastrado com sucesso',
+                'fabricante_produto' => $novoFabricante
             ], Response::HTTP_CREATED);
-        } catch (FornecedorProdutoException $fpe) {
+        } catch (FabricanteProdutoException $fpe) {
             return response()->json(['erro' => $fpe->getMessage()], $fpe->getCode());
         }
     }

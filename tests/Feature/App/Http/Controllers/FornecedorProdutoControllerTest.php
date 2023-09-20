@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\App\Http\Controllers;
 
-use App\Models\FornecedorProduto;
+use App\Models\FabricanteProduto;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;

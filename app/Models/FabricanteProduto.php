@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class FornecedorProduto extends Model
+class FabricanteProduto extends Model
 {
     use HasFactory;
 
-    protected $table = 'fornecedor_produto';
+    protected $table = 'fabricante_produto';
 
     protected $fillable = [
-        'fornecedor_produto_nome'
+        'fabricante_produto_nome'
     ];
 
     public function produto(): HasMany {

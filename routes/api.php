@@ -12,7 +12,7 @@ use App\Http\Controllers\PrazoPgtoController;
 use App\Http\Controllers\PrazoPgtoDiasController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SubGrupoProdutoController;
-use App\Http\Controllers\FornecedorProdutoController;
+use App\Http\Controllers\FabricanteProdutoController;
 use App\Http\Controllers\UnidadeController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,8 +61,8 @@ Route::prefix('v1')->group(function() {
             Route::put('sub_grupo/{id}', [SubGrupoProdutoController::class, 'update'])->name('sub_grupo_produto.update');
             Route::delete('sub_grupo/{id}', [SubGrupoProdutoController::class, 'destroy'])->name('sub_grupo_produto.destroy');
         });
-        Route::prefix('fornecedor_produto')->group(function() {
-            Route::post('cadastro', [FornecedorProdutoController::class, 'store'])->name('fornecedor_produto.store');
+        Route::prefix('fabricante_produto')->group(function() {
+            Route::post('cadastro', [FabricanteProdutoController::class, 'store'])->name('fabricante_produto.store');
         });
         Route::prefix('unidade')->group(function() {
            Route::post('cadastro', [UnidadeController::class, 'store'])->name('unidade.store');

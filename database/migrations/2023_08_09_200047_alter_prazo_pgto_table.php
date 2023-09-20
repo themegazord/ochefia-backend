@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('prazo_pgto', function (Blueprint $table) {
-            $table->char('prazopgto_tipo', 1)->change();
-            $table->string('prazopgto_tipoforma', 50)->nullable()->change();
+            $table->char('prazopgto_tipo', 30)->change();
+            $table->string('prazopgto_tipoforma', 155)->nullable()->change();
         });
     }
 };

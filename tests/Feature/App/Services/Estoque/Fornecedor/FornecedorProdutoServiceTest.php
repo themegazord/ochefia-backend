@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\App\Services\Estoque\Fornecedor;
 
-use App\Models\FornecedorProduto;
+use App\Models\FabricanteProduto;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,7 +17,7 @@ class FornecedorProdutoServiceTest extends TestCase
      */
     public function testLevantarErroAoCadastrarFornecedorDeProdutoExistente(): void {
         $usuario = User::factory()->create();
-        $fornecedor = FornecedorProduto::factory()->create();
+        $fornecedor = FabricanteProduto::factory()->create();
 
         $payload = [
             'fornecedor_produto_nome' => $fornecedor->getAttribute('fornecedor_produto_nome')

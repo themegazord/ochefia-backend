@@ -8,7 +8,7 @@ use App\Repositories\Eloquent\Cliente\ClienteRepository;
 use App\Repositories\Eloquent\Empresa\EmpresaRepository;
 use App\Repositories\Eloquent\Endereco\EnderecoRepository;
 use App\Repositories\Eloquent\Estoque\Classe\ClasseProdutoRepository;
-use App\Repositories\Eloquent\Estoque\Fornecedor\FornecedorProdutoRepository;
+use App\Repositories\Eloquent\Estoque\Fabricante\FabricanteProdutoRepository;
 use App\Repositories\Eloquent\Estoque\Grupo\GrupoProdutoRepository;
 use App\Repositories\Eloquent\Estoque\Produto\ProdutoRepository;
 use App\Repositories\Eloquent\Estoque\SubGrupo\SubGrupoProdutoRepository;
@@ -22,7 +22,7 @@ use App\Repositories\Interfaces\Cliente\ICliente;
 use App\Repositories\Interfaces\Empresa\IEmpresa;
 use App\Repositories\Interfaces\Endereco\IEndereco;
 use App\Repositories\Interfaces\Estoque\Classe\IClasseProduto;
-use App\Repositories\Interfaces\Estoque\Fornecedor\IFornecedorProduto;
+use App\Repositories\Interfaces\Estoque\Fabricante\IFabricanteProduto;
 use App\Repositories\Interfaces\Estoque\Grupo\IGrupoProduto;
 use App\Repositories\Interfaces\Estoque\Produto\IProduto;
 use App\Repositories\Interfaces\Estoque\SubGrupo\ISubGrupoProduto;
@@ -37,7 +37,7 @@ use App\Services\Cliente\ClienteService;
 use App\Services\Empresa\EmpresaService;
 use App\Services\Endereco\EnderecoService;
 use App\Services\Estoque\Classe\ClasseProdutoService;
-use App\Services\Estoque\Fornecedor\FornecedorProdutoService;
+use App\Services\Estoque\Fabricante\FabricanteProdutoService;
 use App\Services\Estoque\Grupo\GrupoProdutoService;
 use App\Services\Estoque\Produto\ProdutoService;
 use App\Services\Estoque\SubGrupo\SubGrupoProdutoService;
@@ -94,9 +94,9 @@ class AppServiceProvider extends ServiceProvider
             $subGrupoProdutoRepository = $app->make(ISubGrupoProduto::class);
             return new SubGrupoProdutoService($subGrupoProdutoRepository);
         });
-        $this->app->scoped(FornecedorProdutoService::class, function (Application $app) {
-            $fornecedorProdutoRepository = $app->make(IFornecedorProduto::class);
-            return new FornecedorProdutoService($fornecedorProdutoRepository);
+        $this->app->scoped(FabricanteProdutoService::class, function (Application $app) {
+            $fabricanteProdutoRepository = $app->make(IFabricanteProduto::class);
+            return new FabricanteProdutoService($fabricanteProdutoRepository);
         });
         $this->app->scoped(UnidadeService::class, function (Application $app) {
             $unidadeRepository = $app->make(IUnidade::class);
@@ -136,7 +136,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ICliente::class, ClienteRepository::class);
         $this->app->bind(IGrupoProduto::class, GrupoProdutoRepository::class);
         $this->app->bind(ISubGrupoProduto::class, SubGrupoProdutoRepository::class);
-        $this->app->bind(IFornecedorProduto::class, FornecedorProdutoRepository::class);
+        $this->app->bind(IFabricanteProduto::class, FabricanteProdutoRepository::class);
         $this->app->bind(IUnidade::class, UnidadeRepository::class);
         $this->app->bind(IClasseProduto::class, ClasseProdutoRepository::class);
         $this->app->bind(IProduto::class, ProdutoRepository::class);

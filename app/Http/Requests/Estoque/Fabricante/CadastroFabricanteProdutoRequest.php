@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Estoque\Fornecedor;
+namespace App\Http\Requests\Estoque\Fabricante;
 
 use App\Http\Requests\RequestPadroes;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CadastroFornecedorProdutoRequest extends FormRequest
+class CadastroFabricanteProdutoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class CadastroFornecedorProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'fornecedor_produto_nome' => 'required|string|max:90'
+            'fabricante_produto_nome' => 'required|string|max:90'
         ];
     }
 
@@ -32,7 +32,7 @@ class CadastroFornecedorProdutoRequest extends FormRequest
         return [
             'required' => RequestPadroes::$required,
             'string' => RequestPadroes::$string,
-            'fornecedor_produto_nome.max' => RequestPadroes::mensagemMax(90)
+            'fabricante_produto_nome.max' => RequestPadroes::mensagemMax(90)
         ];
     }
 }
