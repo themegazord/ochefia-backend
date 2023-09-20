@@ -38,7 +38,7 @@
     - [Consulta de Sub Grupo de produtos](/documentation/sub_grupo_produto/ConsultaSubGrupoProdutoDoc.md)
     - [Remocao de Sub Grupo de produtos](/documentation/sub_grupo_produto/RemocaoSubGrupoProdutoDoc.md)
   - Fornecedor de Produtos
-    - [Cadastro de fornecedor de produtos](/documentation/fornecedor_produto/CadastroFornecedorProdutoDoc.md)
+    - [Cadastro de fornecedor de produtos](/documentation/fabricante_produto/CadastroFabricanteProdutoDoc.md)
   - Unidade de Medida
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
   - Classe de Produtos
