@@ -23,6 +23,10 @@ class FabricanteProdutoService
         return $this->fabricanteProdutoRepository->cadastro($fabricante);
     }
 
+    public function listagemFabricantes(): \Illuminate\Database\Eloquent\Collection {
+        return $this->fabricanteProdutoRepository->listagemFabricantes();
+    }
+
     private function consultaFabricanteProdutoPorNome(string $nomeFornecedorProduto): ?FabricanteProduto {
         return $this->fabricanteProdutoRepository->fabricanteProdutoPorNome($nomeFornecedorProduto);
     }

@@ -21,7 +21,9 @@ class FabricanteProdutoController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            "fabricantes" => $this->fabricanteProdutoService->listagemFabricantes()
+        ]);
     }
 
     /**

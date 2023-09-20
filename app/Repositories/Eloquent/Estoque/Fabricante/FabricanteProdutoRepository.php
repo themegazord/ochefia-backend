@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent\Estoque\Fabricante;
 
 use App\Models\FabricanteProduto;
 use App\Repositories\Interfaces\Estoque\Fabricante\IFabricanteProduto;
+use Illuminate\Database\Eloquent\Collection;
 
 class FabricanteProdutoRepository implements IFabricanteProduto
 {
@@ -19,5 +20,14 @@ class FabricanteProdutoRepository implements IFabricanteProduto
         return FabricanteProduto::query()
             ->where('fabricante_produto_nome', $nomeFabricante)
             ->first();
+    }
+
+    public function listagemFabricantes(): Collection
+    {
+        return FabricanteProduto::query()
+            ->get([
+                'fabricante_produto_id',
+                'fabricante_produto_nome'
+            ]);
     }
 }
