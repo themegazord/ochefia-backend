@@ -45,6 +45,14 @@ class FabricanteProdutoService
         return $this->fabricanteProdutoRepository->atualizaFabricantePorId($fabricante, $id);
     }
 
+    /**
+     * @throws FabricanteProdutoException
+     */
+    public function removeFabricantePorId(int $id): mixed {
+        if (is_null($this->fabricanteProdutoRepository->fabricantePorId($id))) return FabricanteProdutoException::fabricanteInexiste();
+        return $this->fabricanteProdutoRepository->removeFabricantePorId($id);
+    }
+
     private function consultaFabricanteProdutoPorNome(string $nomeFornecedorProduto): ?FabricanteProduto {
         return $this->fabricanteProdutoRepository->fabricanteProdutoPorNome($nomeFornecedorProduto);
     }

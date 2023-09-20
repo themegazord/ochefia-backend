@@ -76,6 +76,11 @@ class FabricanteProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $this->fabricanteProdutoService->removeFabricantePorId($id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (FabricanteProdutoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 }

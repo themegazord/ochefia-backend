@@ -66,6 +66,7 @@ Route::prefix('v1')->group(function() {
             Route::get('listagem', [FabricanteProdutoController::class, 'index'])->name('fabricante_produto.index');
             Route::get('fabricante/{id}', [FabricanteProdutoController::class, 'show'])->name('fabricante_produto.show');
             Route::put('fabricante/{id}', [FabricanteProdutoController::class, 'update'])->name('fabricante_produto.update');
+            Route::delete('fabricante/{id}', [FabricanteProdutoController::class, 'destroy'])->name('fabricante_produto.destroy');
         });
         Route::prefix('unidade')->group(function() {
            Route::post('cadastro', [UnidadeController::class, 'store'])->name('unidade.store');

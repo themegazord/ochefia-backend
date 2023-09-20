@@ -47,4 +47,11 @@ class FabricanteProdutoRepository implements IFabricanteProduto
             ->where('fabricante_produto_id', $id)
             ->update($fabricante);
     }
+
+    public function removeFabricantePorId(int $id): mixed
+    {
+        return FabricanteProduto::query()
+            ->where('fabricante_produto_id', $id)
+            ->delete();
+    }
 }
