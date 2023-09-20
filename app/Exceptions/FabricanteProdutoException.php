@@ -13,4 +13,7 @@ class FabricanteProdutoException extends Exception
     public static function fabricanteProdutoJaExiste(string $nomeFornecedorProduto): self {
         throw new self('O fabricante ' . strtoupper($nomeFornecedorProduto) . ' já existe no banco de dados, por favor, cadastro outro ou use-o', Response::HTTP_CONFLICT);
     }
+    public static function fabricanteInexiste(): self {
+        throw new self('O fabricante é inexistente', Response::HTTP_NOT_FOUND);
+    }
 }

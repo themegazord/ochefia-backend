@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\FabricanteProdutoException;
 use App\Http\Requests\Estoque\Fabricante\CadastroFabricanteProdutoRequest;
 use App\Services\Estoque\Fabricante\FabricanteProdutoService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -29,7 +30,7 @@ class FabricanteProdutoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CadastroFabricanteProdutoRequest $request)
+    public function store(CadastroFabricanteProdutoRequest $request): JsonResponse
     {
         try {
             $novoFabricante = $this->fabricanteProdutoService->cadastro($request->only([
@@ -47,9 +48,13 @@ class FabricanteProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        try {
+            return response()->json(["fabricante_produto" => $this->fabricanteProdutoService->fabricantePorId($id)]);
+        } catch (FabricanteProdutoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 
     /**

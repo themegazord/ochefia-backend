@@ -27,6 +27,14 @@ class FabricanteProdutoService
         return $this->fabricanteProdutoRepository->listagemFabricantes();
     }
 
+    /**
+     * @throws FabricanteProdutoException
+     */
+    public function fabricantePorId(int $id): FabricanteProduto|FabricanteProdutoException {
+        $fabricante = $this->fabricanteProdutoRepository->fabricantePorId($id);
+        return is_null($fabricante) ? FabricanteProdutoException::fabricanteInexiste() : $fabricante;
+    }
+
     private function consultaFabricanteProdutoPorNome(string $nomeFornecedorProduto): ?FabricanteProduto {
         return $this->fabricanteProdutoRepository->fabricanteProdutoPorNome($nomeFornecedorProduto);
     }

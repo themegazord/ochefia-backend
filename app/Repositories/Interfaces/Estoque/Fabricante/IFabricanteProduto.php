@@ -10,4 +10,5 @@ interface IFabricanteProduto
     public function cadastro(array $fabricante): FabricanteProduto;
     public function fabricanteProdutoPorNome(string $nomeFabricante): ?FabricanteProduto;
     public function listagemFabricantes(): Collection;
+    public function fabricantePorId(int $id): ?FabricanteProduto;
 }
