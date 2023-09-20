@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\FabricanteProdutoException;
 use App\Http\Requests\Estoque\Fabricante\CadastroFabricanteProdutoRequest;
+use App\Http\Requests\Estoque\Fabricante\EdicaoFabricanteProdutoRequest;
 use App\Services\Estoque\Fabricante\FabricanteProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -60,9 +61,14 @@ class FabricanteProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoFabricanteProdutoRequest $request, string $id)
     {
-        //
+        try {
+            $this->fabricanteProdutoService->atualizaFabricantePorId($request->only(['fabricante_produto_nome']), $id);
+            return response()->json(["mensagem" => "Fabricante atualizado com sucesso"]);
+        } catch (FabricanteProdutoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 
     /**

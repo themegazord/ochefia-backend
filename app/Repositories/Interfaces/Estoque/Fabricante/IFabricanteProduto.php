@@ -11,4 +11,5 @@ interface IFabricanteProduto
     public function fabricanteProdutoPorNome(string $nomeFabricante): ?FabricanteProduto;
     public function listagemFabricantes(): Collection;
     public function fabricantePorId(int $id): ?FabricanteProduto;
+    public function atualizaFabricantePorId(array $fabricante, int $id): int ;
 }

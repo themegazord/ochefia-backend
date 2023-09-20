@@ -35,6 +35,16 @@ class FabricanteProdutoService
         return is_null($fabricante) ? FabricanteProdutoException::fabricanteInexiste() : $fabricante;
     }
 
+    /**
+     * @throws FabricanteProdutoException
+     */
+    public function atualizaFabricantePorId(array $fabricante, int $id): int|FabricanteProdutoException
+    {
+        if (is_null($this->fabricanteProdutoRepository->fabricantePorId($id))) return FabricanteProdutoException::fabricanteInexiste();
+        $fabricante['fabricante_produto_nome'] = strtoupper($fabricante['fabricante_produto_nome']);
+        return $this->fabricanteProdutoRepository->atualizaFabricantePorId($fabricante, $id);
+    }
+
     private function consultaFabricanteProdutoPorNome(string $nomeFornecedorProduto): ?FabricanteProduto {
         return $this->fabricanteProdutoRepository->fabricanteProdutoPorNome($nomeFornecedorProduto);
     }

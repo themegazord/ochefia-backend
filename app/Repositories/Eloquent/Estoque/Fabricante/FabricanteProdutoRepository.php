@@ -40,4 +40,11 @@ class FabricanteProdutoRepository implements IFabricanteProduto
                 'fabricante_produto_nome'
             ]);
     }
+
+    public function atualizaFabricantePorId(array $fabricante, int $id): int
+    {
+        return FabricanteProduto::query()
+            ->where('fabricante_produto_id', $id)
+            ->update($fabricante);
+    }
 }
