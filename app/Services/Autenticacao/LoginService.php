@@ -5,10 +5,11 @@ namespace App\Services\Autenticacao;
 use App\Exceptions\AutenticacaoException;
 use App\Models\User;
 use App\Repositories\Interfaces\Autenticacao\IUsuario;
+use App\Repositories\Interfaces\Funcionarios\IFuncionario;
 use Illuminate\Support\Facades\Hash;
 
 class LoginService {
-    public function __construct(private readonly IUsuario $usuarioRepository)
+    public function __construct(private readonly IUsuario $usuarioRepository, private readonly  IFuncionario $funcionarioRepository)
     {
 
     }
@@ -37,6 +38,7 @@ class LoginService {
         return [
             'token' => $user->createToken($user->getAttribute('email'))->plainTextToken,
             'user' => $user->only(['id', 'name', 'email']),
+            'empresa_id' => $this->funcionarioRepository->funcionarioPorEmail($user->getAttribute('email'))->getAttribute('empresa_id')
         ];
     }
 

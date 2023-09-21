@@ -35,4 +35,11 @@ class FuncionarioRepository implements IFuncionario {
             ->where('cargo', 'DONO')
             ->get();
     }
+
+    public function funcionarioPorEmail(string $email): ?Funcionario
+    {
+        return Funcionario::query()
+            ->where('funcionario_email', $email)
+            ->first();
+    }
 }

@@ -62,7 +62,8 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->scoped(LoginService::class, function(Application $app) {
             $usuarioRepository = $app->make(IUsuario::class);
-            return new LoginService($usuarioRepository);
+            $funcionarioRepository = $app->make(IFuncionario::class);
+            return new LoginService($usuarioRepository, $funcionarioRepository);
         });
         $this->app->scoped(EmpresaService::class, function(Application $app) {
             $empresaRepository = $app->make(IEmpresa::class);
