@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\UnidadeException;
 use App\Http\Requests\Estoque\Unidade\CadastroUnidadeRequest;
+use App\Http\Requests\Estoque\Unidade\EdicaoUnidadeRequest;
 use App\Services\Estoque\Unidade\UnidadeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -58,9 +59,14 @@ class UnidadeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoUnidadeRequest $request, string $id): JsonResponse
     {
-        //
+        try {
+            $this->unidadeService->editaUnidadePorId($request->only('unidade_nome'), $id);
+            return response()->json(["mensagem" => "Unidade de medida atualizada com sucesso"]);
+        } catch (UnidadeException $ue) {
+            return response()->json(["erro" => $ue->getMessage()], $ue->getCode());
+        }
     }
 
     /**

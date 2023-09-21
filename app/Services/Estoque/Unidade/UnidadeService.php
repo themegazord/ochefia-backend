@@ -36,6 +36,15 @@ class UnidadeService
         return is_null($unidade) ? UnidadeException::unidadeInexistente() : $unidade;
     }
 
+    /**
+     * @throws UnidadeException
+     */
+    public function editaUnidadePorId(array $unidade, int $id): int|UnidadeException {
+        if (is_null($this->unidadeRepository->unidadePorId($id))) return UnidadeException::unidadeInexistente();
+        $unidade['unidade_nome'] = strtoupper($unidade['unidade_nome']);
+        return $this->unidadeRepository->editaUnidadePorId($unidade, $id);
+    }
+
     private function consultaUnidadePeloNome(string $unidade_nome): ?Unidade {
         return $this->unidadeRepository->unidadePorNome($unidade_nome);
     }

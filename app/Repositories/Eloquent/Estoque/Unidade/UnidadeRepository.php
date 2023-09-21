@@ -34,4 +34,10 @@ class UnidadeRepository implements IUnidade
             ->where('unidade_id', $id)
             ->first(["unidade_id", "unidade_nome"]);
     }
+    public function editaUnidadePorId(array $unidade, int $id): int
+    {
+        return Unidade::query()
+            ->where('unidade_id', $id)
+            ->update($unidade);
+    }
 }
