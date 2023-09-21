@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent\Estoque\Unidade;
 
 use App\Models\Unidade;
 use App\Repositories\Interfaces\Estoque\Unidade\IUnidade;
+use Illuminate\Database\Eloquent\Collection;
 
 class UnidadeRepository implements IUnidade
 {
@@ -19,5 +20,11 @@ class UnidadeRepository implements IUnidade
         return Unidade::query()
             ->where('unidade_nome', $unidade_nome)
             ->first();
+    }
+
+    public function listagemUnidade(): Collection
+    {
+        return Unidade::query()
+            ->get(['unidade_id', 'unidade_nome']);
     }
 }

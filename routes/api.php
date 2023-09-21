@@ -70,6 +70,7 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('unidade')->group(function() {
            Route::post('cadastro', [UnidadeController::class, 'store'])->name('unidade.store');
+           Route::get('listagem', [UnidadeController::class, 'index'])->name('unidade.index');
         });
         Route::prefix('classe_produto')->group(function() {
            Route::post('cadastro', [ClasseProdutoController::class, 'store'])->name('classe_produto.store');

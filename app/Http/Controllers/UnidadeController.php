@@ -22,7 +22,7 @@ class UnidadeController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(["unidades" => $this->unidadeService->listagemUnidade()]);
     }
 
     /**
