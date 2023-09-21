@@ -45,6 +45,10 @@
     - [Remocao de fabricante de produtos](/documentation/fabricante_produto/RemocaoFabricanteProdutoDoc.md)
   - Unidade de Medida
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
+    - [Listagem de unidade de medida](/documentation/unidade/ListagemUnidadeDoc.md)
+    - [Edicao de unidade de medida](/documentation/unidade/EdicaoUnidadeDoc.md)
+    - [Consulta de unidade de medida](/documentation/unidade/ConsultaUnidadeDoc.md)
+    - [Remocao de unidade de medida](/documentation/unidade/RemocaoUnidadeDoc.md)
   - Classe de Produtos
     - [Cadastro de classe de produtos](/documentation/classe_produto/CadastroClasseProdutoDoc.md)
     - [Listagem de classe de produtos](/documentation/classe_produto/ListagemClasseProdutoDoc.md)
