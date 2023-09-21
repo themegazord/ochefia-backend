@@ -72,8 +72,13 @@ class UnidadeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        try {
+            $this->unidadeService->removeUnidadePorId($id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (UnidadeException $ue) {
+            return response()->json(["erro" => $ue->getMessage()], $ue->getCode());
+        }
     }
 }

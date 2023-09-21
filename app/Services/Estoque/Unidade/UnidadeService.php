@@ -45,6 +45,14 @@ class UnidadeService
         return $this->unidadeRepository->editaUnidadePorId($unidade, $id);
     }
 
+    /**
+     * @throws UnidadeException
+     */
+    public function removeUnidadePorId(int $id): mixed {
+        if (is_null($this->unidadeRepository->unidadePorId($id))) return UnidadeException::unidadeInexistente();
+        return $this->unidadeRepository->removeUnidadePorId($id);
+    }
+
     private function consultaUnidadePeloNome(string $unidade_nome): ?Unidade {
         return $this->unidadeRepository->unidadePorNome($unidade_nome);
     }

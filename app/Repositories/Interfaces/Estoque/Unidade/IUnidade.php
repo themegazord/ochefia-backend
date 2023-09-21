@@ -12,4 +12,5 @@ interface IUnidade
     public function listagemUnidade(): Collection;
     public function unidadePorId(int $id): ?Unidade;
     public function editaUnidadePorId(array $unidade, int $id): int;
+    public function removeUnidadePorId(int $id): mixed;
 }

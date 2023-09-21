@@ -73,6 +73,7 @@ Route::prefix('v1')->group(function() {
            Route::get('listagem', [UnidadeController::class, 'index'])->name('unidade.index');
            Route::get('unidade/{id}', [UnidadeController::class, 'show'])->name('unidade.show');
            Route::put('unidade/{id}', [UnidadeController::class, 'update'])->name('unidade.update');
+           Route::delete('unidade/{id}', [UnidadeController::class, 'destroy'])->name('unidade.destroy');
         });
         Route::prefix('classe_produto')->group(function() {
            Route::post('cadastro', [ClasseProdutoController::class, 'store'])->name('classe_produto.store');

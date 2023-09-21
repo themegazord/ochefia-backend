@@ -40,4 +40,11 @@ class UnidadeRepository implements IUnidade
             ->where('unidade_id', $id)
             ->update($unidade);
     }
+
+    public function removeUnidadePorId(int $id): mixed
+    {
+        return Unidade::query()
+            ->where('unidade_id', $id)
+            ->delete();
+    }
 }
