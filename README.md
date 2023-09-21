@@ -37,8 +37,12 @@
     - [Edição de Sub Grupo de produtos](/documentation/sub_grupo_produto/EdicaoSubGrupoProdutoDoc.md)
     - [Consulta de Sub Grupo de produtos](/documentation/sub_grupo_produto/ConsultaSubGrupoProdutoDoc.md)
     - [Remocao de Sub Grupo de produtos](/documentation/sub_grupo_produto/RemocaoSubGrupoProdutoDoc.md)
-  - Fornecedor de Produtos
-    - [Cadastro de fornecedor de produtos](/documentation/fabricante_produto/CadastroFabricanteProdutoDoc.md)
+  - Fabricante de Produtos
+    - [Cadastro de fabricante de produtos](/documentation/fabricante_produto/CadastroFabricanteProdutoDoc.md)
+    - [Listagem de fabricante de produtos](/documentation/fabricante_produto/ListagemFabricanteProdutoDoc.md)
+    - [Edicao de fabricante de produtos](/documentation/fabricante_produto/EdicaoFabricanteProdutoDoc.md)
+    - [Consulta de fabricante de produtos](/documentation/fabricante_produto/ConsultaFabricanteProdutoDoc.md)
+    - [Remocao de fabricante de produtos](/documentation/fabricante_produto/RemocaoFabricanteProdutoDoc.md)
   - Unidade de Medida
     - [Cadastro de unidade de medida](/documentation/unidade/CadastroUnidadeDoc.md)
   - Classe de Produtos
