@@ -28,6 +28,14 @@ class UnidadeService
         return $this->unidadeRepository->listagemUnidade();
     }
 
+    /**
+     * @throws UnidadeException
+     */
+    public function unidadePorId(int $id): Unidade|UnidadeException {
+        $unidade = $this->unidadeRepository->unidadePorId($id);
+        return is_null($unidade) ? UnidadeException::unidadeInexistente() : $unidade;
+    }
+
     private function consultaUnidadePeloNome(string $unidade_nome): ?Unidade {
         return $this->unidadeRepository->unidadePorNome($unidade_nome);
     }

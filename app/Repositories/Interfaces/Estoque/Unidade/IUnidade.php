@@ -10,4 +10,5 @@ interface IUnidade
     public function cadastro(array $unidade): Unidade;
     public function unidadePorNome(string $unidade_nome): ?Unidade;
     public function listagemUnidade(): Collection;
+    public function unidadePorId(int $id): ?Unidade;
 }

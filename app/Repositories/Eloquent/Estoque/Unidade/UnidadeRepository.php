@@ -27,4 +27,11 @@ class UnidadeRepository implements IUnidade
         return Unidade::query()
             ->get(['unidade_id', 'unidade_nome']);
     }
+
+    public function unidadePorId(int $id): ?Unidade
+    {
+        return Unidade::query()
+            ->where('unidade_id', $id)
+            ->first(["unidade_id", "unidade_nome"]);
+    }
 }

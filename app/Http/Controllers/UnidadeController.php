@@ -20,7 +20,7 @@ class UnidadeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return response()->json(["unidades" => $this->unidadeService->listagemUnidade()]);
     }
@@ -46,9 +46,13 @@ class UnidadeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): JsonResponse
     {
-        //
+        try {
+            return response()->json(["unidade" => $this->unidadeService->unidadePorId($id)]);
+        } catch (UnidadeException $ue) {
+            return response()->json(["erro" => $ue->getMessage()], $ue->getCode());
+        }
     }
 
     /**
