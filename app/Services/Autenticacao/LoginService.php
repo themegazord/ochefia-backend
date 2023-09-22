@@ -35,10 +35,14 @@ class LoginService {
     }
 
     private function respostaCompleta(User $user): array {
+        $empresa = $this->funcionarioRepository->funcionarioPorEmail($user->getAttribute('email'));
         return [
             'token' => $user->createToken($user->getAttribute('email'))->plainTextToken,
             'user' => $user->only(['id', 'name', 'email']),
-            'empresa_id' => $this->funcionarioRepository->funcionarioPorEmail($user->getAttribute('email'))->getAttribute('empresa_id')
+            'empresa_token' => base64_encode(json_encode([
+                "empresa_id" => $empresa->getAttribute("empresa_id"),
+                "empresa_cnpj" => $empresa->empresa->empresa_cnpj
+            ]))
         ];
     }
 
