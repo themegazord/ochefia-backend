@@ -19,9 +19,9 @@ class ProdutoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $empresa): JsonResponse
     {
-        //
+        return response()->json(["produtos" => $this->produtoService->listagemProdutosPorEmpresa(json_decode(base64_decode($empresa)))]);
     }
 
     /**
