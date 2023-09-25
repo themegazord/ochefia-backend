@@ -57,14 +57,9 @@ class FuncionarioService {
         if ($funcionario['cargo'] === 'DONO') $this->verificaSeAQuantidadeDeDonosExcedeu($funcionario['empresa_id']);
         $usuarioNovo = $this->gerandoNovoUsuario($funcionario['funcionario_nome'], $funcionario['funcionario_email'], $funcionario['funcionario_senha']);
         $funcionario['usuario_id'] = $usuarioNovo->getAttribute('id');
-        $login = $this->loginService->login([
-            'email' => $funcionario['funcionario_email'],
-            'password' => $funcionario['funcionario_senha']
-        ]);
         $funcionario['funcionario_senha'] = $usuarioNovo->getAttribute('password');
         return [
             'funcionario' => $this->funcionarioRepository->cadastro($funcionario),
-            'login' => $login
         ];
     }
 
