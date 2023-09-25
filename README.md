@@ -57,6 +57,7 @@
     - [Remoção de classe de produtos](/documentation/classe_produto/RemocaoClasseProdutoDoc.md)
   - Produtos
     - [Cadastro de produtos](/documentation/produto/CadastroProdutoDoc.md)
+    - [Listagem de produtos](/documentation/produto/ListagemProdutoDoc.md)
   - Prazo de pagamento
     - [Cadastro de prazo de pagamento](/documentation/prazo_pgto/CadastroPrazoPgtoDoc.md)
   - Dias de Prazo de Pagamento
