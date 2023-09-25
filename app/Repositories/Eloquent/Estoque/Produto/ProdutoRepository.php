@@ -33,6 +33,7 @@ class ProdutoRepository implements IProduto
             ->where('empresa_id', $empresa->empresa_id)
             ->where('produto_id', $produto_id)
             ->first([
+                'produto_id',
                 'empresa_id',
                 'grupo_produto_id',
                 'sub_grupo_produto_id',
