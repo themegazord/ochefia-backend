@@ -25,4 +25,8 @@ class Empresa extends Model
     public function produto(): HasMany {
         return $this->hasMany(Produto::class, 'empresa_id', 'empresa_id');
     }
+
+    public function prazoPgtos(): HasMany {
+        return $this->hasMany(PrazoPgto::class, 'empresa_id', 'empresa_id');
+    }
 }
