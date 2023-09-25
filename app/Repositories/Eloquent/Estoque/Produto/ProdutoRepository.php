@@ -22,7 +22,8 @@ class ProdutoRepository implements IProduto
             ->get([
                 "produto_id",
                 "produto_nome",
-                "produto_estoque"
+                "produto_estoque",
+                "produto_preco"
             ]);
     }
 }

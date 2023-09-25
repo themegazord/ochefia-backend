@@ -26,7 +26,7 @@ class CadastroProdutoRequest extends FormRequest
             'empresa_id' => 'required|integer|exists:empresas,empresa_id',
             'grupo_produto_id' => 'required|integer|exists:grupo_produtos,grupo_produto_id',
             'sub_grupo_produto_id' => 'required|integer|exists:sub_grupo_produtos,sub_grupo_produto_id',
-            'fornecedor_produto_id' => 'required|integer|exists:fornecedor_produto,fornecedor_produto_id',
+            'fabricante_produto_id' => 'required|integer|exists:fabricante_produto,fabricante_produto_id',
             'classe_produto_id' => 'required|integer|exists:classe_produto,classe_produto_id',
             'unidade_id' => 'required|integer|exists:unidades,unidade_id',
             'produto_nome' => 'required|string|max:155',
@@ -45,7 +45,7 @@ class CadastroProdutoRequest extends FormRequest
             'empresa_id.exists' => RequestPadroes::mensagemExists('empresas'),
             'grupo_produto_id.exists' => RequestPadroes::mensagemExists('grupo_produtos'),
             'sub_grupo_produto_id.exists' => RequestPadroes::mensagemExists('sub_grupo_produtos'),
-            'fornecedor_produto_id.exists' => RequestPadroes::mensagemExists('fornecedor_produto'),
+            'fabricante_produto_id.exists' => RequestPadroes::mensagemExists('fabricante_produto'),
             'classe_produto_id.exists' => RequestPadroes::mensagemExists('classe_produto'),
             'unidade_id.exists' => RequestPadroes::mensagemExists('unidades'),
             'produto_nome.max' => RequestPadroes::mensagemMax(155)

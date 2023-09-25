@@ -34,7 +34,7 @@ class ProdutoController extends Controller
                 'empresa_id',
                 'grupo_produto_id',
                 'sub_grupo_produto_id',
-                'fornecedor_produto_id',
+                'fabricante_produto_id',
                 'classe_produto_id',
                 'unidade_id',
                 'produto_nome',
@@ -46,7 +46,7 @@ class ProdutoController extends Controller
                 'produto' => $produtoNovo
             ], Response::HTTP_CREATED);
         } catch (\Exception $e) {
-            return response()->json(['erro' => $e->getMessage()], $e->getCode());
+            return response()->json(['erro' => $e->getMessage()]);
         }
     }
 
