@@ -32,4 +32,13 @@ class ProdutoService
         $produto = $this->produtoRepository->consultaProduto($empresa, $produto_id);
         return is_null($produto) ? ProdutoException::produtoInexistente() : $produto;
     }
+
+    /**
+     * @throws ProdutoException
+     */
+    public function edicaoProduto(array $produto, object $empresa, string $produto_id): int|ProdutoException {
+        if (is_null($this->produtoRepository->consultaProduto($empresa, $produto_id))) return ProdutoException::produtoInexistente();
+        if ($produto['empresa_id'] != $empresa->empresa_id) return ProdutoException::produtoNaoExisteNaEmpresa();
+        return $this->produtoRepository->edicaoProduto($produto, $empresa, $produto_id);
+    }
 }

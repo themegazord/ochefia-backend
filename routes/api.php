@@ -86,6 +86,7 @@ Route::prefix('v1')->group(function() {
            Route::post('cadastro', [ProdutoController::class, 'store'])->name('produto.store');
            Route::get('listagem/{empresa}', [ProdutoController::class, 'index'])->name('produto.index');
            Route::get('consulta/{empresa}/{id}', [ProdutoController::class, 'show'])->name('produto.show');
+           Route::put('edicao/{empresa}/{id}', [ProdutoController::class, 'update'])->name('produto.update');
         });
         Route::prefix('prazopgto')->group(function() {
            Route::post('cadastro', [PrazoPgtoController::class, 'store'])->name('prazopgto.store');

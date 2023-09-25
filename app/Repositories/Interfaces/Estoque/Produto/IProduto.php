@@ -10,4 +10,5 @@ interface IProduto
     public function cadastro(array $produto): Produto;
     public function listagemProdutos(object $empresa): Collection;
     public function consultaProduto(object $empresa, string $produto_id): ?Produto;
+    public function edicaoProduto(array $produto, object $empresa, string $produto_id): int;
 }

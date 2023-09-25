@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ProdutoException;
 use App\Http\Requests\Estoque\Produto\CadastroProdutoRequest;
+use App\Http\Requests\Estoque\Produto\EdicaoProdutoRequest;
 use App\Services\Estoque\Produto\ProdutoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -66,9 +67,24 @@ class ProdutoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoProdutoRequest $request, string $empresa_token, string $id)
     {
-        //
+        try {
+            $this->produtoService->edicaoProduto($request->only([
+                'empresa_id',
+                'grupo_produto_id',
+                'sub_grupo_produto_id',
+                'fabricante_produto_id',
+                'classe_produto_id',
+                'unidade_id',
+                'produto_nome',
+                'produto_estoque',
+                'produto_preco'
+            ]), json_decode(base64_decode($empresa_token)), $id);
+            return response()->json(["mensagem" => "Produto atualizado com sucesso."]);
+        } catch (ProdutoException $pe) {
+            return response()->json(["erro" => $pe->getMessage()], $pe->getCode());
+        }
     }
 
     /**

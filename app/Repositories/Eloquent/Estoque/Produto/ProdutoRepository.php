@@ -44,4 +44,12 @@ class ProdutoRepository implements IProduto
                 'produto_preco'
             ]);
     }
+
+    public function edicaoProduto(array $produto, object $empresa, string $produto_id): int
+    {
+        return Produto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('produto_id', $produto_id)
+            ->update($produto);
+    }
 }
