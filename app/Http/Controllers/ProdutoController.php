@@ -90,8 +90,13 @@ class ProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $empresa_token, string $id)
     {
-        //
+        try {
+            $this->produtoService->remocaoProduto(json_decode(base64_decode($empresa_token)), $id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (ProdutoException $pe) {
+            return response()->json(["erro" => $pe->getMessage()], $pe->getCode());
+        }
     }
 }

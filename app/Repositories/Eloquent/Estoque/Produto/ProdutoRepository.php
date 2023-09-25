@@ -53,4 +53,12 @@ class ProdutoRepository implements IProduto
             ->where('produto_id', $produto_id)
             ->update($produto);
     }
+
+    public function remocaoProduto(object $empresa, string $produto_id): mixed
+    {
+        return Produto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('produto_id', $produto_id)
+            ->delete();
+    }
 }

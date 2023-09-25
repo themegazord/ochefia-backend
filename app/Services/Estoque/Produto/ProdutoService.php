@@ -41,4 +41,13 @@ class ProdutoService
         if ($produto['empresa_id'] != $empresa->empresa_id) return ProdutoException::produtoNaoExisteNaEmpresa();
         return $this->produtoRepository->edicaoProduto($produto, $empresa, $produto_id);
     }
+
+    /**
+     * @throws ProdutoException
+     */
+    public function remocaoProduto(object $empresa, string $produto_id): mixed {
+        // TODO: adicionar futuramente validação se o produto tem movimentação ou não
+        if (is_null($this->produtoRepository->consultaProduto($empresa, $produto_id))) return ProdutoException::produtoInexistente();
+        return $this->produtoRepository->remocaoProduto($empresa, $produto_id);
+    }
 }
