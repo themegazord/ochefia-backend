@@ -60,6 +60,7 @@
     - [Listagem de produtos](/documentation/produto/ListagemProdutoDoc.md)
     - [Edicao de produto](/documentation/produto/EdicaoProdutoDoc.md)
     - [Consulta de produto](/documentation/produto/ConsultaProdutoDoc.md)
+    - [Remoção de produto](/documentation/produto/RemocaoProdutoDoc.md)
   - Prazo de pagamento
     - [Cadastro de prazo de pagamento](/documentation/prazo_pgto/CadastroPrazoPgtoDoc.md)
   - Dias de Prazo de Pagamento
