@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ProdutoException;
 use App\Http\Requests\Estoque\Produto\CadastroProdutoRequest;
 use App\Services\Estoque\Produto\ProdutoService;
 use Illuminate\Http\JsonResponse;
@@ -53,9 +54,13 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $empresa_token, string $id)
     {
-        //
+        try {
+            return response()->json(["produto" => $this->produtoService->consultaProduto(json_decode(base64_decode($empresa_token)), $id)]);
+        } catch (ProdutoException $pe) {
+            return response()->json(["erro" => $pe->getMessage()], $pe->getCode());
+        }
     }
 
     /**

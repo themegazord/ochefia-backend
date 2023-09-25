@@ -26,4 +26,22 @@ class ProdutoRepository implements IProduto
                 "produto_preco"
             ]);
     }
+
+    public function consultaProduto(object $empresa, string $produto_id): ?Produto
+    {
+        return Produto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('produto_id', $produto_id)
+            ->first([
+                'empresa_id',
+                'grupo_produto_id',
+                'sub_grupo_produto_id',
+                'fabricante_produto_id',
+                'classe_produto_id',
+                'unidade_id',
+                'produto_nome',
+                'produto_estoque',
+                'produto_preco'
+            ]);
+    }
 }
