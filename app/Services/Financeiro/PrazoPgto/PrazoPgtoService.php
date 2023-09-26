@@ -26,7 +26,11 @@ class PrazoPgtoService
     }
 
     public function listagemPrazoPgto(object $empresa): Collection {
-        return $this->prazoPgtoRepository->listagemPrazoPgto($empresa);
+        $prazos = $this->prazoPgtoRepository->listagemPrazoPgto($empresa);
+        foreach ($prazos as $prazo) {
+            $prazo["prazopgto_tipo"] = $this->facilitadorTipoFront($prazo["prazopgto_tipo"]);
+        }
+        return $prazos;
     }
 
     /**
@@ -39,6 +43,15 @@ class PrazoPgtoService
             'P' => TiposPrazoPgtoEnum::A_PRAZO,
             'E' => TiposPrazoPgtoEnum::ESPECIFICAR,
             default => PrazoPgtoException::tipoIncompativelComOsPadroes($tipo)
+        };
+    }
+
+    private function facilitadorTipoFront(string $tipo): string|PrazoPgtoException {
+        return match ($tipo) {
+            'A_VISTA' => 'A Vista',
+            'A_PRAZO' => 'A Prazo',
+            'ESPECIFICAR' => 'A Especificar',
+            default => PrazoPgtoException::tipoFormaIncompativelComOsPadroes($tipo)
         };
     }
 
