@@ -20,7 +20,7 @@ class PrazoPgtoRepository implements IPrazoPgto
         return PrazoPgto::query()
             ->where('empresa_id', $empresa->empresa_id)
             ->get([
-                'empresa_id',
+                'prazopgto_id',
                 'prazopgto_nome',
                 'prazopgto_tipo',
                 'prazopgto_tipoforma'
