@@ -14,6 +14,7 @@ class PrazoPgto extends Model
     protected $table = 'prazo_pgto';
 
     protected $fillable = [
+        'empresa_id',
         'prazopgto_nome',
         'prazopgto_tipo',
         'prazopgto_tipoforma'
