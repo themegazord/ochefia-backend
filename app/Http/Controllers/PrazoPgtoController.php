@@ -20,9 +20,9 @@ class PrazoPgtoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $empresa_token)
     {
-        //
+        return response()->json(["prazospgto" => $this->prazoPgtoService->listagemPrazoPgto(json_decode(base64_decode($empresa_token)))]);
     }
 
     /**
@@ -32,6 +32,7 @@ class PrazoPgtoController extends Controller
     {
         try {
             $novoPrazoPgto = $this->prazoPgtoService->cadastro($request->only([
+                'empresa_id',
                 'prazopgto_nome',
                 'prazopgto_tipo',
                 'prazopgto_tipoforma'

@@ -6,6 +6,7 @@ use App\Enums\Financeiro\PrazoPgto\TiposFormasPrazoPgtoEnum;
 use App\Enums\Financeiro\PrazoPgto\TiposPrazoPgtoEnum;
 use App\Exceptions\PrazoPgtoException;
 use App\Repositories\Interfaces\Financeiro\PrazoPgto\IPrazoPgto;
+use Illuminate\Database\Eloquent\Collection;
 
 class PrazoPgtoService
 {
@@ -22,6 +23,10 @@ class PrazoPgtoService
         $prazoPgto['prazopgto_tipoforma'] = $this->validaEDefineOTipoFormaCompativel($prazoPgto['prazopgto_tipoforma']);
         $prazoPgto['prazopgto_tipo'] = $this->validaEDefineOTipoCompativel($prazoPgto['prazopgto_tipo'])->name;
         return $this->prazoPgtoRepository->cadastro($prazoPgto);
+    }
+
+    public function listagemPrazoPgto(object $empresa): Collection {
+        return $this->prazoPgtoRepository->listagemPrazoPgto($empresa);
     }
 
     /**
