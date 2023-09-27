@@ -21,4 +21,8 @@ class PrazoPgtoDias extends Model
     {
         return $this->belongsTo(PrazoPgto::class, 'prazopgto_id', 'prazopgto_id');
     }
+
+    public function empresas(): BelongsTo {
+        return $this->belongsTo(Empresa::class, 'empresa_id', 'empresa_id');
+    }
 }

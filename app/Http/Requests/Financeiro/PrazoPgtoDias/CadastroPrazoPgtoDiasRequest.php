@@ -24,6 +24,7 @@ class CadastroPrazoPgtoDiasRequest extends FormRequest
     {
         return [
             'parcelas' => 'required|array',
+            'parcelas.*.empresa_id' => 'integer|required|exists:empresas,empresa_id',
             'parcelas.*.prazopgto_id' => 'integer|required|exists:prazo_pgto,prazopgto_id',
             'parcelas.*.dias' => 'integer|required'
         ];
@@ -35,7 +36,8 @@ class CadastroPrazoPgtoDiasRequest extends FormRequest
             'required' => RequestPadroes::$required,
             'array' => RequestPadroes::$array,
             'integer' => RequestPadroes::$integer,
-            'parcelas.*.prazopgto_id.exists' => RequestPadroes::mensagemExists('prazo de pagamentos')
+            'parcelas.*.prazopgto_id.exists' => RequestPadroes::mensagemExists('prazo de pagamentos'),
+            'parcelas.*.empresa_id.exists' => RequestPadroes::mensagemExists('empresa')
         ];
     }
 }
