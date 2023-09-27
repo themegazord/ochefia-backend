@@ -25,12 +25,7 @@ class PrazoPgtoDiasService
         return $prazoPgtoDias['parcelas'];
     }
 
-    /**
-     * @throws PrazoPgtoDiasException
-     */
-    public function consultaPrazoPgtoDiasPorEmpresa(object $empresa, string $prazopgto_id): Collection|PrazoPgtoDiasException {
-        $prazoPgtoDias = $this->prazoPgtoDiasRepository->consultaPrazoPgtoDiasPorEmpresa($empresa, $prazopgto_id);
-        if (empty($prazoPgtoDias->toArray())) return PrazoPgtoDiasException::prazoPgtoDiasInexistente();
-        return $prazoPgtoDias;
+    public function consultaPrazoPgtoDiasPorEmpresa(object $empresa, string $prazopgto_id): Collection {
+        return $this->prazoPgtoDiasRepository->consultaPrazoPgtoDiasPorEmpresa($empresa, $prazopgto_id);
     }
 }

@@ -42,13 +42,9 @@ class PrazoPgtoDiasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $empresa, string $prazopgto_id)
+    public function show(string $empresa, string $prazopgto_id): JsonResponse
     {
-        try {
-            return response()->json(["parcelas" => $this->prazoPgtoDiasService->consultaPrazoPgtoDiasPorEmpresa(json_decode(base64_decode($empresa)), $prazopgto_id)]);
-        } catch (PrazoPgtoDiasException $ppde) {
-            return response()->json(["erro" => $ppde->getMessage()], $ppde->getCode());
-        }
+        return response()->json(["parcelas" => $this->prazoPgtoDiasService->consultaPrazoPgtoDiasPorEmpresa(json_decode(base64_decode($empresa)), $prazopgto_id)]);
     }
 
     /**
