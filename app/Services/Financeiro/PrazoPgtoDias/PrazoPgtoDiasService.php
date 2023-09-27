@@ -26,7 +26,7 @@ class PrazoPgtoDiasService
         return $this->prazoPgtoDiasRepository->consultaPrazoPgtoDiasPorEmpresa($empresa, $prazopgto_id);
     }
 
-    public function alteraPrazosPgtoDias(object $empresa, array $prazoPgtoDias, string $prazopgto_id): mixed {
+    public function alteraPrazosPgtoDias(object $empresa, array $prazoPgtoDias, string $prazopgto_id): array {
         $this->prazoPgtoDiasRepository->deletePrazoPgtoDiasPorEmpresa($empresa, $prazopgto_id);
         return $this->cadastro($prazoPgtoDias);
     }
