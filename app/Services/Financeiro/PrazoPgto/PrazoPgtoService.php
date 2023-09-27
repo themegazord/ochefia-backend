@@ -57,6 +57,14 @@ class PrazoPgtoService
     /**
      * @throws PrazoPgtoException
      */
+    public function removePrazoPgtoPorEmpresa(object $empresa, string $prazopgto_id): mixed {
+        if (is_null($this->prazoPgtoRepository->consultaPrazoPgtoPorEmpresa($empresa, $prazopgto_id))) return PrazoPgtoException::prazoPgtoInexistente();
+        return $this->prazoPgtoRepository->removePrazoPgtoPorEmpresa($empresa, $prazopgto_id);
+    }
+
+    /**
+     * @throws PrazoPgtoException
+     */
     private function validaEDefineOTipoCompativel(string $tipo): TiposPrazoPgtoEnum|PrazoPgtoException
     {
         return match ($tipo) {

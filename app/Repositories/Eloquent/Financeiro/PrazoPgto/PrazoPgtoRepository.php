@@ -48,4 +48,12 @@ class PrazoPgtoRepository implements IPrazoPgto
             ->where('prazopgto_id', $prazopgto_id)
             ->update($prazopgto);
     }
+
+    public function removePrazoPgtoPorEmpresa(object $empresa, string $prazopgto_id): mixed
+    {
+        return PrazoPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('prazopgto_id', $prazopgto_id)
+            ->delete();
+    }
 }

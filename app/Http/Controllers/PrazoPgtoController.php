@@ -80,8 +80,13 @@ class PrazoPgtoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $empresa, string $id): JsonResponse
     {
-        //
+        try {
+            $this->prazoPgtoService->removePrazoPgtoPorEmpresa(json_decode(base64_decode($empresa)), $id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (PrazoPgtoException $ppe) {
+            return response()->json(["erro" => $ppe->getMessage()], $ppe->getCode());
+        }
     }
 }

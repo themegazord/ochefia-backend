@@ -94,6 +94,7 @@ Route::prefix('v1')->group(function() {
            Route::get('listagem/{empresa}', [PrazoPgtoController::class, 'index'])->name('prazopgto.index');
            Route::get('consulta/{empresa}/{id}', [PrazoPgtoController::class, 'show'])->name('prazopgto.show');
            Route::put('edicao/{empresa}/{id}', [PrazoPgtoController::class, 'update'])->name('prazopgto.update');
+           Route::delete('remocao/{empresa}/{id}', [PrazoPgtoController::class, 'destroy'])->name('prazopgto.destroy');
         });
         Route::prefix('prazopgtodias')->group(function() {
            Route::post('cadastro', [PrazoPgtoDiasController::class, 'store'])->name('prazopgtodias.store');
