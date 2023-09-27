@@ -21,6 +21,7 @@ class PrazoPgtoDiasRepository implements IPrazoPgtoDias
             ->where('empresa_id', $empresa->empresa_id)
             ->where('prazopgto_id', $prazopgto_id)
             ->get([
+                'empresa_id',
                 'prazopgto_dias_id',
                 'prazopgto_id',
                 'dias'

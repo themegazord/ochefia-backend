@@ -34,6 +34,7 @@ class PrazoPgtoRepository implements IPrazoPgto
             ->where('prazopgto_id', $prazopgto_id)
             ->first([
                 'prazopgto_id',
+                'empresa_id',
                 'prazopgto_nome',
                 'prazopgto_tipo',
                 'prazopgto_tipoforma'
