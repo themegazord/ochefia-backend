@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\PrazoPgtoException;
 use App\Http\Requests\Financeiro\PrazoPgto\CadastroPrazoPgtoRequest;
+use App\Http\Requests\Financeiro\PrazoPgto\EdicaoPrazoPgtoRequest;
 use App\Services\Financeiro\PrazoPgto\PrazoPgtoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -61,9 +62,19 @@ class PrazoPgtoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoPrazoPgtoRequest $request, string $empresa, string $id): JsonResponse
     {
-        //
+        try {
+            $this->prazoPgtoService->editaPrazoPgtoPorEmpresa($request->only([
+                'empresa_id',
+                'prazopgto_nome',
+                'prazopgto_tipo',
+                'prazopgto_tipoforma'
+            ]), json_decode(base64_decode($empresa)), $id);
+            return response()->json(["mensagem" => "Prazo de pagamento atualizado com sucesso"]);
+        } catch (PrazoPgtoException $ppe) {
+            return response()->json(["erro" => $ppe->getMessage()], $ppe->getCode());
+        }
     }
 
     /**

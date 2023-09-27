@@ -47,6 +47,16 @@ class PrazoPgtoService
     /**
      * @throws PrazoPgtoException
      */
+    public function editaPrazoPgtoPorEmpresa(array $prazopgto, object $empresa, string $prazopgto_id): int|PrazoPgtoException {
+        if (is_null($this->prazoPgtoRepository->consultaPrazoPgtoPorEmpresa($empresa, $prazopgto_id))) return PrazoPgtoException::prazoPgtoInexistente();
+        $prazopgto['prazopgto_tipoforma'] = $this->validaEDefineOTipoFormaCompativel($prazopgto['prazopgto_tipoforma']);
+        $prazopgto['prazopgto_tipo'] = $this->validaEDefineOTipoCompativel($prazopgto['prazopgto_tipo'])->name;
+        return $this->prazoPgtoRepository->edicaoPrazoPgtoPorEmpresa($prazopgto, $empresa, $prazopgto_id);
+    }
+
+    /**
+     * @throws PrazoPgtoException
+     */
     private function validaEDefineOTipoCompativel(string $tipo): TiposPrazoPgtoEnum|PrazoPgtoException
     {
         return match ($tipo) {

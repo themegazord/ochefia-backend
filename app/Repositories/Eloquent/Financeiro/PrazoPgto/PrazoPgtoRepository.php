@@ -40,4 +40,12 @@ class PrazoPgtoRepository implements IPrazoPgto
                 'prazopgto_tipoforma'
             ]);
     }
+
+    public function edicaoPrazoPgtoPorEmpresa(array $prazopgto, object $empresa, string $prazopgto_id): int
+    {
+        return PrazoPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('prazopgto_id', $prazopgto_id)
+            ->update($prazopgto);
+    }
 }
