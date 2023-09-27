@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\PrazoPgtoDiasException;
 use App\Http\Requests\Financeiro\PrazoPgtoDias\CadastroPrazoPgtoDiasRequest;
+use App\Http\Requests\Financeiro\PrazoPgtoDias\EdicaoPrazoPgtoDiasRequest;
 use App\Services\Financeiro\PrazoPgtoDias\PrazoPgtoDiasService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -50,9 +51,12 @@ class PrazoPgtoDiasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoPrazoPgtoDiasRequest $request, string $empresa, string $prazopgto_id): JsonResponse
     {
-        //
+        return response()->json([
+            "mensagem" => "Dias para prazo de pagamento alterados com sucesso",
+            "parcelas" => $this->prazoPgtoDiasService->alteraPrazosPgtoDias(json_decode(base64_decode($empresa)), $request->only(["parcelas"]), $prazopgto_id)
+        ]);
     }
 
     /**

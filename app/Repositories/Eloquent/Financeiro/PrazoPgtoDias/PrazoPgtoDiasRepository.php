@@ -27,4 +27,12 @@ class PrazoPgtoDiasRepository implements IPrazoPgtoDias
                 'dias'
             ]);
     }
+
+    public function deletePrazoPgtoDiasPorEmpresa(object $empresa, string $prazopgto_id): mixed
+    {
+        return PrazoPgtoDias::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('prazopgto_id', $prazopgto_id)
+            ->delete();
+    }
 }

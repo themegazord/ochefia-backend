@@ -97,6 +97,7 @@ Route::prefix('v1')->group(function() {
         Route::prefix('prazopgtodias')->group(function() {
            Route::post('cadastro', [PrazoPgtoDiasController::class, 'store'])->name('prazopgtodias.store');
            Route::get('consulta/{empresa}/{id}', [PrazoPgtoDiasController::class, 'show'])->name('prazopgtodias.show');
+           Route::put('edicao/{empresa}/{id}', [PrazoPgtoDiasController::class, 'update'])->name('prazopgtodias.update');
         });
         Route::prefix('formapgto')->group(function() {
            Route::post('cadastro', [FormaPgtoController::class, 'store'])->name('formapgto.store');
