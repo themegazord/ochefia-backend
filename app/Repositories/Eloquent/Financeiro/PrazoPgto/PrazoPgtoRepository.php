@@ -26,4 +26,17 @@ class PrazoPgtoRepository implements IPrazoPgto
                 'prazopgto_tipoforma'
             ]);
     }
+
+    public function consultaPrazoPgtoPorEmpresa(object $empresa, string $prazopgto_id): ?PrazoPgto
+    {
+        return PrazoPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('prazopgto_id', $prazopgto_id)
+            ->first([
+                'prazopgto_id',
+                'prazopgto_nome',
+                'prazopgto_tipo',
+                'prazopgto_tipoforma'
+            ]);
+    }
 }

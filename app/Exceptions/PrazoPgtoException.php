@@ -17,4 +17,7 @@ class PrazoPgtoException extends Exception
     public static function tipoFormaIncompativelComOsPadroes(string $tipoForma): self {
         throw new self('O tipo de forma de pagamento ' . $tipoForma . ' não é compativel com os padrões do sistema, insira um válido', Response::HTTP_CONFLICT);
     }
+    public static function prazoPgtoInexistente(): self {
+        throw new self('O prazo de pagamento não existe.', Response::HTTP_NOT_FOUND);
+    }
 }

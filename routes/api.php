@@ -92,9 +92,11 @@ Route::prefix('v1')->group(function() {
         Route::prefix('prazopgto')->group(function() {
            Route::post('cadastro', [PrazoPgtoController::class, 'store'])->name('prazopgto.store');
            Route::get('listagem/{empresa}', [PrazoPgtoController::class, 'index'])->name('prazopgto.index');
+           Route::get('consulta/{empresa}/{id}', [PrazoPgtoController::class, 'show'])->name('prazopgto.show');
         });
         Route::prefix('prazopgtodias')->group(function() {
            Route::post('cadastro', [PrazoPgtoDiasController::class, 'store'])->name('prazopgtodias.store');
+           Route::post('consulta/{empresa}', [PrazoPgtoDiasController::class, 'show'])->name('prazopgtodias.show');
         });
         Route::prefix('formapgto')->group(function() {
            Route::post('cadastro', [FormaPgtoController::class, 'store'])->name('formapgto.store');

@@ -36,6 +36,17 @@ class PrazoPgtoService
     /**
      * @throws PrazoPgtoException
      */
+    public function consultaPrazoPgtoPorEmpresa(object $empresa, string $prazopgto_id) {
+        $prazo = $this->prazoPgtoRepository->consultaPrazoPgtoPorEmpresa($empresa, $prazopgto_id);
+        if (is_null($prazo)) return PrazoPgtoException::prazoPgtoInexistente();
+        $prazo["prazopgto_tipo"] = $this->facilitadorTipoFront($prazo["prazopgto_tipo"]);
+        $prazo["prazopgto_tipoforma"] = $this->facilitadorTipoFormaFront($prazo["prazopgto_tipoforma"]);
+        return $prazo;
+    }
+
+    /**
+     * @throws PrazoPgtoException
+     */
     private function validaEDefineOTipoCompativel(string $tipo): TiposPrazoPgtoEnum|PrazoPgtoException
     {
         return match ($tipo) {
@@ -67,6 +78,24 @@ class PrazoPgtoService
                 'BOL' => TiposFormasPrazoPgtoEnum::BOLETO->name,
                 'VAL' => TiposFormasPrazoPgtoEnum::VALE_ALIMENTACAO->name,
                 'VRE' => TiposFormasPrazoPgtoEnum::VALE_REFEICAO->name,
+                default => PrazoPgtoException::tipoFormaIncompativelComOsPadroes($tipo)
+            };
+        }
+        return implode(',', $novoArrayTipoForma);
+    }
+
+    /**
+     * @throws PrazoPgtoException
+     */
+    private function facilitadorTipoFormaFront(string $tipoForma): string|PrazoPgtoException {
+        foreach (explode(',', $tipoForma) as $tipo) {
+            $novoArrayTipoForma[] = match ($tipo) {
+                'DINHEIRO' => TiposFormasPrazoPgtoEnum::DINHEIRO->value,
+                'CARTAO_CREDITO' => TiposFormasPrazoPgtoEnum::CARTAO_CREDITO->value,
+                'CARTAO_DEBITO' => TiposFormasPrazoPgtoEnum::CARTAO_DEBITO->value,
+                'BOLETO' => TiposFormasPrazoPgtoEnum::BOLETO->value,
+                'VALE_ALIMENTACAO' => TiposFormasPrazoPgtoEnum::VALE_ALIMENTACAO->value,
+                'VALE_REFEICAO' => TiposFormasPrazoPgtoEnum::VALE_REFEICAO->value,
                 default => PrazoPgtoException::tipoFormaIncompativelComOsPadroes($tipo)
             };
         }

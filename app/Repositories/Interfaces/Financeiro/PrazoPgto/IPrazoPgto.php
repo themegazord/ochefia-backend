@@ -9,4 +9,5 @@ interface IPrazoPgto
 {
     public function cadastro(array $prazoPgto): PrazoPgto;
     public function listagemPrazoPgto(object $empresa): Collection;
+    public function consultaPrazoPgtoPorEmpresa(object $empresa, string $prazopgto_id): ?PrazoPgto;
 }
