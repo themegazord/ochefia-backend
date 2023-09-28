@@ -1,0 +1,90 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "O Chefia",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/v1/formapgto/listagem/{token}": {
+            "get": {
+                "tags": [
+                    "formapgto"
+                ],
+                "summary": "Retorna a lista de formas de pagamento da empresa",
+                "description": "Retorna a lista de formas de pagamento da empresa",
+                "operationId": "listagemFormaPgto",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "O token da empresa enviado no login do funcionário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "token": {
+                                "summary": "Token da empresa",
+                                "value": "eyJlbXByZXNhX2lkIjoxLCJlbXByZXNhX2NucGoiOiI0NjUxOTQyMzAwMDExMyJ9"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Updates a user",
+                "description": "Updates a user",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Parameter with mutliple examples",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            },
+                            "uuid": {
+                                "summary": "An UUID value.",
+                                "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}

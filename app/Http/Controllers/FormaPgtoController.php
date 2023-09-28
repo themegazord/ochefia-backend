@@ -9,23 +9,18 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class FormaPgtoController extends Controller
 {
     public function __construct(private readonly FormaPgtoService $formaPgtoService)
     {
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(string $empresa): JsonResponse
     {
         return response()->json(["formas" => $this->formaPgtoService->listagemFormaPgtoPorEmpresa(json_decode(base64_decode($empresa)))]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CadastroFormPgtoRequest $request): JsonResponse
     {
         try {
@@ -61,9 +56,6 @@ class FormaPgtoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
