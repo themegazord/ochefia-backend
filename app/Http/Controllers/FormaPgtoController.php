@@ -18,9 +18,9 @@ class FormaPgtoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $empresa): JsonResponse
     {
-        //
+        return response()->json(["formas" => $this->formaPgtoService->listagemFormaPgtoPorEmpresa(json_decode(base64_decode($empresa)))]);
     }
 
     /**
@@ -30,6 +30,7 @@ class FormaPgtoController extends Controller
     {
         try {
             $novaFormaPgto = $this->formaPgtoService->cadastro($request->only([
+                'empresa_id',
                 'formapgto_nome',
                 'formapgto_tipo',
                 'clientes_id',

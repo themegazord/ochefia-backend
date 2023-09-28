@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent\Financeiro\FormaPgto;
 
 use App\Models\FormaPgto;
 use App\Repositories\Interfaces\Financeiro\FormaPgto\IFormaPgto;
+use Illuminate\Database\Eloquent\Collection;
 
 class FormaPgtoRepository implements IFormaPgto
 {
@@ -12,5 +13,15 @@ class FormaPgtoRepository implements IFormaPgto
     {
         return FormaPgto::query()
             ->create($formaPgto);
+    }
+
+    public function listagemFormasPgtoPorEmpresa(object $empresa): Collection
+    {
+        return FormaPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->get([
+                'formapgto_id',
+                'formapgto_nome'
+            ]);
     }
 }

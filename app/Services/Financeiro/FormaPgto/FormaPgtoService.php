@@ -21,6 +21,10 @@ class FormaPgtoService
         return $this->formaPgtoRepostory->cadastro($formaPgto);
     }
 
+    public function listagemFormaPgtoPorEmpresa(object $empresa): array {
+        return $this->formaPgtoRepostory->listagemFormasPgtoPorEmpresa($empresa)->toArray();
+    }
+
     /**
      * @throws FormaPgtoException
      */

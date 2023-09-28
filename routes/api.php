@@ -103,6 +103,7 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('formapgto')->group(function() {
            Route::post('cadastro', [FormaPgtoController::class, 'store'])->name('formapgto.store');
+           Route::get('listagem/{empresa}', [FormaPgtoController::class, 'index'])->name('formapgto.index');
         });
     });
 });
