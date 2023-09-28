@@ -39,4 +39,12 @@ class FormaPgtoRepository implements IFormaPgto
                 'prazopgto_id'
             ]);
     }
+
+    public function editaFormaPgtoPorEmpresa(array $formaPgto, object $empresa, string $id): int
+    {
+        return FormaPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('formapgto_id', $id)
+            ->update($formaPgto);
+    }
 }

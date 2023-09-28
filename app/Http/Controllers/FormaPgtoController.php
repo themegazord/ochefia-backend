@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\FormaPgtoException;
-use App\Http\Requests\CadastroFormPgtoRequest;
+use App\Http\Requests\Financeiro\FormaPgto\CadastroFormPgtoRequest;
+use App\Http\Requests\Financeiro\FormaPgto\EdicaoFormaPgtoRequest;
 use App\Services\Financeiro\FormaPgto\FormaPgtoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -55,9 +56,20 @@ class FormaPgtoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EdicaoFormaPgtoRequest $request, string $empresa, string $id)
     {
-        //
+        try {
+            $this->formaPgtoService->editaFormaPgtoPorEmpresa($request->only([
+                'empresa_id',
+                'formapgto_nome',
+                'formapgto_tipo',
+                'clientes_id',
+                'prazopgto_id'
+            ]), json_decode(base64_decode($empresa)), $id);
+            return response()->json(["mensagem" => "Forma de pagamento atualizada com sucesso"]);
+        } catch (FormaPgtoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 
     public function destroy(string $id)

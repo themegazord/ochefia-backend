@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Financeiro\FormaPgto;
 
+use App\Http\Requests\RequestPadroes;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CadastroFormPgtoRequest extends FormRequest
