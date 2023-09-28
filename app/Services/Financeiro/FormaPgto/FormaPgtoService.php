@@ -25,6 +25,12 @@ class FormaPgtoService
         return $this->formaPgtoRepostory->listagemFormasPgtoPorEmpresa($empresa)->toArray();
     }
 
+    public function consultaFormaPgtoPorEmpresa(object $empresa, string $id): FormaPgto|FormaPgtoException {
+        $formaPgto = $this->formaPgtoRepostory->consultaFomaPgtoPorEmpresa($empresa, $id);
+        if (is_null($formaPgto)) return FormaPgtoException::formaPgtoInexistente();
+        return $formaPgto;
+    }
+
     /**
      * @throws FormaPgtoException
      */

@@ -24,4 +24,19 @@ class FormaPgtoRepository implements IFormaPgto
                 'formapgto_nome'
             ]);
     }
+
+    public function consultaFomaPgtoPorEmpresa(object $empresa, string $id): ?FormaPgto
+    {
+        return FormaPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('formapgto_id', $id)
+            ->first([
+                'formapgto_id',
+                'empresa_id',
+                'formapgto_nome',
+                'formapgto_tipo',
+                'clientes_id',
+                'prazopgto_id'
+            ]);
+    }
 }

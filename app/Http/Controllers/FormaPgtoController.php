@@ -43,9 +43,13 @@ class FormaPgtoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $empresa, string $id)
     {
-        //
+        try {
+            return response()->json(["forma" => $this->formaPgtoService->consultaFormaPgtoPorEmpresa(json_decode(base64_decode($empresa)), $id)]);
+        } catch (FormaPgtoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 
     /**
