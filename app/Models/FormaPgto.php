@@ -13,6 +13,7 @@ class FormaPgto extends Model
     protected $table = 'forma_pgto';
 
     protected $fillable = [
+        'empresa_id',
         'formapgto_nome',
         'formapgto_tipo',
         'clientes_id',

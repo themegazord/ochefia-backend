@@ -21,6 +21,26 @@ class FormaPgtoService
         return $this->formaPgtoRepostory->cadastro($formaPgto);
     }
 
+    public function listagemFormaPgtoPorEmpresa(object $empresa): array {
+        return $this->formaPgtoRepostory->listagemFormasPgtoPorEmpresa($empresa)->toArray();
+    }
+
+    public function consultaFormaPgtoPorEmpresa(object $empresa, string $id): FormaPgto|FormaPgtoException {
+        $formaPgto = $this->formaPgtoRepostory->consultaFomaPgtoPorEmpresa($empresa, $id);
+        if (is_null($formaPgto)) return FormaPgtoException::formaPgtoInexistente();
+        return $formaPgto;
+    }
+
+    public function editaFormaPgtoPorEmpresa(array $formaPgto, object $empresa, string $id): int|FormaPgtoException {
+        if (is_null($this->formaPgtoRepostory->consultaFomaPgtoPorEmpresa($empresa, $id))) return FormaPgtoException::formaPgtoInexistente();
+        return $this->formaPgtoRepostory->editaFormaPgtoPorEmpresa($formaPgto, $empresa, $id);
+    }
+
+    public function deletaFormaPgtoPorEmpresa(object $empresa, string $id): mixed {
+        if (is_null($this->formaPgtoRepostory->consultaFomaPgtoPorEmpresa($empresa, $id))) return FormaPgtoException::formaPgtoInexistente();
+        return $this->formaPgtoRepostory->deletaFormaPgtoPorEmpresa($empresa, $id);
+    }
+
     /**
      * @throws FormaPgtoException
      */

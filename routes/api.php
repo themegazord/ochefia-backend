@@ -103,6 +103,10 @@ Route::prefix('v1')->group(function() {
         });
         Route::prefix('formapgto')->group(function() {
            Route::post('cadastro', [FormaPgtoController::class, 'store'])->name('formapgto.store');
+           Route::get('listagem/{empresa}', [FormaPgtoController::class, 'index'])->name('formapgto.index');
+           Route::get('consulta/{empresa}/{id}', [FormaPgtoController::class, 'show'])->name('formapgto.show');
+           Route::put('edicao/{empresa}/{id}', [FormaPgtoController::class, 'update'])->name('formapgto.update');
+           Route::delete('remocao/{empresa}/{id}', [FormaPgtoController::class, 'destroy'])->name('formapgto.destroy');
         });
     });
 });

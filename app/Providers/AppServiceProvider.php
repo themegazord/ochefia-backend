@@ -123,6 +123,7 @@ class AppServiceProvider extends ServiceProvider
             $formaPgtoRepository = $app->make(IFormaPgto::class);
             return new FormaPgtoService($formaPgtoRepository);
         });
+        $this->app->register(\L5Swagger\L5SwaggerServiceProvider::class);
     }
 
     /**
