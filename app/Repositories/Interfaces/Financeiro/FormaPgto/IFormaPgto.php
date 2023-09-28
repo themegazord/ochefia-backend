@@ -11,4 +11,5 @@ interface IFormaPgto
     public function listagemFormasPgtoPorEmpresa(object $empresa): Collection;
     public function consultaFomaPgtoPorEmpresa(object $empresa, string $id): ?FormaPgto;
     public function editaFormaPgtoPorEmpresa(array $formaPgto, object $empresa, string $id): int;
+    public function deletaFormaPgtoPorEmpresa(object $empresa, string $id): mixed;
 }

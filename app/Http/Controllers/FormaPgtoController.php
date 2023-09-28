@@ -44,7 +44,7 @@ class FormaPgtoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $empresa, string $id)
+    public function show(string $empresa, string $id): JsonResponse
     {
         try {
             return response()->json(["forma" => $this->formaPgtoService->consultaFormaPgtoPorEmpresa(json_decode(base64_decode($empresa)), $id)]);
@@ -56,7 +56,7 @@ class FormaPgtoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EdicaoFormaPgtoRequest $request, string $empresa, string $id)
+    public function update(EdicaoFormaPgtoRequest $request, string $empresa, string $id): JsonResponse
     {
         try {
             $this->formaPgtoService->editaFormaPgtoPorEmpresa($request->only([
@@ -72,8 +72,13 @@ class FormaPgtoController extends Controller
         }
     }
 
-    public function destroy(string $id)
+    public function destroy(string $empresa, string $id): JsonResponse
     {
-        //
+        try {
+            $this->formaPgtoService->deletaFormaPgtoPorEmpresa(json_decode(base64_decode($empresa)), $id);
+            return response()->json([], Response::HTTP_NO_CONTENT);
+        } catch (FormaPgtoException $fpe) {
+            return response()->json(["erro" => $fpe->getMessage()], $fpe->getCode());
+        }
     }
 }

@@ -47,4 +47,12 @@ class FormaPgtoRepository implements IFormaPgto
             ->where('formapgto_id', $id)
             ->update($formaPgto);
     }
+
+    public function deletaFormaPgtoPorEmpresa(object $empresa, string $id): mixed
+    {
+        return FormaPgto::query()
+            ->where('empresa_id', $empresa->empresa_id)
+            ->where('formapgto_id', $id)
+            ->delete();
+    }
 }
