@@ -117,6 +117,73 @@
                     }
                 }
             }
+        },
+        "/api/v1/empresa/cadastro": {
+            "post": {
+                "tags": [
+                    "Empresa"
+                ],
+                "operationId": "cadastroEmpresa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "empresa_nome": {
+                                        "description": "Nome da empresa",
+                                        "type": "string",
+                                        "example": "EMPRESA FICTICIA"
+                                    },
+                                    "empresa_cnpj": {
+                                        "description": "CNPJ da empresa",
+                                        "type": "string",
+                                        "example": "55276465000161"
+                                    },
+                                    "empresa_descricao": {
+                                        "description": "Descrição da empresa",
+                                        "type": "string",
+                                        "example": "Bar"
+                                    },
+                                    "file": {
+                                        "description": "Logo da empresa, caso haja",
+                                        "type": "string",
+                                        "format": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Operacao com sucesso"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ApiResponse": {
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
         }
     }
 }

@@ -23,7 +23,53 @@ class EmpresaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     *
+     *  @OA\Post(
+     *      path="/api/v1/empresa/cadastro",
+     *      tags={"Empresa"},
+     *      operationId="cadastroEmpresa",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema (
+     *                  @OA\Property (
+     *                      description="Nome da empresa",
+     *                      property="empresa_nome",
+     *                      type="string",
+     *                      example="EMPRESA FICTICIA"
+     *                  ),
+     *                  @OA\Property (
+     *                      description="CNPJ da empresa",
+     *                      property="empresa_cnpj",
+     *                      type="string",
+     *                      example="55276465000161"
+     *                  ),
+     *                  @OA\Property (
+     *                      description="Descrição da empresa",
+     *                      property="empresa_descricao",
+     *                      type="string",
+     *                      example="Bar"
+     *                  ),
+     *                  @OA\Property (
+     *                      description="Logo da empresa, caso haja",
+     *                      property="file",
+     *                      type="string",
+     *                      format="file",
+     *                  ),
+     *                  required={"file"}
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response="200",
+     *          description="Operacao com sucesso",
+     *          @OA\Schema(ref="#/components/schemas/ApiResponse")
+     *      )
+     *  )
+     *
+     * @param CadastroEmpresaRequest $request
+     * @return \Illuminate\Http\JsonResponse|void
      */
     public function store(CadastroEmpresaRequest $request)
     {
