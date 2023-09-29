@@ -2,89 +2,121 @@
     "openapi": "3.0.0",
     "info": {
         "title": "O Chefia",
-        "version": "0.1"
-    },
-    "paths": {
-        "/api/v1/formapgto/listagem/{token}": {
-            "get": {
-                "tags": [
-                    "formapgto"
-                ],
-                "summary": "Retorna a lista de formas de pagamento da empresa",
-                "description": "Retorna a lista de formas de pagamento da empresa",
-                "operationId": "listagemFormaPgto",
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "path",
-                        "description": "O token da empresa enviado no login do funcionário",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "examples": {
-                            "token": {
-                                "summary": "Token da empresa",
-                                "value": "eyJlbXByZXNhX2lkIjoxLCJlbXByZXNhX2NucGoiOiI0NjUxOTQyMzAwMDExMyJ9"
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
+        "description": "Backend para um sistema de PDV e controle simples empresarial.",
+        "contact": {
+            "email": "contato.wanjalagus@outlook.com.br"
         },
-        "/users/{id}": {
-            "put": {
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/license/mit/"
+        },
+        "version": "2.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/",
+            "description": "O Chefia servidor"
+        }
+    ],
+    "paths": {
+        "/api/v1/autenticacao/login": {
+            "post": {
                 "tags": [
-                    "user"
+                    "Login de funcionários e clientes"
                 ],
-                "summary": "Updates a user",
-                "description": "Updates a user",
-                "operationId": "updateUser",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Parameter with mutliple examples",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        },
-                        "examples": {
-                            "int": {
-                                "summary": "An int value.",
-                                "value": "1"
-                            },
-                            "uuid": {
-                                "summary": "An UUID value.",
-                                "value": "0006faf6-7a61-426c-9034-579f2cfcfa83"
+                "operationId": "Login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "joe_doe@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "1234"
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "5|FggYlCsXzqKISnrGA6NHZzJtQaRD2YGMZQ1yDPvf"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "example": "10"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Joe"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "joe_doe@email.com"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "empresa_token": {
+                                            "type": "string",
+                                            "example": "eyJlbXByZXNhX2lkIjo1LCJlbXByZXNhX2NucGoiOiI0NjUxOTQyMzAwMDExMyJ9"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Ao tentar entrar no sistema com uma senha que não é a cadastrada com o email enviado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "erro": {
+                                            "example": "A senha é inválida."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Ao tentar entrar no sistema com um email que não existe",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "erro": {
+                                            "example": "O email inserido não está cadastrado, insira um válido ou se cadastre no sistema."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-    },
-    "components": {
-        "securitySchemes": {
-            "bearerAuth": {
-                "type": "http",
-                "scheme": "bearer"
-            }
-        }
-    },
-    "security": [
-        {
-            "bearerAuth": []
-        }
-    ]
+    }
 }
